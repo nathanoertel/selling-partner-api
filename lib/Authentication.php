@@ -80,7 +80,7 @@ class Authentication implements RequestSignerContract
         $this->authorizationSigner = $configurationOptions['authorizationSigner'] ?? new AuthorizationSigner($this->endpoint);
     }
 
-    public function getAuthorizationSigner(): AuthorizationSignerContract
+    public function getAuthorizationSigner()
     {
         return $this->authorizationSigner;
     }
@@ -89,7 +89,7 @@ class Authentication implements RequestSignerContract
      * @return array
      * @throws \GuzzleHttp\Exception\GuzzleException|\RuntimeException
      */
-    public function requestLWAToken(): array
+    public function requestLWAToken()
     {
         $jsonData = [
             "grant_type" => $this->signingScope ? "client_credentials" : "refresh_token",
@@ -122,7 +122,7 @@ class Authentication implements RequestSignerContract
         return [$accessToken, $expirationDate->getTimestamp()];
     }
 
-    public function populateCredentials($key, $secret, ?string $token = null, ?int $expires = null): void
+    public function populateCredentials($key, $secret, $token = null, $expires = null)
     {
         $creds = null;
         if ($token !== null && $expires !== null) {
@@ -147,7 +147,7 @@ class Authentication implements RequestSignerContract
      *      a restricted data token
      * @return \Guzzle\Psr7\Request The signed request
      */
-    public function signRequest(Psr7\Request $request, ?string $scope = null, ?string $restrictedPath = null, ?string $operation = null): Psr7\Request
+    public function signRequest(Psr7\Request $request, $scope = null, $restrictedPath = null, $operation = null)
     {
         // This allows us to know if we're signing a grantless operation without passing $scope all over the place
         $this->signingScope = $scope;
@@ -218,7 +218,7 @@ class Authentication implements RequestSignerContract
      *
      * @return \SellingPartnerApi\Credentials A set of access credentials for making calls to the SP API
      */
-    public function getAwsCredentials(): Credentials
+    public function getAwsCredentials()
     {
         if ($this->needNewCredentials($this->awsCredentials)) {
             $this->newToken();
@@ -231,7 +231,7 @@ class Authentication implements RequestSignerContract
      *
      * @return \SellingPartnerApi\Credentials The grantless credentials
      */
-    public function getGrantlessAwsCredentials(): Credentials
+    public function getGrantlessAwsCredentials()
     {
         if ($this->needNewCredentials($this->grantlessAwsCredentials) || $this->signingScope !== $this->grantlessCredentialsScope) {
             $this->newToken();
@@ -245,7 +245,7 @@ class Authentication implements RequestSignerContract
      *
      * @return \SellingPartnerApi\Credentials A set of STS credentials
      */
-    public function getRoleCredentials(): Credentials
+    public function getRoleCredentials()
     {
         $originalCreds = $this->signingScope ? $this->getGrantlessAwsCredentials() : $this->getAwsCredentials();
         if ($this->needNewCredentials($this->roleCredentials)) {
@@ -285,7 +285,7 @@ class Authentication implements RequestSignerContract
      *      Only applies to getOrder, getOrders, and getOrderItems. Default empty array.
      * @return \SellingPartnerApi\Credentials A Credentials object holding the RDT
      */
-    public function getRestrictedDataToken(string $path, string $method, ?bool $generic = true, ?array $dataElements = []): Credentials
+    public function getRestrictedDataToken($path, $method, $generic = true, $dataElements = [])
     {
         // Grab any pre-existing RDT for this operation
         $existingCreds = null;
@@ -355,7 +355,7 @@ class Authentication implements RequestSignerContract
      * 
      * @return string
      */
-    public function getLwaClientId(): ?string
+    public function getLwaClientId()
     {
         return $this->lwaClientId;
     }
@@ -366,7 +366,7 @@ class Authentication implements RequestSignerContract
      * @param string $lwaClientId
      * @return void
      */
-    public function setLwaClientId(string $lwaClientId): void
+    public function setLwaClientId($lwaClientId)
     {
         $this->lwaClientId = $lwaClientId;
     }
@@ -376,7 +376,7 @@ class Authentication implements RequestSignerContract
      * 
      * @return string
      */
-    public function getLwaClientSecret(): ?string
+    public function getLwaClientSecret()
     {
         return $this->lwaClientSecret;
     }
@@ -387,7 +387,7 @@ class Authentication implements RequestSignerContract
      * @param string $lwaClientSecret
      * @return void
      */
-    public function setLwaClientSecret(string $lwaClientSecret): void
+    public function setLwaClientSecret($lwaClientSecret)
     {
         $this->lwaClientSecret = $lwaClientSecret;
     }
@@ -397,7 +397,7 @@ class Authentication implements RequestSignerContract
      * 
      * @return string|null
      */
-    public function getLwaRefreshToken(): ?string
+    public function getLwaRefreshToken()
     {
         return $this->lwaRefreshToken;
     }
@@ -408,7 +408,7 @@ class Authentication implements RequestSignerContract
      * @param string|null $lwaRefreshToken
      * @return void
      */
-    public function setLwaRefreshToken(?string $lwaRefreshToken = null): void
+    public function setLwaRefreshToken($lwaRefreshToken = null)
     {
         $this->lwaRefreshToken = $lwaRefreshToken;
     }
@@ -418,7 +418,7 @@ class Authentication implements RequestSignerContract
      * 
      * @return string
      */
-    public function getAwsAccessKeyId(): ?string
+    public function getAwsAccessKeyId()
     {
         return $this->awsAccessKeyId;
     }
@@ -429,7 +429,7 @@ class Authentication implements RequestSignerContract
      * @param string $awsAccessKeyId
      * @return void
      */
-    public function setAwsAccessKeyId(string $awsAccessKeyId): void
+    public function setAwsAccessKeyId($awsAccessKeyId)
     {
         $this->awsAccessKeyId = $awsAccessKeyId;
     }
@@ -439,7 +439,7 @@ class Authentication implements RequestSignerContract
      * 
      * @return string|null
      */
-    public function getAwsSecretAccessKey(): ?string
+    public function getAwsSecretAccessKey()
     {
         return $this->awsSecretAccessKey;
     }
@@ -450,7 +450,7 @@ class Authentication implements RequestSignerContract
      * @param string $awsSecretAccessKey
      * @return void
      */
-    public function setAwsSecretAccessKey(string $awsSecretAccessKey): void
+    public function setAwsSecretAccessKey($awsSecretAccessKey)
     {
         $this->awsSecretAccessKey = $awsSecretAccessKey;
     }
@@ -460,7 +460,7 @@ class Authentication implements RequestSignerContract
      *
      * @return array
      */
-    public function getEndpoint(): array
+    public function getEndpoint()
     {
         return $this->endpoint;
     }
@@ -472,7 +472,7 @@ class Authentication implements RequestSignerContract
      * @return void
      * @throws RuntimeException
      */
-    public function setEndpoint(array $endpoint): void
+    public function setEndpoint($endpoint)
     {
         if (!array_key_exists('url', $endpoint) || !array_key_exists('region', $endpoint)) {
             throw new RuntimeException('$endpoint must contain `url` and `region` keys');
@@ -487,12 +487,12 @@ class Authentication implements RequestSignerContract
      * @param ?\SellingPartnerApi\Credentials $creds The credentials to check
      * @return bool True if the credentials need to be updated, false otherwise
      */
-    private function needNewCredentials(?Credentials $creds = null): bool
+    private function needNewCredentials(Credentials $creds = null)
     {
         return $creds === null || $creds->getSecurityToken() === null || $creds->expiresSoon();
     }
 
-    private function newToken(): void
+    private function newToken()
     {
         [$accessToken, $expirationTimestamp] = $this->requestLWAToken();
         $this->populateCredentials($this->awsAccessKeyId, $this->awsSecretAccessKey, $accessToken, $expirationTimestamp);
@@ -505,7 +505,7 @@ class Authentication implements RequestSignerContract
      * @param bool|null $withTime
      * @return string|null
      */
-    public function formattedRequestTime(?bool $withTime = true): ?string
+    public function formattedRequestTime($withTime = true)
     {
         return $this->requestSigner->formattedRequestTime($withTime);
     }

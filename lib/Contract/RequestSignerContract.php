@@ -8,8 +8,8 @@ interface RequestSignerContract
 {
     public function signRequest(
         Request $request,
-        ?string $scope = null,
-        ?string $restrictedPath = null,
-        ?string $operation = null
-    ): Request;
+        $scope = null,
+        $restrictedPath = null,
+        $operation = null
+    );
 }

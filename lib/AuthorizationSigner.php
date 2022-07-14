@@ -20,12 +20,12 @@ class AuthorizationSigner implements AuthorizationSignerContract
      */
     private $endpoint;
 
-    public function __construct(array $endpoint)
+    public function __construct($endpoint)
     {
         $this->endpoint = $endpoint;
     }
 
-    public function sign(Request $request, Credentials $credentials): Request
+    public function sign(Request $request, Credentials $credentials)
     {
         $canonicalRequest = $this->createCanonicalRequest($request);
         $signingString = $this->createSigningString($canonicalRequest);
@@ -43,7 +43,7 @@ class AuthorizationSigner implements AuthorizationSignerContract
             ->withHeader('x-amz-date', $this->formattedRequestTime());
     }
 
-    private function createCanonicalizedHeaders(array $headers): array
+    private function createCanonicalizedHeaders($headers)
     {
         // Convert all header names to lowercase
         foreach ($headers as $key => $values) {
@@ -75,7 +75,7 @@ class AuthorizationSigner implements AuthorizationSignerContract
         ];
     }
 
-    private function createCanonicalizedPath(string $path): string
+    private function createCanonicalizedPath($path)
     {
         // Remove leading slash
         $trimmed = ltrim($path, '/');
@@ -86,7 +86,7 @@ class AuthorizationSigner implements AuthorizationSignerContract
         return '/' . str_replace('%2F', '/', $doubleEncoded);
     }
 
-    private function createCanonicalizedQuery(string $query): string
+    private function createCanonicalizedQuery($query)
     {
         if (strlen($query) === 0) {
             return '';
@@ -139,7 +139,7 @@ class AuthorizationSigner implements AuthorizationSignerContract
         return $canonicalized;
     }
 
-    private function createCanonicalRequest(Request $request): string
+    private function createCanonicalRequest(Request $request)
     {
         $method = $request->getMethod();
         $uri = $request->getUri();
@@ -153,7 +153,7 @@ class AuthorizationSigner implements AuthorizationSignerContract
         return $canonicalRequest;
     }
 
-    private function createSigningString(string $canonicalRequest): string
+    private function createSigningString($canonicalRequest)
     {
         $credentialScope = $this->createCredentialScope();
         $canonHashed = hash('sha256', $canonicalRequest);
@@ -161,14 +161,14 @@ class AuthorizationSigner implements AuthorizationSignerContract
         return static::SIGNING_ALGO . "\n{$this->formattedRequestTime()}\n{$credentialScope}\n{$canonHashed}";
     }
 
-    private function createCredentialScope(): string
+    private function createCredentialScope()
     {
         $terminator = static::TERMINATION_STR;
 
         return "{$this->formattedRequestTime(false)}/{$this->endpoint['region']}/" . static::SERVICE_NAME . "/{$terminator}";
     }
 
-    private function createSignature(string $signingString, string $secretKey): string
+    private function createSignature($signingString, $secretKey)
     {
         $kDate = hash_hmac('sha256', $this->formattedRequestTime(false), "AWS4{$secretKey}", true);
         $kRegion = hash_hmac('sha256', $this->endpoint['region'], $kDate, true);
@@ -178,7 +178,7 @@ class AuthorizationSigner implements AuthorizationSignerContract
         return hash_hmac('sha256', $signingString, $kSigning);
     }
 
-    public function setRequestTime(?\DateTime $datetime = null): void
+    public function setRequestTime(?\DateTime $datetime = null)
     {
         $this->requestTime = $datetime ?? new \DateTime('now', new \DateTimeZone('UTC'));
     }
@@ -188,7 +188,7 @@ class AuthorizationSigner implements AuthorizationSignerContract
      *
      * @return string|null
      */
-    public function formattedRequestTime(?bool $withTime = true): ?string
+    public function formattedRequestTime($withTime = true)
     {
         $fmt = $withTime ? static::DATETIME_FMT : static::DATE_FMT;
 

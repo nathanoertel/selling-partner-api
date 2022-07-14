@@ -125,12 +125,12 @@ class Configuration
         $this->setRequestSigner($options["requestSigner"] ?? $this->auth);
     }
 
-    public function getRequestSigner(): RequestSignerContract
+    public function getRequestSigner()
     {
         return $this->requestSigner;
     }
 
-    public function setRequestSigner(RequestSignerContract $requestSigner): void
+    public function setRequestSigner(RequestSignerContract $requestSigner)
     {
         $this->requestSigner = $requestSigner;
     }
@@ -237,7 +237,7 @@ class Configuration
      * @param ?string $tempFolderPath Temp folder path
      * @return void
      */
-    public static function setTempFolderPath(?string $tempFolderPath = null): void
+    public static function setTempFolderPath($tempFolderPath = null)
     {
         if ($tempFolderPath === null) {
             static::$tempFolderPath = sys_get_temp_dir();
@@ -274,7 +274,7 @@ class Configuration
      * 
      * @return string
      */
-    public function getLwaClientId(): ?string
+    public function getLwaClientId()
     {
         return $this->auth->getLwaClientId();
     }
@@ -285,7 +285,7 @@ class Configuration
      * @param string $lwaClientId
      * @return void
      */
-    public function setLwaClientId(string $lwaClientId): void
+    public function setLwaClientId($lwaClientId)
     {
         $this->auth->setLwaClientId($lwaClientId);
     }
@@ -295,7 +295,7 @@ class Configuration
      * 
      * @return string
      */
-    public function getLwaClientSecret(): ?string
+    public function getLwaClientSecret()
     {
         return $this->auth->getLwaClientSecret();
     }
@@ -306,7 +306,7 @@ class Configuration
      * @param string $lwaClientSecret
      * @return void
      */
-    public function setLwaClientSecret(string $lwaClientSecret): void
+    public function setLwaClientSecret($lwaClientSecret)
     {
         $this->auth->setLwaClientSecret($lwaClientSecret);
     }
@@ -316,7 +316,7 @@ class Configuration
      * 
      * @return string
      */
-    public function getLwaRefreshToken(): ?string
+    public function getLwaRefreshToken()
     {
         return $this->auth->getLwaRefreshToken();
     }
@@ -327,7 +327,7 @@ class Configuration
      * @param string|null $lwaRefreshToken
      * @return void
      */
-    public function setLwaRefreshToken(?string $lwaRefreshToken = null): void
+    public function setLwaRefreshToken($lwaRefreshToken = null)
     {
         $this->auth->setLwaRefreshToken($lwaRefreshToken);
     }
@@ -337,7 +337,7 @@ class Configuration
      * 
      * @return string
      */
-    public function getAwsAccessKeyId(): ?string
+    public function getAwsAccessKeyId()
     {
         return $this->auth->getAwsAccessKeyId();
     }
@@ -348,7 +348,7 @@ class Configuration
      * @param string $awsAccessKeyId
      * @return void
      */
-    public function setAwsAccessKeyId(string $awsAccessKeyId): void
+    public function setAwsAccessKeyId($awsAccessKeyId)
     {
         $this->auth->setAwsAccessKeyId($awsAccessKeyId);
     }
@@ -358,7 +358,7 @@ class Configuration
      * 
      * @return string|null
      */
-    public function getAwsSecretAccessKey(): ?string
+    public function getAwsSecretAccessKey()
     {
         return $this->auth->getAwsSecretAccessKey();
     }
@@ -369,7 +369,7 @@ class Configuration
      * @param string $awsSecretAccessKey
      * @return void
      */
-    public function setAwsSecretAccessKey(string $awsSecretAccessKey): void
+    public function setAwsSecretAccessKey($awsSecretAccessKey)
     {
         $this->auth->setAwsSecretAccessKey($awsSecretAccessKey);
     }
@@ -379,7 +379,7 @@ class Configuration
      *
      * @return array
      */
-    public function getEndpoint(): array
+    public function getEndpoint()
     {
         return $this->endpoint;
     }
@@ -391,7 +391,7 @@ class Configuration
      * @return void
      * @throws RuntimeException
      */
-    public function setEndpoint(array $endpoint): void
+    public function setEndpoint($endpoint)
     {
         if (!array_key_exists('url', $endpoint) || !array_key_exists('region', $endpoint)) {
             throw new RuntimeException('$endpoint must contain `url` and `region` keys');
@@ -420,7 +420,7 @@ class Configuration
      * @param string|null $tempFolderPath The path to the temp folder.
      * @return string The report for debugging
      */
-    public static function toDebugReport(?string $tempFolderPath = null)
+    public static function toDebugReport($tempFolderPath = null)
     {
         if ($tempFolderPath === null) {
             $tempFolderPath = static::getTempFolderPath();

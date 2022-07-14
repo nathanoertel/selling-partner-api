@@ -18,7 +18,7 @@ class ContentType
     public const XLSX = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
     public const XML = 'text/xml';
 
-    public static function getContentTypes(): array
+    public static function getContentTypes()
     {
         $reflectionClass = new ReflectionClass(__CLASS__);
         return $reflectionClass->getConstants();

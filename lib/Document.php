@@ -89,7 +89,7 @@ class Document
      *
      * @return string The raw (unencrypted) document contents.
      */
-    public function download(?bool $postProcess = true, ?string $encoding = null): string {
+    public function download($postProcess = true, $encoding = null) {
         try {
             $response = $this->client->request('GET', $this->url, ['stream' => true]);
         } catch (\GuzzleHttp\Exception\ClientException $e) {
@@ -195,7 +195,7 @@ class Document
      *
      * @return void
      */
-    public function upload(string $feedData): void {
+    public function upload(string $feedData) {
         $response = $this->client->put($this->url, [
             RequestOptions::HEADERS => [
                 "content-type" => $this->contentType,
