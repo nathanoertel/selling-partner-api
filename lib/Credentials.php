@@ -12,7 +12,7 @@ namespace SellingPartnerApi;
  */
 class Credentials
 {
-    private const REFRESH_OFFSET_SECS = 30;
+    const REFRESH_OFFSET_SECS = 30;
 
     private $key;
     private $secret;

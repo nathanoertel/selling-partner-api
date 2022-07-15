@@ -8,11 +8,11 @@ use SellingPartnerApi\Contract\AuthorizationSignerContract;
 class AuthorizationSigner implements AuthorizationSignerContract
 {
     const DATETIME_FMT = 'Ymd\THis\Z';
-    private const DATE_FMT = 'Ymd';
+    const DATE_FMT = 'Ymd';
 
-    private const SIGNING_ALGO = 'AWS4-HMAC-SHA256';
-    private const SERVICE_NAME = 'execute-api';
-    private const TERMINATION_STR = 'aws4_request';
+    const SIGNING_ALGO = 'AWS4-HMAC-SHA256';
+    const SERVICE_NAME = 'execute-api';
+    const TERMINATION_STR = 'aws4_request';
 
     /**
      * @see \SellingPartnerApi\Endpoint
