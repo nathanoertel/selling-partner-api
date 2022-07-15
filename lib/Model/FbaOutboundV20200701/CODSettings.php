@@ -44,7 +44,7 @@ use \SellingPartnerApi\Model\ModelInterface;
  */
 class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.

@@ -13,7 +13,7 @@ use SellingPartnerApi\Model\ReportsV20210630\ReportDocument;
 
 class Document
 {
-    public const ENCRYPTION_SCHEME = "AES-256-CBC";
+    const ENCRYPTION_SCHEME = "AES-256-CBC";
 
     private $url;
     private $compressionAlgo;

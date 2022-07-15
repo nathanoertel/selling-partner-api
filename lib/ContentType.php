@@ -10,13 +10,13 @@ use ReflectionClass;
 
 class ContentType
 {
-    public const CSV = 'text/csv';
-    public const JSON = 'application/json';
-    public const PDF = 'application/pdf';
-    public const PLAIN = 'text/plain';
-    public const TAB = 'text/tab-separated-values';
-    public const XLSX = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-    public const XML = 'text/xml';
+    const CSV = 'text/csv';
+    const JSON = 'application/json';
+    const PDF = 'application/pdf';
+    const PLAIN = 'text/plain';
+    const TAB = 'text/tab-separated-values';
+    const XLSX = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+    const XML = 'text/xml';
 
     public static function getContentTypes()
     {

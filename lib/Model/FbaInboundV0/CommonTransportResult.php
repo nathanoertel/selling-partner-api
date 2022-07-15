@@ -43,7 +43,7 @@ use \SellingPartnerApi\Model\ModelInterface;
  */
 class CommonTransportResult implements ModelInterface, ArrayAccess, \JsonSerializable
 {
-    public const DISCRIMINATOR = null;
+    const DISCRIMINATOR = null;
 
     /**
       * The original name of the model.

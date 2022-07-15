@@ -7,7 +7,7 @@ use SellingPartnerApi\Contract\AuthorizationSignerContract;
 
 class AuthorizationSigner implements AuthorizationSignerContract
 {
-    public const DATETIME_FMT = 'Ymd\THis\Z';
+    const DATETIME_FMT = 'Ymd\THis\Z';
     private const DATE_FMT = 'Ymd';
 
     private const SIGNING_ALGO = 'AWS4-HMAC-SHA256';
