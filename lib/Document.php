@@ -4,7 +4,7 @@ namespace SellingPartnerApi;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\RequestOptions;
-use PhpOffice\PhpSpreadsheet\IOFactory;
+// use PhpOffice\PhpSpreadsheet\IOFactory;
 use RuntimeException;
 
 use SellingPartnerApi\Model\FeedsV20210630\CreateFeedDocumentResponse;
@@ -145,8 +145,8 @@ class Document
             $tempFile = fopen($this->tmpFilename, "r+");
             fwrite($tempFile, $contents);
             fclose($tempFile);
-            $fileType = IOFactory::identify($this->tmpFilename);
-            $reader = IOFactory::createReader($fileType);
+            // $fileType = IOFactory::identify($this->tmpFilename);
+            // $reader = IOFactory::createReader($fileType);
         }
 
         switch ($this->contentType) {
@@ -158,20 +158,20 @@ class Document
                 $reader->setEnclosure(chr(8));
             case ContentType::CSV:
             case ContentType::XLSX:
-                $spreadsheet = IOFactory::load($this->tmpFilename);
-                if ($this->contentType !== ContentType::XLSX) {
-                    $sheet = $spreadsheet->getSheet(0)->toArray();
-                    // Turn each row of data into an associative array with the headers as keys
-                    array_walk($sheet, function(&$row) use ($sheet) {
-                        $row = array_combine($sheet[0], $row);
-                    });
-                    // Remove headers line
-                    array_shift($sheet);
-                    $this->data = $sheet;
-                } else {
-                    $this->data = $spreadsheet;
-                }
-                unlink($this->tmpFilename);
+                // $spreadsheet = IOFactory::load($this->tmpFilename);
+                // if ($this->contentType !== ContentType::XLSX) {
+                //     $sheet = $spreadsheet->getSheet(0)->toArray();
+                //     // Turn each row of data into an associative array with the headers as keys
+                //     array_walk($sheet, function(&$row) use ($sheet) {
+                //         $row = array_combine($sheet[0], $row);
+                //     });
+                //     // Remove headers line
+                //     array_shift($sheet);
+                //     $this->data = $sheet;
+                // } else {
+                //     $this->data = $spreadsheet;
+                // }
+                // unlink($this->tmpFilename);
                 break;
             case ContentType::JSON:
                 $this->data = json_decode($contents, true);
