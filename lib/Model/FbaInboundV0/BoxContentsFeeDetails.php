@@ -187,9 +187,9 @@ class BoxContentsFeeDetails implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['total_units'] = $data['total_units'] ?? null;
-        $this->container['fee_per_unit'] = $data['fee_per_unit'] ?? null;
-        $this->container['total_fee'] = $data['total_fee'] ?? null;
+        $this->container['total_units'] = isset($data['total_units']) ? $data['total_units'] : null;
+        $this->container['fee_per_unit'] = isset($data['fee_per_unit']) ? $data['fee_per_unit'] : null;
+        $this->container['total_fee'] = isset($data['total_fee']) ? $data['total_fee'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class BoxContentsFeeDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

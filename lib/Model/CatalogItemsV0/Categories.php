@@ -186,9 +186,9 @@ class Categories implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['product_category_id'] = $data['product_category_id'] ?? null;
-        $this->container['product_category_name'] = $data['product_category_name'] ?? null;
-        $this->container['parent'] = $data['parent'] ?? null;
+        $this->container['product_category_id'] = isset($data['product_category_id']) ? $data['product_category_id'] : null;
+        $this->container['product_category_name'] = isset($data['product_category_name']) ? $data['product_category_name'] : null;
+        $this->container['parent'] = isset($data['parent']) ? $data['parent'] : null;
     }
 
     /**
@@ -308,7 +308,7 @@ class Categories implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

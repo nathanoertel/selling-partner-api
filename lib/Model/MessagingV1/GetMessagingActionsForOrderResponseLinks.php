@@ -181,8 +181,8 @@ class GetMessagingActionsForOrderResponseLinks implements ModelInterface, ArrayA
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = $data['self'] ?? null;
-        $this->container['actions'] = $data['actions'] ?? null;
+        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['actions'] = isset($data['actions']) ? $data['actions'] : null;
     }
 
     /**
@@ -285,7 +285,7 @@ class GetMessagingActionsForOrderResponseLinks implements ModelInterface, ArrayA
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

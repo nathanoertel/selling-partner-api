@@ -205,9 +205,9 @@ class ItemQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['unit_of_measure'] = $data['unit_of_measure'] ?? null;
-        $this->container['unit_size'] = $data['unit_size'] ?? null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['unit_of_measure'] = isset($data['unit_of_measure']) ? $data['unit_of_measure'] : null;
+        $this->container['unit_size'] = isset($data['unit_size']) ? $data['unit_size'] : null;
     }
 
     /**
@@ -346,7 +346,7 @@ class ItemQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

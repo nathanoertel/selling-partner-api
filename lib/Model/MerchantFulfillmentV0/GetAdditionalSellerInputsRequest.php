@@ -187,9 +187,9 @@ class GetAdditionalSellerInputsRequest implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipping_service_id'] = $data['shipping_service_id'] ?? null;
-        $this->container['ship_from_address'] = $data['ship_from_address'] ?? null;
-        $this->container['order_id'] = $data['order_id'] ?? null;
+        $this->container['shipping_service_id'] = isset($data['shipping_service_id']) ? $data['shipping_service_id'] : null;
+        $this->container['ship_from_address'] = isset($data['ship_from_address']) ? $data['ship_from_address'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
     }
 
     /**
@@ -318,7 +318,7 @@ class GetAdditionalSellerInputsRequest implements ModelInterface, ArrayAccess, \
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

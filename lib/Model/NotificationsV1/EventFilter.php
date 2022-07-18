@@ -187,9 +187,9 @@ class EventFilter implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['aggregation_settings'] = $data['aggregation_settings'] ?? null;
-        $this->container['marketplace_ids'] = $data['marketplace_ids'] ?? null;
-        $this->container['event_filter_type'] = $data['event_filter_type'] ?? null;
+        $this->container['aggregation_settings'] = isset($data['aggregation_settings']) ? $data['aggregation_settings'] : null;
+        $this->container['marketplace_ids'] = isset($data['marketplace_ids']) ? $data['marketplace_ids'] : null;
+        $this->container['event_filter_type'] = isset($data['event_filter_type']) ? $data['event_filter_type'] : null;
     }
 
     /**
@@ -312,7 +312,7 @@ class EventFilter implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -191,10 +191,10 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['product'] = $data['product'] ?? null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['product'] = isset($data['product']) ? $data['product'] : null;
     }
 
     /**
@@ -339,7 +339,7 @@ class Price implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

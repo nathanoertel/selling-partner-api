@@ -307,33 +307,33 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_event_list'] = $data['shipment_event_list'] ?? null;
-        $this->container['refund_event_list'] = $data['refund_event_list'] ?? null;
-        $this->container['guarantee_claim_event_list'] = $data['guarantee_claim_event_list'] ?? null;
-        $this->container['chargeback_event_list'] = $data['chargeback_event_list'] ?? null;
-        $this->container['pay_with_amazon_event_list'] = $data['pay_with_amazon_event_list'] ?? null;
-        $this->container['service_provider_credit_event_list'] = $data['service_provider_credit_event_list'] ?? null;
-        $this->container['retrocharge_event_list'] = $data['retrocharge_event_list'] ?? null;
-        $this->container['rental_transaction_event_list'] = $data['rental_transaction_event_list'] ?? null;
-        $this->container['product_ads_payment_event_list'] = $data['product_ads_payment_event_list'] ?? null;
-        $this->container['service_fee_event_list'] = $data['service_fee_event_list'] ?? null;
-        $this->container['seller_deal_payment_event_list'] = $data['seller_deal_payment_event_list'] ?? null;
-        $this->container['debt_recovery_event_list'] = $data['debt_recovery_event_list'] ?? null;
-        $this->container['loan_servicing_event_list'] = $data['loan_servicing_event_list'] ?? null;
-        $this->container['adjustment_event_list'] = $data['adjustment_event_list'] ?? null;
-        $this->container['safet_reimbursement_event_list'] = $data['safet_reimbursement_event_list'] ?? null;
-        $this->container['seller_review_enrollment_payment_event_list'] = $data['seller_review_enrollment_payment_event_list'] ?? null;
-        $this->container['fba_liquidation_event_list'] = $data['fba_liquidation_event_list'] ?? null;
-        $this->container['coupon_payment_event_list'] = $data['coupon_payment_event_list'] ?? null;
-        $this->container['imaging_services_fee_event_list'] = $data['imaging_services_fee_event_list'] ?? null;
-        $this->container['network_commingling_transaction_event_list'] = $data['network_commingling_transaction_event_list'] ?? null;
-        $this->container['affordability_expense_event_list'] = $data['affordability_expense_event_list'] ?? null;
-        $this->container['affordability_expense_reversal_event_list'] = $data['affordability_expense_reversal_event_list'] ?? null;
-        $this->container['trial_shipment_event_list'] = $data['trial_shipment_event_list'] ?? null;
-        $this->container['shipment_settle_event_list'] = $data['shipment_settle_event_list'] ?? null;
-        $this->container['tax_withholding_event_list'] = $data['tax_withholding_event_list'] ?? null;
-        $this->container['removal_shipment_event_list'] = $data['removal_shipment_event_list'] ?? null;
-        $this->container['removal_shipment_adjustment_event_list'] = $data['removal_shipment_adjustment_event_list'] ?? null;
+        $this->container['shipment_event_list'] = isset($data['shipment_event_list']) ? $data['shipment_event_list'] : null;
+        $this->container['refund_event_list'] = isset($data['refund_event_list']) ? $data['refund_event_list'] : null;
+        $this->container['guarantee_claim_event_list'] = isset($data['guarantee_claim_event_list']) ? $data['guarantee_claim_event_list'] : null;
+        $this->container['chargeback_event_list'] = isset($data['chargeback_event_list']) ? $data['chargeback_event_list'] : null;
+        $this->container['pay_with_amazon_event_list'] = isset($data['pay_with_amazon_event_list']) ? $data['pay_with_amazon_event_list'] : null;
+        $this->container['service_provider_credit_event_list'] = isset($data['service_provider_credit_event_list']) ? $data['service_provider_credit_event_list'] : null;
+        $this->container['retrocharge_event_list'] = isset($data['retrocharge_event_list']) ? $data['retrocharge_event_list'] : null;
+        $this->container['rental_transaction_event_list'] = isset($data['rental_transaction_event_list']) ? $data['rental_transaction_event_list'] : null;
+        $this->container['product_ads_payment_event_list'] = isset($data['product_ads_payment_event_list']) ? $data['product_ads_payment_event_list'] : null;
+        $this->container['service_fee_event_list'] = isset($data['service_fee_event_list']) ? $data['service_fee_event_list'] : null;
+        $this->container['seller_deal_payment_event_list'] = isset($data['seller_deal_payment_event_list']) ? $data['seller_deal_payment_event_list'] : null;
+        $this->container['debt_recovery_event_list'] = isset($data['debt_recovery_event_list']) ? $data['debt_recovery_event_list'] : null;
+        $this->container['loan_servicing_event_list'] = isset($data['loan_servicing_event_list']) ? $data['loan_servicing_event_list'] : null;
+        $this->container['adjustment_event_list'] = isset($data['adjustment_event_list']) ? $data['adjustment_event_list'] : null;
+        $this->container['safet_reimbursement_event_list'] = isset($data['safet_reimbursement_event_list']) ? $data['safet_reimbursement_event_list'] : null;
+        $this->container['seller_review_enrollment_payment_event_list'] = isset($data['seller_review_enrollment_payment_event_list']) ? $data['seller_review_enrollment_payment_event_list'] : null;
+        $this->container['fba_liquidation_event_list'] = isset($data['fba_liquidation_event_list']) ? $data['fba_liquidation_event_list'] : null;
+        $this->container['coupon_payment_event_list'] = isset($data['coupon_payment_event_list']) ? $data['coupon_payment_event_list'] : null;
+        $this->container['imaging_services_fee_event_list'] = isset($data['imaging_services_fee_event_list']) ? $data['imaging_services_fee_event_list'] : null;
+        $this->container['network_commingling_transaction_event_list'] = isset($data['network_commingling_transaction_event_list']) ? $data['network_commingling_transaction_event_list'] : null;
+        $this->container['affordability_expense_event_list'] = isset($data['affordability_expense_event_list']) ? $data['affordability_expense_event_list'] : null;
+        $this->container['affordability_expense_reversal_event_list'] = isset($data['affordability_expense_reversal_event_list']) ? $data['affordability_expense_reversal_event_list'] : null;
+        $this->container['trial_shipment_event_list'] = isset($data['trial_shipment_event_list']) ? $data['trial_shipment_event_list'] : null;
+        $this->container['shipment_settle_event_list'] = isset($data['shipment_settle_event_list']) ? $data['shipment_settle_event_list'] : null;
+        $this->container['tax_withholding_event_list'] = isset($data['tax_withholding_event_list']) ? $data['tax_withholding_event_list'] : null;
+        $this->container['removal_shipment_event_list'] = isset($data['removal_shipment_event_list']) ? $data['removal_shipment_event_list'] : null;
+        $this->container['removal_shipment_adjustment_event_list'] = isset($data['removal_shipment_adjustment_event_list']) ? $data['removal_shipment_adjustment_event_list'] : null;
     }
 
     /**
@@ -1005,7 +1005,7 @@ class FinancialEvents implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

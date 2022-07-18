@@ -252,22 +252,22 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['content_module_type'] = $data['content_module_type'] ?? null;
-        $this->container['standard_company_logo'] = $data['standard_company_logo'] ?? null;
-        $this->container['standard_comparison_table'] = $data['standard_comparison_table'] ?? null;
-        $this->container['standard_four_image_text'] = $data['standard_four_image_text'] ?? null;
-        $this->container['standard_four_image_text_quadrant'] = $data['standard_four_image_text_quadrant'] ?? null;
-        $this->container['standard_header_image_text'] = $data['standard_header_image_text'] ?? null;
-        $this->container['standard_image_sidebar'] = $data['standard_image_sidebar'] ?? null;
-        $this->container['standard_image_text_overlay'] = $data['standard_image_text_overlay'] ?? null;
-        $this->container['standard_multiple_image_text'] = $data['standard_multiple_image_text'] ?? null;
-        $this->container['standard_product_description'] = $data['standard_product_description'] ?? null;
-        $this->container['standard_single_image_highlights'] = $data['standard_single_image_highlights'] ?? null;
-        $this->container['standard_single_image_specs_detail'] = $data['standard_single_image_specs_detail'] ?? null;
-        $this->container['standard_single_side_image'] = $data['standard_single_side_image'] ?? null;
-        $this->container['standard_tech_specs'] = $data['standard_tech_specs'] ?? null;
-        $this->container['standard_text'] = $data['standard_text'] ?? null;
-        $this->container['standard_three_image_text'] = $data['standard_three_image_text'] ?? null;
+        $this->container['content_module_type'] = isset($data['content_module_type']) ? $data['content_module_type'] : null;
+        $this->container['standard_company_logo'] = isset($data['standard_company_logo']) ? $data['standard_company_logo'] : null;
+        $this->container['standard_comparison_table'] = isset($data['standard_comparison_table']) ? $data['standard_comparison_table'] : null;
+        $this->container['standard_four_image_text'] = isset($data['standard_four_image_text']) ? $data['standard_four_image_text'] : null;
+        $this->container['standard_four_image_text_quadrant'] = isset($data['standard_four_image_text_quadrant']) ? $data['standard_four_image_text_quadrant'] : null;
+        $this->container['standard_header_image_text'] = isset($data['standard_header_image_text']) ? $data['standard_header_image_text'] : null;
+        $this->container['standard_image_sidebar'] = isset($data['standard_image_sidebar']) ? $data['standard_image_sidebar'] : null;
+        $this->container['standard_image_text_overlay'] = isset($data['standard_image_text_overlay']) ? $data['standard_image_text_overlay'] : null;
+        $this->container['standard_multiple_image_text'] = isset($data['standard_multiple_image_text']) ? $data['standard_multiple_image_text'] : null;
+        $this->container['standard_product_description'] = isset($data['standard_product_description']) ? $data['standard_product_description'] : null;
+        $this->container['standard_single_image_highlights'] = isset($data['standard_single_image_highlights']) ? $data['standard_single_image_highlights'] : null;
+        $this->container['standard_single_image_specs_detail'] = isset($data['standard_single_image_specs_detail']) ? $data['standard_single_image_specs_detail'] : null;
+        $this->container['standard_single_side_image'] = isset($data['standard_single_side_image']) ? $data['standard_single_side_image'] : null;
+        $this->container['standard_tech_specs'] = isset($data['standard_tech_specs']) ? $data['standard_tech_specs'] : null;
+        $this->container['standard_text'] = isset($data['standard_text']) ? $data['standard_text'] : null;
+        $this->container['standard_three_image_text'] = isset($data['standard_three_image_text']) ? $data['standard_three_image_text'] : null;
     }
 
     /**
@@ -689,7 +689,7 @@ class ContentModule implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

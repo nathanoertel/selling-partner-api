@@ -211,14 +211,14 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['sku'] = $data['sku'] ?? null;
-        $this->container['item_condition'] = $data['item_condition'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['identifier'] = $data['identifier'] ?? null;
-        $this->container['summary'] = $data['summary'] ?? null;
-        $this->container['offers'] = $data['offers'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['sku'] = isset($data['sku']) ? $data['sku'] : null;
+        $this->container['item_condition'] = isset($data['item_condition']) ? $data['item_condition'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['identifier'] = isset($data['identifier']) ? $data['identifier'] : null;
+        $this->container['summary'] = isset($data['summary']) ? $data['summary'] : null;
+        $this->container['offers'] = isset($data['offers']) ? $data['offers'] : null;
     }
 
     /**
@@ -478,7 +478,7 @@ class GetOffersResult implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

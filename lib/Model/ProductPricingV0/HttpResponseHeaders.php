@@ -182,8 +182,8 @@ class HttpResponseHeaders implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['date'] = $data['date'] ?? null;
-        $this->container['x_amzn_request_id'] = $data['x_amzn_request_id'] ?? null;
+        $this->container['date'] = isset($data['date']) ? $data['date'] : null;
+        $this->container['x_amzn_request_id'] = isset($data['x_amzn_request_id']) ? $data['x_amzn_request_id'] : null;
     }
 
     /**
@@ -279,7 +279,7 @@ class HttpResponseHeaders implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

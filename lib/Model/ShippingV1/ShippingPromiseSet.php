@@ -182,8 +182,8 @@ class ShippingPromiseSet implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['delivery_window'] = $data['delivery_window'] ?? null;
-        $this->container['receive_window'] = $data['receive_window'] ?? null;
+        $this->container['delivery_window'] = isset($data['delivery_window']) ? $data['delivery_window'] : null;
+        $this->container['receive_window'] = isset($data['receive_window']) ? $data['receive_window'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class ShippingPromiseSet implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

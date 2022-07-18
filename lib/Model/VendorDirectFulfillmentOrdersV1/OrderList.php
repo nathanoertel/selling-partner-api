@@ -181,8 +181,8 @@ class OrderList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['pagination'] = $data['pagination'] ?? null;
-        $this->container['orders'] = $data['orders'] ?? null;
+        $this->container['pagination'] = isset($data['pagination']) ? $data['pagination'] : null;
+        $this->container['orders'] = isset($data['orders']) ? $data['orders'] : null;
     }
 
     /**
@@ -279,7 +279,7 @@ class OrderList implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

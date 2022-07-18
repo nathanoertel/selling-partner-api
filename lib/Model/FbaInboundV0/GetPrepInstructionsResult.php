@@ -191,10 +191,10 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['sku_prep_instructions_list'] = $data['sku_prep_instructions_list'] ?? null;
-        $this->container['invalid_sku_list'] = $data['invalid_sku_list'] ?? null;
-        $this->container['asin_prep_instructions_list'] = $data['asin_prep_instructions_list'] ?? null;
-        $this->container['invalid_asin_list'] = $data['invalid_asin_list'] ?? null;
+        $this->container['sku_prep_instructions_list'] = isset($data['sku_prep_instructions_list']) ? $data['sku_prep_instructions_list'] : null;
+        $this->container['invalid_sku_list'] = isset($data['invalid_sku_list']) ? $data['invalid_sku_list'] : null;
+        $this->container['asin_prep_instructions_list'] = isset($data['asin_prep_instructions_list']) ? $data['asin_prep_instructions_list'] : null;
+        $this->container['invalid_asin_list'] = isset($data['invalid_asin_list']) ? $data['invalid_asin_list'] : null;
     }
 
     /**
@@ -337,7 +337,7 @@ class GetPrepInstructionsResult implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

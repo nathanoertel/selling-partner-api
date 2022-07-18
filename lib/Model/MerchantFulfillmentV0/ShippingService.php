@@ -237,19 +237,19 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipping_service_name'] = $data['shipping_service_name'] ?? null;
-        $this->container['carrier_name'] = $data['carrier_name'] ?? null;
-        $this->container['shipping_service_id'] = $data['shipping_service_id'] ?? null;
-        $this->container['shipping_service_offer_id'] = $data['shipping_service_offer_id'] ?? null;
-        $this->container['ship_date'] = $data['ship_date'] ?? null;
-        $this->container['earliest_estimated_delivery_date'] = $data['earliest_estimated_delivery_date'] ?? null;
-        $this->container['latest_estimated_delivery_date'] = $data['latest_estimated_delivery_date'] ?? null;
-        $this->container['rate'] = $data['rate'] ?? null;
-        $this->container['shipping_service_options'] = $data['shipping_service_options'] ?? null;
-        $this->container['available_shipping_service_options'] = $data['available_shipping_service_options'] ?? null;
-        $this->container['available_label_formats'] = $data['available_label_formats'] ?? null;
-        $this->container['available_format_options_for_label'] = $data['available_format_options_for_label'] ?? null;
-        $this->container['requires_additional_seller_inputs'] = $data['requires_additional_seller_inputs'] ?? null;
+        $this->container['shipping_service_name'] = isset($data['shipping_service_name']) ? $data['shipping_service_name'] : null;
+        $this->container['carrier_name'] = isset($data['carrier_name']) ? $data['carrier_name'] : null;
+        $this->container['shipping_service_id'] = isset($data['shipping_service_id']) ? $data['shipping_service_id'] : null;
+        $this->container['shipping_service_offer_id'] = isset($data['shipping_service_offer_id']) ? $data['shipping_service_offer_id'] : null;
+        $this->container['ship_date'] = isset($data['ship_date']) ? $data['ship_date'] : null;
+        $this->container['earliest_estimated_delivery_date'] = isset($data['earliest_estimated_delivery_date']) ? $data['earliest_estimated_delivery_date'] : null;
+        $this->container['latest_estimated_delivery_date'] = isset($data['latest_estimated_delivery_date']) ? $data['latest_estimated_delivery_date'] : null;
+        $this->container['rate'] = isset($data['rate']) ? $data['rate'] : null;
+        $this->container['shipping_service_options'] = isset($data['shipping_service_options']) ? $data['shipping_service_options'] : null;
+        $this->container['available_shipping_service_options'] = isset($data['available_shipping_service_options']) ? $data['available_shipping_service_options'] : null;
+        $this->container['available_label_formats'] = isset($data['available_label_formats']) ? $data['available_label_formats'] : null;
+        $this->container['available_format_options_for_label'] = isset($data['available_format_options_for_label']) ? $data['available_format_options_for_label'] : null;
+        $this->container['requires_additional_seller_inputs'] = isset($data['requires_additional_seller_inputs']) ? $data['requires_additional_seller_inputs'] : null;
     }
 
     /**
@@ -623,7 +623,7 @@ class ShippingService implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

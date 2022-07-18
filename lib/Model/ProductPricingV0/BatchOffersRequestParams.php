@@ -186,9 +186,9 @@ class BatchOffersRequestParams implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['item_condition'] = $data['item_condition'] ?? null;
-        $this->container['customer_type'] = $data['customer_type'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['item_condition'] = isset($data['item_condition']) ? $data['item_condition'] : null;
+        $this->container['customer_type'] = isset($data['customer_type']) ? $data['customer_type'] : null;
     }
 
     /**
@@ -313,7 +313,7 @@ class BatchOffersRequestParams implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

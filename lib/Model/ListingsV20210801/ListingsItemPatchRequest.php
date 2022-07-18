@@ -182,8 +182,8 @@ class ListingsItemPatchRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['product_type'] = $data['product_type'] ?? null;
-        $this->container['patches'] = $data['patches'] ?? null;
+        $this->container['product_type'] = isset($data['product_type']) ? $data['product_type'] : null;
+        $this->container['patches'] = isset($data['patches']) ? $data['patches'] : null;
     }
 
     /**
@@ -295,7 +295,7 @@ class ListingsItemPatchRequest implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

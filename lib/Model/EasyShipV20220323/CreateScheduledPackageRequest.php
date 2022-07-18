@@ -187,9 +187,9 @@ class CreateScheduledPackageRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['package_details'] = $data['package_details'] ?? null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['package_details'] = isset($data['package_details']) ? $data['package_details'] : null;
     }
 
     /**
@@ -333,7 +333,7 @@ class CreateScheduledPackageRequest implements ModelInterface, ArrayAccess, \Jso
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

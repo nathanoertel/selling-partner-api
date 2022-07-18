@@ -226,10 +226,10 @@ class ItemImage implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['variant'] = $data['variant'] ?? null;
-        $this->container['link'] = $data['link'] ?? null;
-        $this->container['height'] = $data['height'] ?? null;
-        $this->container['width'] = $data['width'] ?? null;
+        $this->container['variant'] = isset($data['variant']) ? $data['variant'] : null;
+        $this->container['link'] = isset($data['link']) ? $data['link'] : null;
+        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
+        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
     }
 
     /**
@@ -403,7 +403,7 @@ class ItemImage implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

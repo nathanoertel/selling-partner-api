@@ -192,10 +192,10 @@ class TransportDetailOutput implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['partnered_small_parcel_data'] = $data['partnered_small_parcel_data'] ?? null;
-        $this->container['non_partnered_small_parcel_data'] = $data['non_partnered_small_parcel_data'] ?? null;
-        $this->container['partnered_ltl_data'] = $data['partnered_ltl_data'] ?? null;
-        $this->container['non_partnered_ltl_data'] = $data['non_partnered_ltl_data'] ?? null;
+        $this->container['partnered_small_parcel_data'] = isset($data['partnered_small_parcel_data']) ? $data['partnered_small_parcel_data'] : null;
+        $this->container['non_partnered_small_parcel_data'] = isset($data['non_partnered_small_parcel_data']) ? $data['non_partnered_small_parcel_data'] : null;
+        $this->container['partnered_ltl_data'] = isset($data['partnered_ltl_data']) ? $data['partnered_ltl_data'] : null;
+        $this->container['non_partnered_ltl_data'] = isset($data['non_partnered_ltl_data']) ? $data['non_partnered_ltl_data'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class TransportDetailOutput implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

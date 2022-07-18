@@ -189,9 +189,9 @@ class ListContentDocumentAsinRelationsResponse implements ModelInterface, ArrayA
      */
     public function __construct(array $data = null)
     {
-        $this->container['warnings'] = $data['warnings'] ?? null;
-        $this->container['next_page_token'] = $data['next_page_token'] ?? null;
-        $this->container['asin_metadata_set'] = $data['asin_metadata_set'] ?? null;
+        $this->container['warnings'] = isset($data['warnings']) ? $data['warnings'] : null;
+        $this->container['next_page_token'] = isset($data['next_page_token']) ? $data['next_page_token'] : null;
+        $this->container['asin_metadata_set'] = isset($data['asin_metadata_set']) ? $data['asin_metadata_set'] : null;
     }
 
     /**
@@ -349,7 +349,7 @@ class ListContentDocumentAsinRelationsResponse implements ModelInterface, ArrayA
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

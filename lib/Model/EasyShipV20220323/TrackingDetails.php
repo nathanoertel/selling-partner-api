@@ -177,7 +177,7 @@ class TrackingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['tracking_id'] = $data['tracking_id'] ?? null;
+        $this->container['tracking_id'] = isset($data['tracking_id']) ? $data['tracking_id'] : null;
     }
 
     /**
@@ -266,7 +266,7 @@ class TrackingDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

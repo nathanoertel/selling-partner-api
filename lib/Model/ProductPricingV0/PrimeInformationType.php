@@ -182,8 +182,8 @@ class PrimeInformationType implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['is_prime'] = $data['is_prime'] ?? null;
-        $this->container['is_national_prime'] = $data['is_national_prime'] ?? null;
+        $this->container['is_prime'] = isset($data['is_prime']) ? $data['is_prime'] : null;
+        $this->container['is_national_prime'] = isset($data['is_national_prime']) ? $data['is_national_prime'] : null;
     }
 
     /**
@@ -285,7 +285,7 @@ class PrimeInformationType implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -202,12 +202,12 @@ class FulfillmentPreviewShipment implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['earliest_ship_date'] = $data['earliest_ship_date'] ?? null;
-        $this->container['latest_ship_date'] = $data['latest_ship_date'] ?? null;
-        $this->container['earliest_arrival_date'] = $data['earliest_arrival_date'] ?? null;
-        $this->container['latest_arrival_date'] = $data['latest_arrival_date'] ?? null;
-        $this->container['shipping_notes'] = $data['shipping_notes'] ?? null;
-        $this->container['fulfillment_preview_items'] = $data['fulfillment_preview_items'] ?? null;
+        $this->container['earliest_ship_date'] = isset($data['earliest_ship_date']) ? $data['earliest_ship_date'] : null;
+        $this->container['latest_ship_date'] = isset($data['latest_ship_date']) ? $data['latest_ship_date'] : null;
+        $this->container['earliest_arrival_date'] = isset($data['earliest_arrival_date']) ? $data['earliest_arrival_date'] : null;
+        $this->container['latest_arrival_date'] = isset($data['latest_arrival_date']) ? $data['latest_arrival_date'] : null;
+        $this->container['shipping_notes'] = isset($data['shipping_notes']) ? $data['shipping_notes'] : null;
+        $this->container['fulfillment_preview_items'] = isset($data['fulfillment_preview_items']) ? $data['fulfillment_preview_items'] : null;
     }
 
     /**
@@ -399,7 +399,7 @@ class FulfillmentPreviewShipment implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -177,7 +177,7 @@ class StandardTextListBlock implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['text_list'] = $data['text_list'] ?? null;
+        $this->container['text_list'] = isset($data['text_list']) ? $data['text_list'] : null;
     }
 
     /**
@@ -269,7 +269,7 @@ class StandardTextListBlock implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

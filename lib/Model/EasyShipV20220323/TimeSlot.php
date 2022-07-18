@@ -192,10 +192,10 @@ class TimeSlot implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['slot_id'] = $data['slot_id'] ?? null;
-        $this->container['start_time'] = $data['start_time'] ?? null;
-        $this->container['end_time'] = $data['end_time'] ?? null;
-        $this->container['handover_method'] = $data['handover_method'] ?? null;
+        $this->container['slot_id'] = isset($data['slot_id']) ? $data['slot_id'] : null;
+        $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+        $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+        $this->container['handover_method'] = isset($data['handover_method']) ? $data['handover_method'] : null;
     }
 
     /**
@@ -356,7 +356,7 @@ class TimeSlot implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

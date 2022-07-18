@@ -185,8 +185,8 @@ class CreateRestrictedDataTokenResponse implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['restricted_data_token'] = $data['restricted_data_token'] ?? null;
-        $this->container['expires_in'] = $data['expires_in'] ?? null;
+        $this->container['restricted_data_token'] = isset($data['restricted_data_token']) ? $data['restricted_data_token'] : null;
+        $this->container['expires_in'] = isset($data['expires_in']) ? $data['expires_in'] : null;
     }
 
     /**
@@ -305,7 +305,7 @@ class CreateRestrictedDataTokenResponse implements ModelInterface, ArrayAccess, 
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

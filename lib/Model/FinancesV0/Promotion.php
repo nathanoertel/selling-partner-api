@@ -187,9 +187,9 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['promotion_type'] = $data['promotion_type'] ?? null;
-        $this->container['promotion_id'] = $data['promotion_id'] ?? null;
-        $this->container['promotion_amount'] = $data['promotion_amount'] ?? null;
+        $this->container['promotion_type'] = isset($data['promotion_type']) ? $data['promotion_type'] : null;
+        $this->container['promotion_id'] = isset($data['promotion_id']) ? $data['promotion_id'] : null;
+        $this->container['promotion_amount'] = isset($data['promotion_amount']) ? $data['promotion_amount'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class Promotion implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

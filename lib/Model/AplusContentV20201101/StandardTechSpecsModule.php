@@ -187,9 +187,9 @@ class StandardTechSpecsModule implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['headline'] = $data['headline'] ?? null;
-        $this->container['specification_list'] = $data['specification_list'] ?? null;
-        $this->container['table_count'] = $data['table_count'] ?? null;
+        $this->container['headline'] = isset($data['headline']) ? $data['headline'] : null;
+        $this->container['specification_list'] = isset($data['specification_list']) ? $data['specification_list'] : null;
+        $this->container['table_count'] = isset($data['table_count']) ? $data['table_count'] : null;
     }
 
     /**
@@ -343,7 +343,7 @@ class StandardTechSpecsModule implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

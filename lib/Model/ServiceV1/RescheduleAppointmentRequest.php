@@ -182,8 +182,8 @@ class RescheduleAppointmentRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['appointment_time'] = $data['appointment_time'] ?? null;
-        $this->container['reschedule_reason_code'] = $data['reschedule_reason_code'] ?? null;
+        $this->container['appointment_time'] = isset($data['appointment_time']) ? $data['appointment_time'] : null;
+        $this->container['reschedule_reason_code'] = isset($data['reschedule_reason_code']) ? $data['reschedule_reason_code'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class RescheduleAppointmentRequest implements ModelInterface, ArrayAccess, \Json
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

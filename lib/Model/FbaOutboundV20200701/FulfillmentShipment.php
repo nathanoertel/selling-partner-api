@@ -234,14 +234,14 @@ class FulfillmentShipment implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['amazon_shipment_id'] = $data['amazon_shipment_id'] ?? null;
-        $this->container['fulfillment_center_id'] = $data['fulfillment_center_id'] ?? null;
-        $this->container['fulfillment_shipment_status'] = $data['fulfillment_shipment_status'] ?? null;
-        $this->container['shipping_date'] = $data['shipping_date'] ?? null;
-        $this->container['estimated_arrival_date'] = $data['estimated_arrival_date'] ?? null;
-        $this->container['shipping_notes'] = $data['shipping_notes'] ?? null;
-        $this->container['fulfillment_shipment_item'] = $data['fulfillment_shipment_item'] ?? null;
-        $this->container['fulfillment_shipment_package'] = $data['fulfillment_shipment_package'] ?? null;
+        $this->container['amazon_shipment_id'] = isset($data['amazon_shipment_id']) ? $data['amazon_shipment_id'] : null;
+        $this->container['fulfillment_center_id'] = isset($data['fulfillment_center_id']) ? $data['fulfillment_center_id'] : null;
+        $this->container['fulfillment_shipment_status'] = isset($data['fulfillment_shipment_status']) ? $data['fulfillment_shipment_status'] : null;
+        $this->container['shipping_date'] = isset($data['shipping_date']) ? $data['shipping_date'] : null;
+        $this->container['estimated_arrival_date'] = isset($data['estimated_arrival_date']) ? $data['estimated_arrival_date'] : null;
+        $this->container['shipping_notes'] = isset($data['shipping_notes']) ? $data['shipping_notes'] : null;
+        $this->container['fulfillment_shipment_item'] = isset($data['fulfillment_shipment_item']) ? $data['fulfillment_shipment_item'] : null;
+        $this->container['fulfillment_shipment_package'] = isset($data['fulfillment_shipment_package']) ? $data['fulfillment_shipment_package'] : null;
     }
 
     /**
@@ -507,7 +507,7 @@ class FulfillmentShipment implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

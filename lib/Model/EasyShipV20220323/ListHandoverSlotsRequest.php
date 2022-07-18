@@ -192,10 +192,10 @@ class ListHandoverSlotsRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['package_dimensions'] = $data['package_dimensions'] ?? null;
-        $this->container['package_weight'] = $data['package_weight'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['package_dimensions'] = isset($data['package_dimensions']) ? $data['package_dimensions'] : null;
+        $this->container['package_weight'] = isset($data['package_weight']) ? $data['package_weight'] : null;
     }
 
     /**
@@ -365,7 +365,7 @@ class ListHandoverSlotsRequest implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

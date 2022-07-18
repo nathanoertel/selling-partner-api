@@ -202,12 +202,12 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['position'] = $data['position'] ?? null;
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['highlight'] = $data['highlight'] ?? null;
-        $this->container['metrics'] = $data['metrics'] ?? null;
+        $this->container['position'] = isset($data['position']) ? $data['position'] : null;
+        $this->container['image'] = isset($data['image']) ? $data['image'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['highlight'] = isset($data['highlight']) ? $data['highlight'] : null;
+        $this->container['metrics'] = isset($data['metrics']) ? $data['metrics'] : null;
     }
 
     /**
@@ -438,7 +438,7 @@ class StandardComparisonProductBlock implements ModelInterface, ArrayAccess, \Js
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

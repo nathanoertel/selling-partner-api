@@ -187,9 +187,9 @@ class ReasonCodeDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['return_reason_code'] = $data['return_reason_code'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['translated_description'] = $data['translated_description'] ?? null;
+        $this->container['return_reason_code'] = isset($data['return_reason_code']) ? $data['return_reason_code'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['translated_description'] = isset($data['translated_description']) ? $data['translated_description'] : null;
     }
 
     /**
@@ -315,7 +315,7 @@ class ReasonCodeDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

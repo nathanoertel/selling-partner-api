@@ -181,8 +181,8 @@ class GetSolicitationActionResponseLinks implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = $data['self'] ?? null;
-        $this->container['schema'] = $data['schema'] ?? null;
+        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['schema'] = isset($data['schema']) ? $data['schema'] : null;
     }
 
     /**
@@ -285,7 +285,7 @@ class GetSolicitationActionResponseLinks implements ModelInterface, ArrayAccess,
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

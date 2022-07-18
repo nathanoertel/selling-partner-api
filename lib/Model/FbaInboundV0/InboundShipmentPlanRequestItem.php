@@ -202,12 +202,12 @@ class InboundShipmentPlanRequestItem implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['condition'] = $data['condition'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['quantity_in_case'] = $data['quantity_in_case'] ?? null;
-        $this->container['prep_details_list'] = $data['prep_details_list'] ?? null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['condition'] = isset($data['condition']) ? $data['condition'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['quantity_in_case'] = isset($data['quantity_in_case']) ? $data['quantity_in_case'] : null;
+        $this->container['prep_details_list'] = isset($data['prep_details_list']) ? $data['prep_details_list'] : null;
     }
 
     /**
@@ -408,7 +408,7 @@ class InboundShipmentPlanRequestItem implements ModelInterface, ArrayAccess, \Js
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -176,7 +176,7 @@ class ListContentDocumentAsinRelationsResponseAllOf implements ModelInterface, A
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin_metadata_set'] = $data['asin_metadata_set'] ?? null;
+        $this->container['asin_metadata_set'] = isset($data['asin_metadata_set']) ? $data['asin_metadata_set'] : null;
     }
 
     /**
@@ -255,7 +255,7 @@ class ListContentDocumentAsinRelationsResponseAllOf implements ModelInterface, A
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

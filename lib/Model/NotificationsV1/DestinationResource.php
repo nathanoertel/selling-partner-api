@@ -182,8 +182,8 @@ class DestinationResource implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['sqs'] = $data['sqs'] ?? null;
-        $this->container['event_bridge'] = $data['event_bridge'] ?? null;
+        $this->container['sqs'] = isset($data['sqs']) ? $data['sqs'] : null;
+        $this->container['event_bridge'] = isset($data['event_bridge']) ? $data['event_bridge'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class DestinationResource implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

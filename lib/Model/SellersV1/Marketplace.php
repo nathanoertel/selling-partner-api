@@ -202,12 +202,12 @@ class Marketplace implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['country_code'] = $data['country_code'] ?? null;
-        $this->container['default_currency_code'] = $data['default_currency_code'] ?? null;
-        $this->container['default_language_code'] = $data['default_language_code'] ?? null;
-        $this->container['domain_name'] = $data['domain_name'] ?? null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['country_code'] = isset($data['country_code']) ? $data['country_code'] : null;
+        $this->container['default_currency_code'] = isset($data['default_currency_code']) ? $data['default_currency_code'] : null;
+        $this->container['default_language_code'] = isset($data['default_language_code']) ? $data['default_language_code'] : null;
+        $this->container['domain_name'] = isset($data['domain_name']) ? $data['domain_name'] : null;
     }
 
     /**
@@ -423,7 +423,7 @@ class Marketplace implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

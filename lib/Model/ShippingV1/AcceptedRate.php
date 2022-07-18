@@ -192,10 +192,10 @@ class AcceptedRate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['total_charge'] = $data['total_charge'] ?? null;
-        $this->container['billed_weight'] = $data['billed_weight'] ?? null;
-        $this->container['service_type'] = $data['service_type'] ?? null;
-        $this->container['promise'] = $data['promise'] ?? null;
+        $this->container['total_charge'] = isset($data['total_charge']) ? $data['total_charge'] : null;
+        $this->container['billed_weight'] = isset($data['billed_weight']) ? $data['billed_weight'] : null;
+        $this->container['service_type'] = isset($data['service_type']) ? $data['service_type'] : null;
+        $this->container['promise'] = isset($data['promise']) ? $data['promise'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class AcceptedRate implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

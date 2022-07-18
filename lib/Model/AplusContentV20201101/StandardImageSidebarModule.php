@@ -202,12 +202,12 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['headline'] = $data['headline'] ?? null;
-        $this->container['image_caption_block'] = $data['image_caption_block'] ?? null;
-        $this->container['description_text_block'] = $data['description_text_block'] ?? null;
-        $this->container['description_list_block'] = $data['description_list_block'] ?? null;
-        $this->container['sidebar_image_text_block'] = $data['sidebar_image_text_block'] ?? null;
-        $this->container['sidebar_list_block'] = $data['sidebar_list_block'] ?? null;
+        $this->container['headline'] = isset($data['headline']) ? $data['headline'] : null;
+        $this->container['image_caption_block'] = isset($data['image_caption_block']) ? $data['image_caption_block'] : null;
+        $this->container['description_text_block'] = isset($data['description_text_block']) ? $data['description_text_block'] : null;
+        $this->container['description_list_block'] = isset($data['description_list_block']) ? $data['description_list_block'] : null;
+        $this->container['sidebar_image_text_block'] = isset($data['sidebar_image_text_block']) ? $data['sidebar_image_text_block'] : null;
+        $this->container['sidebar_list_block'] = isset($data['sidebar_list_block']) ? $data['sidebar_list_block'] : null;
     }
 
     /**
@@ -396,7 +396,7 @@ class StandardImageSidebarModule implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

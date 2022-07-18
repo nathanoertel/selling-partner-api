@@ -197,11 +197,11 @@ class ItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['buyer_customized_info'] = $data['buyer_customized_info'] ?? null;
-        $this->container['gift_wrap_price'] = $data['gift_wrap_price'] ?? null;
-        $this->container['gift_wrap_tax'] = $data['gift_wrap_tax'] ?? null;
-        $this->container['gift_message_text'] = $data['gift_message_text'] ?? null;
-        $this->container['gift_wrap_level'] = $data['gift_wrap_level'] ?? null;
+        $this->container['buyer_customized_info'] = isset($data['buyer_customized_info']) ? $data['buyer_customized_info'] : null;
+        $this->container['gift_wrap_price'] = isset($data['gift_wrap_price']) ? $data['gift_wrap_price'] : null;
+        $this->container['gift_wrap_tax'] = isset($data['gift_wrap_tax']) ? $data['gift_wrap_tax'] : null;
+        $this->container['gift_message_text'] = isset($data['gift_message_text']) ? $data['gift_message_text'] : null;
+        $this->container['gift_wrap_level'] = isset($data['gift_wrap_level']) ? $data['gift_wrap_level'] : null;
     }
 
     /**
@@ -367,7 +367,7 @@ class ItemBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

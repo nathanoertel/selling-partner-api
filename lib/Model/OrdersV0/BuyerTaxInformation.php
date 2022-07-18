@@ -192,10 +192,10 @@ class BuyerTaxInformation implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['buyer_legal_company_name'] = $data['buyer_legal_company_name'] ?? null;
-        $this->container['buyer_business_address'] = $data['buyer_business_address'] ?? null;
-        $this->container['buyer_tax_registration_id'] = $data['buyer_tax_registration_id'] ?? null;
-        $this->container['buyer_tax_office'] = $data['buyer_tax_office'] ?? null;
+        $this->container['buyer_legal_company_name'] = isset($data['buyer_legal_company_name']) ? $data['buyer_legal_company_name'] : null;
+        $this->container['buyer_business_address'] = isset($data['buyer_business_address']) ? $data['buyer_business_address'] : null;
+        $this->container['buyer_tax_registration_id'] = isset($data['buyer_tax_registration_id']) ? $data['buyer_tax_registration_id'] : null;
+        $this->container['buyer_tax_office'] = isset($data['buyer_tax_office']) ? $data['buyer_tax_office'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class BuyerTaxInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

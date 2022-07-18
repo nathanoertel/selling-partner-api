@@ -187,9 +187,9 @@ class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['item'] = $data['item'] ?? null;
-        $this->container['package'] = $data['package'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['item'] = isset($data['item']) ? $data['item'] : null;
+        $this->container['package'] = isset($data['package']) ? $data['package'] : null;
     }
 
     /**
@@ -312,7 +312,7 @@ class ItemDimensionsByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

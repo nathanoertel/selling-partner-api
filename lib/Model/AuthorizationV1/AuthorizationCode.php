@@ -177,7 +177,7 @@ class AuthorizationCode implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['authorization_code'] = $data['authorization_code'] ?? null;
+        $this->container['authorization_code'] = isset($data['authorization_code']) ? $data['authorization_code'] : null;
     }
 
     /**
@@ -251,7 +251,7 @@ class AuthorizationCode implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

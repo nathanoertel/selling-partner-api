@@ -192,10 +192,10 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['recovery_amount'] = $data['recovery_amount'] ?? null;
-        $this->container['original_amount'] = $data['original_amount'] ?? null;
-        $this->container['group_begin_date'] = $data['group_begin_date'] ?? null;
-        $this->container['group_end_date'] = $data['group_end_date'] ?? null;
+        $this->container['recovery_amount'] = isset($data['recovery_amount']) ? $data['recovery_amount'] : null;
+        $this->container['original_amount'] = isset($data['original_amount']) ? $data['original_amount'] : null;
+        $this->container['group_begin_date'] = isset($data['group_begin_date']) ? $data['group_begin_date'] : null;
+        $this->container['group_end_date'] = isset($data['group_end_date']) ? $data['group_end_date'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class DebtRecoveryItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

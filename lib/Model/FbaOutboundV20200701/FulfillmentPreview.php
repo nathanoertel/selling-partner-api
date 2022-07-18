@@ -227,17 +227,17 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipping_speed_category'] = $data['shipping_speed_category'] ?? null;
-        $this->container['scheduled_delivery_info'] = $data['scheduled_delivery_info'] ?? null;
-        $this->container['is_fulfillable'] = $data['is_fulfillable'] ?? null;
-        $this->container['is_cod_capable'] = $data['is_cod_capable'] ?? null;
-        $this->container['estimated_shipping_weight'] = $data['estimated_shipping_weight'] ?? null;
-        $this->container['estimated_fees'] = $data['estimated_fees'] ?? null;
-        $this->container['fulfillment_preview_shipments'] = $data['fulfillment_preview_shipments'] ?? null;
-        $this->container['unfulfillable_preview_items'] = $data['unfulfillable_preview_items'] ?? null;
-        $this->container['order_unfulfillable_reasons'] = $data['order_unfulfillable_reasons'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['feature_constraints'] = $data['feature_constraints'] ?? null;
+        $this->container['shipping_speed_category'] = isset($data['shipping_speed_category']) ? $data['shipping_speed_category'] : null;
+        $this->container['scheduled_delivery_info'] = isset($data['scheduled_delivery_info']) ? $data['scheduled_delivery_info'] : null;
+        $this->container['is_fulfillable'] = isset($data['is_fulfillable']) ? $data['is_fulfillable'] : null;
+        $this->container['is_cod_capable'] = isset($data['is_cod_capable']) ? $data['is_cod_capable'] : null;
+        $this->container['estimated_shipping_weight'] = isset($data['estimated_shipping_weight']) ? $data['estimated_shipping_weight'] : null;
+        $this->container['estimated_fees'] = isset($data['estimated_fees']) ? $data['estimated_fees'] : null;
+        $this->container['fulfillment_preview_shipments'] = isset($data['fulfillment_preview_shipments']) ? $data['fulfillment_preview_shipments'] : null;
+        $this->container['unfulfillable_preview_items'] = isset($data['unfulfillable_preview_items']) ? $data['unfulfillable_preview_items'] : null;
+        $this->container['order_unfulfillable_reasons'] = isset($data['order_unfulfillable_reasons']) ? $data['order_unfulfillable_reasons'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['feature_constraints'] = isset($data['feature_constraints']) ? $data['feature_constraints'] : null;
     }
 
     /**
@@ -553,7 +553,7 @@ class FulfillmentPreview implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

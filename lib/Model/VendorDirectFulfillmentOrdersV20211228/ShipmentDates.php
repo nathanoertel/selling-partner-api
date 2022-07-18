@@ -182,8 +182,8 @@ class ShipmentDates implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['required_ship_date'] = $data['required_ship_date'] ?? null;
-        $this->container['promised_delivery_date'] = $data['promised_delivery_date'] ?? null;
+        $this->container['required_ship_date'] = isset($data['required_ship_date']) ? $data['required_ship_date'] : null;
+        $this->container['promised_delivery_date'] = isset($data['promised_delivery_date']) ? $data['promised_delivery_date'] : null;
     }
 
     /**
@@ -283,7 +283,7 @@ class ShipmentDates implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

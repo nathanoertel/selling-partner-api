@@ -182,8 +182,8 @@ class TaxWithheldComponent implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['tax_collection_model'] = $data['tax_collection_model'] ?? null;
-        $this->container['taxes_withheld'] = $data['taxes_withheld'] ?? null;
+        $this->container['tax_collection_model'] = isset($data['tax_collection_model']) ? $data['tax_collection_model'] : null;
+        $this->container['taxes_withheld'] = isset($data['taxes_withheld']) ? $data['taxes_withheld'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class TaxWithheldComponent implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

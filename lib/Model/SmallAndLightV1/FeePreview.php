@@ -197,11 +197,11 @@ class FeePreview implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['price'] = $data['price'] ?? null;
-        $this->container['fee_breakdown'] = $data['fee_breakdown'] ?? null;
-        $this->container['total_fees'] = $data['total_fees'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['fee_breakdown'] = isset($data['fee_breakdown']) ? $data['fee_breakdown'] : null;
+        $this->container['total_fees'] = isset($data['total_fees']) ? $data['total_fees'] : null;
+        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
     }
 
     /**
@@ -367,7 +367,7 @@ class FeePreview implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

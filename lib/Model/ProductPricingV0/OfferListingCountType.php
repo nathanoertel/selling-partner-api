@@ -182,8 +182,8 @@ class OfferListingCountType implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['count'] = $data['count'] ?? null;
-        $this->container['condition'] = $data['condition'] ?? null;
+        $this->container['count'] = isset($data['count']) ? $data['count'] : null;
+        $this->container['condition'] = isset($data['condition']) ? $data['condition'] : null;
     }
 
     /**
@@ -285,7 +285,7 @@ class OfferListingCountType implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

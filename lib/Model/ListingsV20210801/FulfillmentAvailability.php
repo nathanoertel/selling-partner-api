@@ -182,8 +182,8 @@ class FulfillmentAvailability implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['fulfillment_channel_code'] = $data['fulfillment_channel_code'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
+        $this->container['fulfillment_channel_code'] = isset($data['fulfillment_channel_code']) ? $data['fulfillment_channel_code'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
     }
 
     /**
@@ -292,7 +292,7 @@ class FulfillmentAvailability implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

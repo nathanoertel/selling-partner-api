@@ -229,13 +229,13 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['order_id'] = $data['order_id'] ?? null;
-        $this->container['item_status'] = $data['item_status'] ?? null;
-        $this->container['brand_name'] = $data['brand_name'] ?? null;
-        $this->container['item_delivery'] = $data['item_delivery'] ?? null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        $this->container['item_status'] = isset($data['item_status']) ? $data['item_status'] : null;
+        $this->container['brand_name'] = isset($data['brand_name']) ? $data['brand_name'] : null;
+        $this->container['item_delivery'] = isset($data['item_delivery']) ? $data['item_delivery'] : null;
     }
 
     /**
@@ -481,7 +481,7 @@ class AssociatedItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

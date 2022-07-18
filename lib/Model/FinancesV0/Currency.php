@@ -182,8 +182,8 @@ class Currency implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['currency_code'] = $data['currency_code'] ?? null;
-        $this->container['currency_amount'] = $data['currency_amount'] ?? null;
+        $this->container['currency_code'] = isset($data['currency_code']) ? $data['currency_code'] : null;
+        $this->container['currency_amount'] = isset($data['currency_amount']) ? $data['currency_amount'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class Currency implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

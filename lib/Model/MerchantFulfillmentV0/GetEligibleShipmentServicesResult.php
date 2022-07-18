@@ -192,10 +192,10 @@ class GetEligibleShipmentServicesResult implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipping_service_list'] = $data['shipping_service_list'] ?? null;
-        $this->container['rejected_shipping_service_list'] = $data['rejected_shipping_service_list'] ?? null;
-        $this->container['temporarily_unavailable_carrier_list'] = $data['temporarily_unavailable_carrier_list'] ?? null;
-        $this->container['terms_and_conditions_not_accepted_carrier_list'] = $data['terms_and_conditions_not_accepted_carrier_list'] ?? null;
+        $this->container['shipping_service_list'] = isset($data['shipping_service_list']) ? $data['shipping_service_list'] : null;
+        $this->container['rejected_shipping_service_list'] = isset($data['rejected_shipping_service_list']) ? $data['rejected_shipping_service_list'] : null;
+        $this->container['temporarily_unavailable_carrier_list'] = isset($data['temporarily_unavailable_carrier_list']) ? $data['temporarily_unavailable_carrier_list'] : null;
+        $this->container['terms_and_conditions_not_accepted_carrier_list'] = isset($data['terms_and_conditions_not_accepted_carrier_list']) ? $data['terms_and_conditions_not_accepted_carrier_list'] : null;
     }
 
     /**
@@ -341,7 +341,7 @@ class GetEligibleShipmentServicesResult implements ModelInterface, ArrayAccess, 
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

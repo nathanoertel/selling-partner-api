@@ -195,10 +195,10 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['number_of_results'] = $data['number_of_results'] ?? null;
-        $this->container['pagination'] = $data['pagination'] ?? null;
-        $this->container['refinements'] = $data['refinements'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['number_of_results'] = isset($data['number_of_results']) ? $data['number_of_results'] : null;
+        $this->container['pagination'] = isset($data['pagination']) ? $data['pagination'] : null;
+        $this->container['refinements'] = isset($data['refinements']) ? $data['refinements'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -375,7 +375,7 @@ class ItemSearchResults implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

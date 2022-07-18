@@ -182,8 +182,8 @@ class StandardHeaderImageTextModule implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['headline'] = $data['headline'] ?? null;
-        $this->container['block'] = $data['block'] ?? null;
+        $this->container['headline'] = isset($data['headline']) ? $data['headline'] : null;
+        $this->container['block'] = isset($data['block']) ? $data['block'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class StandardHeaderImageTextModule implements ModelInterface, ArrayAccess, \Jso
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -219,10 +219,10 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['tax_rate'] = $data['tax_rate'] ?? null;
-        $this->container['tax_amount'] = $data['tax_amount'] ?? null;
-        $this->container['taxable_amount'] = $data['taxable_amount'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
+        $this->container['tax_rate'] = isset($data['tax_rate']) ? $data['tax_rate'] : null;
+        $this->container['tax_amount'] = isset($data['tax_amount']) ? $data['tax_amount'] : null;
+        $this->container['taxable_amount'] = isset($data['taxable_amount']) ? $data['taxable_amount'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
 
     /**
@@ -387,7 +387,7 @@ class TaxDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

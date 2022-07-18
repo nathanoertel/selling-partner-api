@@ -222,16 +222,16 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['total_offer_count'] = $data['total_offer_count'] ?? null;
-        $this->container['number_of_offers'] = $data['number_of_offers'] ?? null;
-        $this->container['lowest_prices'] = $data['lowest_prices'] ?? null;
-        $this->container['buy_box_prices'] = $data['buy_box_prices'] ?? null;
-        $this->container['list_price'] = $data['list_price'] ?? null;
-        $this->container['competitive_price_threshold'] = $data['competitive_price_threshold'] ?? null;
-        $this->container['suggested_lower_price_plus_shipping'] = $data['suggested_lower_price_plus_shipping'] ?? null;
-        $this->container['sales_rankings'] = $data['sales_rankings'] ?? null;
-        $this->container['buy_box_eligible_offers'] = $data['buy_box_eligible_offers'] ?? null;
-        $this->container['offers_available_time'] = $data['offers_available_time'] ?? null;
+        $this->container['total_offer_count'] = isset($data['total_offer_count']) ? $data['total_offer_count'] : null;
+        $this->container['number_of_offers'] = isset($data['number_of_offers']) ? $data['number_of_offers'] : null;
+        $this->container['lowest_prices'] = isset($data['lowest_prices']) ? $data['lowest_prices'] : null;
+        $this->container['buy_box_prices'] = isset($data['buy_box_prices']) ? $data['buy_box_prices'] : null;
+        $this->container['list_price'] = isset($data['list_price']) ? $data['list_price'] : null;
+        $this->container['competitive_price_threshold'] = isset($data['competitive_price_threshold']) ? $data['competitive_price_threshold'] : null;
+        $this->container['suggested_lower_price_plus_shipping'] = isset($data['suggested_lower_price_plus_shipping']) ? $data['suggested_lower_price_plus_shipping'] : null;
+        $this->container['sales_rankings'] = isset($data['sales_rankings']) ? $data['sales_rankings'] : null;
+        $this->container['buy_box_eligible_offers'] = isset($data['buy_box_eligible_offers']) ? $data['buy_box_eligible_offers'] : null;
+        $this->container['offers_available_time'] = isset($data['offers_available_time']) ? $data['offers_available_time'] : null;
     }
 
     /**
@@ -514,7 +514,7 @@ class Summary implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

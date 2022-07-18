@@ -236,11 +236,11 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['acknowledgement_code'] = $data['acknowledgement_code'] ?? null;
-        $this->container['acknowledged_quantity'] = $data['acknowledged_quantity'] ?? null;
-        $this->container['scheduled_ship_date'] = $data['scheduled_ship_date'] ?? null;
-        $this->container['scheduled_delivery_date'] = $data['scheduled_delivery_date'] ?? null;
-        $this->container['rejection_reason'] = $data['rejection_reason'] ?? null;
+        $this->container['acknowledgement_code'] = isset($data['acknowledgement_code']) ? $data['acknowledgement_code'] : null;
+        $this->container['acknowledged_quantity'] = isset($data['acknowledged_quantity']) ? $data['acknowledged_quantity'] : null;
+        $this->container['scheduled_ship_date'] = isset($data['scheduled_ship_date']) ? $data['scheduled_ship_date'] : null;
+        $this->container['scheduled_delivery_date'] = isset($data['scheduled_delivery_date']) ? $data['scheduled_delivery_date'] : null;
+        $this->container['rejection_reason'] = isset($data['rejection_reason']) ? $data['rejection_reason'] : null;
     }
 
     /**
@@ -450,7 +450,7 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

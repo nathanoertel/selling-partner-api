@@ -177,7 +177,7 @@ class CreateAmazonMotorsRequest implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['attachments'] = $data['attachments'] ?? null;
+        $this->container['attachments'] = isset($data['attachments']) ? $data['attachments'] : null;
     }
 
     /**
@@ -251,7 +251,7 @@ class CreateAmazonMotorsRequest implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

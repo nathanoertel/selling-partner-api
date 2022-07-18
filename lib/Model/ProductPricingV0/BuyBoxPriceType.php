@@ -216,15 +216,15 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['condition'] = $data['condition'] ?? null;
-        $this->container['offer_type'] = $data['offer_type'] ?? null;
-        $this->container['quantity_tier'] = $data['quantity_tier'] ?? null;
-        $this->container['quantity_discount_type'] = $data['quantity_discount_type'] ?? null;
-        $this->container['landed_price'] = $data['landed_price'] ?? null;
-        $this->container['listing_price'] = $data['listing_price'] ?? null;
-        $this->container['shipping'] = $data['shipping'] ?? null;
-        $this->container['points'] = $data['points'] ?? null;
-        $this->container['seller_id'] = $data['seller_id'] ?? null;
+        $this->container['condition'] = isset($data['condition']) ? $data['condition'] : null;
+        $this->container['offer_type'] = isset($data['offer_type']) ? $data['offer_type'] : null;
+        $this->container['quantity_tier'] = isset($data['quantity_tier']) ? $data['quantity_tier'] : null;
+        $this->container['quantity_discount_type'] = isset($data['quantity_discount_type']) ? $data['quantity_discount_type'] : null;
+        $this->container['landed_price'] = isset($data['landed_price']) ? $data['landed_price'] : null;
+        $this->container['listing_price'] = isset($data['listing_price']) ? $data['listing_price'] : null;
+        $this->container['shipping'] = isset($data['shipping']) ? $data['shipping'] : null;
+        $this->container['points'] = isset($data['points']) ? $data['points'] : null;
+        $this->container['seller_id'] = isset($data['seller_id']) ? $data['seller_id'] : null;
     }
 
     /**
@@ -493,7 +493,7 @@ class BuyBoxPriceType implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

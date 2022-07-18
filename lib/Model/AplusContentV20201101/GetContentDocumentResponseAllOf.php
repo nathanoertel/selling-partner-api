@@ -176,7 +176,7 @@ class GetContentDocumentResponseAllOf implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['content_record'] = $data['content_record'] ?? null;
+        $this->container['content_record'] = isset($data['content_record']) ? $data['content_record'] : null;
     }
 
     /**
@@ -253,7 +253,7 @@ class GetContentDocumentResponseAllOf implements ModelInterface, ArrayAccess, \J
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

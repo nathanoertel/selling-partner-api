@@ -182,8 +182,8 @@ class ListFinancialEventGroupsPayload implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['next_token'] = $data['next_token'] ?? null;
-        $this->container['financial_event_group_list'] = $data['financial_event_group_list'] ?? null;
+        $this->container['next_token'] = isset($data['next_token']) ? $data['next_token'] : null;
+        $this->container['financial_event_group_list'] = isset($data['financial_event_group_list']) ? $data['financial_event_group_list'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class ListFinancialEventGroupsPayload implements ModelInterface, ArrayAccess, \J
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

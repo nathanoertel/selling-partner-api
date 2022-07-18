@@ -176,7 +176,7 @@ class OrderDetailsTaxTotal implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['tax_line_item'] = $data['tax_line_item'] ?? null;
+        $this->container['tax_line_item'] = isset($data['tax_line_item']) ? $data['tax_line_item'] : null;
     }
 
     /**
@@ -250,7 +250,7 @@ class OrderDetailsTaxTotal implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -247,21 +247,21 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_id'] = $data['shipment_id'] ?? null;
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['seller_order_id'] = $data['seller_order_id'] ?? null;
-        $this->container['item_list'] = $data['item_list'] ?? null;
-        $this->container['ship_from_address'] = $data['ship_from_address'] ?? null;
-        $this->container['ship_to_address'] = $data['ship_to_address'] ?? null;
-        $this->container['package_dimensions'] = $data['package_dimensions'] ?? null;
-        $this->container['weight'] = $data['weight'] ?? null;
-        $this->container['insurance'] = $data['insurance'] ?? null;
-        $this->container['shipping_service'] = $data['shipping_service'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['tracking_id'] = $data['tracking_id'] ?? null;
-        $this->container['created_date'] = $data['created_date'] ?? null;
-        $this->container['last_updated_date'] = $data['last_updated_date'] ?? null;
+        $this->container['shipment_id'] = isset($data['shipment_id']) ? $data['shipment_id'] : null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['seller_order_id'] = isset($data['seller_order_id']) ? $data['seller_order_id'] : null;
+        $this->container['item_list'] = isset($data['item_list']) ? $data['item_list'] : null;
+        $this->container['ship_from_address'] = isset($data['ship_from_address']) ? $data['ship_from_address'] : null;
+        $this->container['ship_to_address'] = isset($data['ship_to_address']) ? $data['ship_to_address'] : null;
+        $this->container['package_dimensions'] = isset($data['package_dimensions']) ? $data['package_dimensions'] : null;
+        $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
+        $this->container['insurance'] = isset($data['insurance']) ? $data['insurance'] : null;
+        $this->container['shipping_service'] = isset($data['shipping_service']) ? $data['shipping_service'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['tracking_id'] = isset($data['tracking_id']) ? $data['tracking_id'] : null;
+        $this->container['created_date'] = isset($data['created_date']) ? $data['created_date'] : null;
+        $this->container['last_updated_date'] = isset($data['last_updated_date']) ? $data['last_updated_date'] : null;
     }
 
     /**
@@ -701,7 +701,7 @@ class Shipment implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -182,8 +182,8 @@ class ItemVendorDetailsCategory implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['display_name'] = $data['display_name'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
+        $this->container['display_name'] = isset($data['display_name']) ? $data['display_name'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class ItemVendorDetailsCategory implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

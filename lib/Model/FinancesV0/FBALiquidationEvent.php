@@ -192,10 +192,10 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['original_removal_order_id'] = $data['original_removal_order_id'] ?? null;
-        $this->container['liquidation_proceeds_amount'] = $data['liquidation_proceeds_amount'] ?? null;
-        $this->container['liquidation_fee_amount'] = $data['liquidation_fee_amount'] ?? null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['original_removal_order_id'] = isset($data['original_removal_order_id']) ? $data['original_removal_order_id'] : null;
+        $this->container['liquidation_proceeds_amount'] = isset($data['liquidation_proceeds_amount']) ? $data['liquidation_proceeds_amount'] : null;
+        $this->container['liquidation_fee_amount'] = isset($data['liquidation_fee_amount']) ? $data['liquidation_fee_amount'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class FBALiquidationEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

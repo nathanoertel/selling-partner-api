@@ -182,8 +182,8 @@ class ImageCropSpecification implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['size'] = $data['size'] ?? null;
-        $this->container['offset'] = $data['offset'] ?? null;
+        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['offset'] = isset($data['offset']) ? $data['offset'] : null;
     }
 
     /**
@@ -283,7 +283,7 @@ class ImageCropSpecification implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

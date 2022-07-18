@@ -177,7 +177,7 @@ class Party implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['account_id'] = $data['account_id'] ?? null;
+        $this->container['account_id'] = isset($data['account_id']) ? $data['account_id'] : null;
     }
 
     /**
@@ -259,7 +259,7 @@ class Party implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

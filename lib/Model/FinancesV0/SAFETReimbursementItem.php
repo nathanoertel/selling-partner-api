@@ -187,9 +187,9 @@ class SAFETReimbursementItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['item_charge_list'] = $data['item_charge_list'] ?? null;
-        $this->container['product_description'] = $data['product_description'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
+        $this->container['item_charge_list'] = isset($data['item_charge_list']) ? $data['item_charge_list'] : null;
+        $this->container['product_description'] = isset($data['product_description']) ? $data['product_description'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class SAFETReimbursementItem implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

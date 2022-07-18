@@ -176,7 +176,7 @@ class SearchContentPublishRecordsResponseAllOf implements ModelInterface, ArrayA
      */
     public function __construct(array $data = null)
     {
-        $this->container['publish_record_list'] = $data['publish_record_list'] ?? null;
+        $this->container['publish_record_list'] = isset($data['publish_record_list']) ? $data['publish_record_list'] : null;
     }
 
     /**
@@ -255,7 +255,7 @@ class SearchContentPublishRecordsResponseAllOf implements ModelInterface, ArrayA
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

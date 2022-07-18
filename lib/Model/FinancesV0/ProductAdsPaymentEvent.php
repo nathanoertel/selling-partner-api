@@ -202,12 +202,12 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['transaction_type'] = $data['transaction_type'] ?? null;
-        $this->container['invoice_id'] = $data['invoice_id'] ?? null;
-        $this->container['base_value'] = $data['base_value'] ?? null;
-        $this->container['tax_value'] = $data['tax_value'] ?? null;
-        $this->container['transaction_value'] = $data['transaction_value'] ?? null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['transaction_type'] = isset($data['transaction_type']) ? $data['transaction_type'] : null;
+        $this->container['invoice_id'] = isset($data['invoice_id']) ? $data['invoice_id'] : null;
+        $this->container['base_value'] = isset($data['base_value']) ? $data['base_value'] : null;
+        $this->container['tax_value'] = isset($data['tax_value']) ? $data['tax_value'] : null;
+        $this->container['transaction_value'] = isset($data['transaction_value']) ? $data['transaction_value'] : null;
     }
 
     /**
@@ -396,7 +396,7 @@ class ProductAdsPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

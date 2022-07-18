@@ -182,8 +182,8 @@ class StandardImageTextOverlayModule implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['overlay_color_type'] = $data['overlay_color_type'] ?? null;
-        $this->container['block'] = $data['block'] ?? null;
+        $this->container['overlay_color_type'] = isset($data['overlay_color_type']) ? $data['overlay_color_type'] : null;
+        $this->container['block'] = isset($data['block']) ? $data['block'] : null;
     }
 
     /**
@@ -283,7 +283,7 @@ class StandardImageTextOverlayModule implements ModelInterface, ArrayAccess, \Js
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

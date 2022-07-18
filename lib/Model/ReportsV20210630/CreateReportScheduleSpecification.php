@@ -246,11 +246,11 @@ class CreateReportScheduleSpecification implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['report_type'] = $data['report_type'] ?? null;
-        $this->container['marketplace_ids'] = $data['marketplace_ids'] ?? null;
-        $this->container['report_options'] = $data['report_options'] ?? null;
-        $this->container['period'] = $data['period'] ?? null;
-        $this->container['next_report_creation_time'] = $data['next_report_creation_time'] ?? null;
+        $this->container['report_type'] = isset($data['report_type']) ? $data['report_type'] : null;
+        $this->container['marketplace_ids'] = isset($data['marketplace_ids']) ? $data['marketplace_ids'] : null;
+        $this->container['report_options'] = isset($data['report_options']) ? $data['report_options'] : null;
+        $this->container['period'] = isset($data['period']) ? $data['period'] : null;
+        $this->container['next_report_creation_time'] = isset($data['next_report_creation_time']) ? $data['next_report_creation_time'] : null;
     }
 
     /**
@@ -459,7 +459,7 @@ class CreateReportScheduleSpecification implements ModelInterface, ArrayAccess, 
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

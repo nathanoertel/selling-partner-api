@@ -265,19 +265,19 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['create_time'] = $data['create_time'] ?? null;
-        $this->container['service_job_id'] = $data['service_job_id'] ?? null;
-        $this->container['service_job_status'] = $data['service_job_status'] ?? null;
-        $this->container['scope_of_work'] = $data['scope_of_work'] ?? null;
-        $this->container['seller'] = $data['seller'] ?? null;
-        $this->container['service_job_provider'] = $data['service_job_provider'] ?? null;
-        $this->container['preferred_appointment_times'] = $data['preferred_appointment_times'] ?? null;
-        $this->container['appointments'] = $data['appointments'] ?? null;
-        $this->container['service_order_id'] = $data['service_order_id'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['buyer'] = $data['buyer'] ?? null;
-        $this->container['associated_items'] = $data['associated_items'] ?? null;
-        $this->container['service_location'] = $data['service_location'] ?? null;
+        $this->container['create_time'] = isset($data['create_time']) ? $data['create_time'] : null;
+        $this->container['service_job_id'] = isset($data['service_job_id']) ? $data['service_job_id'] : null;
+        $this->container['service_job_status'] = isset($data['service_job_status']) ? $data['service_job_status'] : null;
+        $this->container['scope_of_work'] = isset($data['scope_of_work']) ? $data['scope_of_work'] : null;
+        $this->container['seller'] = isset($data['seller']) ? $data['seller'] : null;
+        $this->container['service_job_provider'] = isset($data['service_job_provider']) ? $data['service_job_provider'] : null;
+        $this->container['preferred_appointment_times'] = isset($data['preferred_appointment_times']) ? $data['preferred_appointment_times'] : null;
+        $this->container['appointments'] = isset($data['appointments']) ? $data['appointments'] : null;
+        $this->container['service_order_id'] = isset($data['service_order_id']) ? $data['service_order_id'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['buyer'] = isset($data['buyer']) ? $data['buyer'] : null;
+        $this->container['associated_items'] = isset($data['associated_items']) ? $data['associated_items'] : null;
+        $this->container['service_location'] = isset($data['service_location']) ? $data['service_location'] : null;
     }
 
     /**
@@ -685,7 +685,7 @@ class ServiceJob implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -203,9 +203,9 @@ class PackingSlip implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['purchase_order_number'] = $data['purchase_order_number'] ?? null;
-        $this->container['content'] = $data['content'] ?? null;
-        $this->container['content_type'] = $data['content_type'] ?? null;
+        $this->container['purchase_order_number'] = isset($data['purchase_order_number']) ? $data['purchase_order_number'] : null;
+        $this->container['content'] = isset($data['content']) ? $data['content'] : null;
+        $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
     }
 
     /**
@@ -359,7 +359,7 @@ class PackingSlip implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

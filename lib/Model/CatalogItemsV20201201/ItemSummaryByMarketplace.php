@@ -217,15 +217,15 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['brand_name'] = $data['brand_name'] ?? null;
-        $this->container['browse_node'] = $data['browse_node'] ?? null;
-        $this->container['color_name'] = $data['color_name'] ?? null;
-        $this->container['item_name'] = $data['item_name'] ?? null;
-        $this->container['manufacturer'] = $data['manufacturer'] ?? null;
-        $this->container['model_number'] = $data['model_number'] ?? null;
-        $this->container['size_name'] = $data['size_name'] ?? null;
-        $this->container['style_name'] = $data['style_name'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['brand_name'] = isset($data['brand_name']) ? $data['brand_name'] : null;
+        $this->container['browse_node'] = isset($data['browse_node']) ? $data['browse_node'] : null;
+        $this->container['color_name'] = isset($data['color_name']) ? $data['color_name'] : null;
+        $this->container['item_name'] = isset($data['item_name']) ? $data['item_name'] : null;
+        $this->container['manufacturer'] = isset($data['manufacturer']) ? $data['manufacturer'] : null;
+        $this->container['model_number'] = isset($data['model_number']) ? $data['model_number'] : null;
+        $this->container['size_name'] = isset($data['size_name']) ? $data['size_name'] : null;
+        $this->container['style_name'] = isset($data['style_name']) ? $data['style_name'] : null;
     }
 
     /**
@@ -486,7 +486,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

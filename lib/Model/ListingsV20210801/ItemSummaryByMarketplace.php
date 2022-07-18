@@ -280,16 +280,16 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['product_type'] = $data['product_type'] ?? null;
-        $this->container['condition_type'] = $data['condition_type'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['fn_sku'] = $data['fn_sku'] ?? null;
-        $this->container['item_name'] = $data['item_name'] ?? null;
-        $this->container['created_date'] = $data['created_date'] ?? null;
-        $this->container['last_updated_date'] = $data['last_updated_date'] ?? null;
-        $this->container['main_image'] = $data['main_image'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['product_type'] = isset($data['product_type']) ? $data['product_type'] : null;
+        $this->container['condition_type'] = isset($data['condition_type']) ? $data['condition_type'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['fn_sku'] = isset($data['fn_sku']) ? $data['fn_sku'] : null;
+        $this->container['item_name'] = isset($data['item_name']) ? $data['item_name'] : null;
+        $this->container['created_date'] = isset($data['created_date']) ? $data['created_date'] : null;
+        $this->container['last_updated_date'] = isset($data['last_updated_date']) ? $data['last_updated_date'] : null;
+        $this->container['main_image'] = isset($data['main_image']) ? $data['main_image'] : null;
     }
 
     /**
@@ -619,7 +619,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

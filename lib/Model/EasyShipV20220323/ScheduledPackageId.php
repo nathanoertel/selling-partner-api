@@ -182,8 +182,8 @@ class ScheduledPackageId implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['package_id'] = $data['package_id'] ?? null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['package_id'] = isset($data['package_id']) ? $data['package_id'] : null;
     }
 
     /**
@@ -283,7 +283,7 @@ class ScheduledPackageId implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -207,13 +207,13 @@ class OrderAcknowledgementItem implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['purchase_order_number'] = $data['purchase_order_number'] ?? null;
-        $this->container['vendor_order_number'] = $data['vendor_order_number'] ?? null;
-        $this->container['acknowledgement_date'] = $data['acknowledgement_date'] ?? null;
-        $this->container['acknowledgement_status'] = $data['acknowledgement_status'] ?? null;
-        $this->container['selling_party'] = $data['selling_party'] ?? null;
-        $this->container['ship_from_party'] = $data['ship_from_party'] ?? null;
-        $this->container['item_acknowledgements'] = $data['item_acknowledgements'] ?? null;
+        $this->container['purchase_order_number'] = isset($data['purchase_order_number']) ? $data['purchase_order_number'] : null;
+        $this->container['vendor_order_number'] = isset($data['vendor_order_number']) ? $data['vendor_order_number'] : null;
+        $this->container['acknowledgement_date'] = isset($data['acknowledgement_date']) ? $data['acknowledgement_date'] : null;
+        $this->container['acknowledgement_status'] = isset($data['acknowledgement_status']) ? $data['acknowledgement_status'] : null;
+        $this->container['selling_party'] = isset($data['selling_party']) ? $data['selling_party'] : null;
+        $this->container['ship_from_party'] = isset($data['ship_from_party']) ? $data['ship_from_party'] : null;
+        $this->container['item_acknowledgements'] = isset($data['item_acknowledgements']) ? $data['item_acknowledgements'] : null;
     }
 
     /**
@@ -446,7 +446,7 @@ class OrderAcknowledgementItem implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

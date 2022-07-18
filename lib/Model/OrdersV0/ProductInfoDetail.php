@@ -177,7 +177,7 @@ class ProductInfoDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['number_of_items'] = $data['number_of_items'] ?? null;
+        $this->container['number_of_items'] = isset($data['number_of_items']) ? $data['number_of_items'] : null;
     }
 
     /**
@@ -251,7 +251,7 @@ class ProductInfoDetail implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

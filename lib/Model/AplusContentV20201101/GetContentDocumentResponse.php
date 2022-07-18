@@ -184,8 +184,8 @@ class GetContentDocumentResponse implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['warnings'] = $data['warnings'] ?? null;
-        $this->container['content_record'] = $data['content_record'] ?? null;
+        $this->container['warnings'] = isset($data['warnings']) ? $data['warnings'] : null;
+        $this->container['content_record'] = isset($data['content_record']) ? $data['content_record'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class GetContentDocumentResponse implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

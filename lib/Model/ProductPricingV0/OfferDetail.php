@@ -251,22 +251,22 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['my_offer'] = $data['my_offer'] ?? null;
-        $this->container['offer_type'] = $data['offer_type'] ?? null;
-        $this->container['sub_condition'] = $data['sub_condition'] ?? null;
-        $this->container['seller_id'] = $data['seller_id'] ?? null;
-        $this->container['condition_notes'] = $data['condition_notes'] ?? null;
-        $this->container['seller_feedback_rating'] = $data['seller_feedback_rating'] ?? null;
-        $this->container['shipping_time'] = $data['shipping_time'] ?? null;
-        $this->container['listing_price'] = $data['listing_price'] ?? null;
-        $this->container['quantity_discount_prices'] = $data['quantity_discount_prices'] ?? null;
-        $this->container['points'] = $data['points'] ?? null;
-        $this->container['shipping'] = $data['shipping'] ?? null;
-        $this->container['ships_from'] = $data['ships_from'] ?? null;
-        $this->container['is_fulfilled_by_amazon'] = $data['is_fulfilled_by_amazon'] ?? null;
-        $this->container['prime_information'] = $data['prime_information'] ?? null;
-        $this->container['is_buy_box_winner'] = $data['is_buy_box_winner'] ?? null;
-        $this->container['is_featured_merchant'] = $data['is_featured_merchant'] ?? null;
+        $this->container['my_offer'] = isset($data['my_offer']) ? $data['my_offer'] : null;
+        $this->container['offer_type'] = isset($data['offer_type']) ? $data['offer_type'] : null;
+        $this->container['sub_condition'] = isset($data['sub_condition']) ? $data['sub_condition'] : null;
+        $this->container['seller_id'] = isset($data['seller_id']) ? $data['seller_id'] : null;
+        $this->container['condition_notes'] = isset($data['condition_notes']) ? $data['condition_notes'] : null;
+        $this->container['seller_feedback_rating'] = isset($data['seller_feedback_rating']) ? $data['seller_feedback_rating'] : null;
+        $this->container['shipping_time'] = isset($data['shipping_time']) ? $data['shipping_time'] : null;
+        $this->container['listing_price'] = isset($data['listing_price']) ? $data['listing_price'] : null;
+        $this->container['quantity_discount_prices'] = isset($data['quantity_discount_prices']) ? $data['quantity_discount_prices'] : null;
+        $this->container['points'] = isset($data['points']) ? $data['points'] : null;
+        $this->container['shipping'] = isset($data['shipping']) ? $data['shipping'] : null;
+        $this->container['ships_from'] = isset($data['ships_from']) ? $data['ships_from'] : null;
+        $this->container['is_fulfilled_by_amazon'] = isset($data['is_fulfilled_by_amazon']) ? $data['is_fulfilled_by_amazon'] : null;
+        $this->container['prime_information'] = isset($data['prime_information']) ? $data['prime_information'] : null;
+        $this->container['is_buy_box_winner'] = isset($data['is_buy_box_winner']) ? $data['is_buy_box_winner'] : null;
+        $this->container['is_featured_merchant'] = isset($data['is_featured_merchant']) ? $data['is_featured_merchant'] : null;
     }
 
     /**
@@ -699,7 +699,7 @@ class OfferDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

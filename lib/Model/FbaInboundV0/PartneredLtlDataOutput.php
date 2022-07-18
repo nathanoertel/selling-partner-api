@@ -247,21 +247,21 @@ class PartneredLtlDataOutput implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['contact'] = $data['contact'] ?? null;
-        $this->container['box_count'] = $data['box_count'] ?? null;
-        $this->container['seller_freight_class'] = $data['seller_freight_class'] ?? null;
-        $this->container['freight_ready_date'] = $data['freight_ready_date'] ?? null;
-        $this->container['pallet_list'] = $data['pallet_list'] ?? null;
-        $this->container['total_weight'] = $data['total_weight'] ?? null;
-        $this->container['seller_declared_value'] = $data['seller_declared_value'] ?? null;
-        $this->container['amazon_calculated_value'] = $data['amazon_calculated_value'] ?? null;
-        $this->container['preview_pickup_date'] = $data['preview_pickup_date'] ?? null;
-        $this->container['preview_delivery_date'] = $data['preview_delivery_date'] ?? null;
-        $this->container['preview_freight_class'] = $data['preview_freight_class'] ?? null;
-        $this->container['amazon_reference_id'] = $data['amazon_reference_id'] ?? null;
-        $this->container['is_bill_of_lading_available'] = $data['is_bill_of_lading_available'] ?? null;
-        $this->container['partnered_estimate'] = $data['partnered_estimate'] ?? null;
-        $this->container['carrier_name'] = $data['carrier_name'] ?? null;
+        $this->container['contact'] = isset($data['contact']) ? $data['contact'] : null;
+        $this->container['box_count'] = isset($data['box_count']) ? $data['box_count'] : null;
+        $this->container['seller_freight_class'] = isset($data['seller_freight_class']) ? $data['seller_freight_class'] : null;
+        $this->container['freight_ready_date'] = isset($data['freight_ready_date']) ? $data['freight_ready_date'] : null;
+        $this->container['pallet_list'] = isset($data['pallet_list']) ? $data['pallet_list'] : null;
+        $this->container['total_weight'] = isset($data['total_weight']) ? $data['total_weight'] : null;
+        $this->container['seller_declared_value'] = isset($data['seller_declared_value']) ? $data['seller_declared_value'] : null;
+        $this->container['amazon_calculated_value'] = isset($data['amazon_calculated_value']) ? $data['amazon_calculated_value'] : null;
+        $this->container['preview_pickup_date'] = isset($data['preview_pickup_date']) ? $data['preview_pickup_date'] : null;
+        $this->container['preview_delivery_date'] = isset($data['preview_delivery_date']) ? $data['preview_delivery_date'] : null;
+        $this->container['preview_freight_class'] = isset($data['preview_freight_class']) ? $data['preview_freight_class'] : null;
+        $this->container['amazon_reference_id'] = isset($data['amazon_reference_id']) ? $data['amazon_reference_id'] : null;
+        $this->container['is_bill_of_lading_available'] = isset($data['is_bill_of_lading_available']) ? $data['is_bill_of_lading_available'] : null;
+        $this->container['partnered_estimate'] = isset($data['partnered_estimate']) ? $data['partnered_estimate'] : null;
+        $this->container['carrier_name'] = isset($data['carrier_name']) ? $data['carrier_name'] : null;
     }
 
     /**
@@ -690,7 +690,7 @@ class PartneredLtlDataOutput implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

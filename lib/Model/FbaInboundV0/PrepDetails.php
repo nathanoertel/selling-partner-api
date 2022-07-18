@@ -182,8 +182,8 @@ class PrepDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['prep_instruction'] = $data['prep_instruction'] ?? null;
-        $this->container['prep_owner'] = $data['prep_owner'] ?? null;
+        $this->container['prep_instruction'] = isset($data['prep_instruction']) ? $data['prep_instruction'] : null;
+        $this->container['prep_owner'] = isset($data['prep_owner']) ? $data['prep_owner'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class PrepDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

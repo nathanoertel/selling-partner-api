@@ -244,16 +244,16 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['customer_order_number'] = $data['customer_order_number'] ?? null;
-        $this->container['order_date'] = $data['order_date'] ?? null;
-        $this->container['order_status'] = $data['order_status'] ?? null;
-        $this->container['shipment_details'] = $data['shipment_details'] ?? null;
-        $this->container['tax_total'] = $data['tax_total'] ?? null;
-        $this->container['selling_party'] = $data['selling_party'] ?? null;
-        $this->container['ship_from_party'] = $data['ship_from_party'] ?? null;
-        $this->container['ship_to_party'] = $data['ship_to_party'] ?? null;
-        $this->container['bill_to_party'] = $data['bill_to_party'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['customer_order_number'] = isset($data['customer_order_number']) ? $data['customer_order_number'] : null;
+        $this->container['order_date'] = isset($data['order_date']) ? $data['order_date'] : null;
+        $this->container['order_status'] = isset($data['order_status']) ? $data['order_status'] : null;
+        $this->container['shipment_details'] = isset($data['shipment_details']) ? $data['shipment_details'] : null;
+        $this->container['tax_total'] = isset($data['tax_total']) ? $data['tax_total'] : null;
+        $this->container['selling_party'] = isset($data['selling_party']) ? $data['selling_party'] : null;
+        $this->container['ship_from_party'] = isset($data['ship_from_party']) ? $data['ship_from_party'] : null;
+        $this->container['ship_to_party'] = isset($data['ship_to_party']) ? $data['ship_to_party'] : null;
+        $this->container['bill_to_party'] = isset($data['bill_to_party']) ? $data['bill_to_party'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -577,7 +577,7 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

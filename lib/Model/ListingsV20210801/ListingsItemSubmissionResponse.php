@@ -213,10 +213,10 @@ class ListingsItemSubmissionResponse implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['sku'] = $data['sku'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['submission_id'] = $data['submission_id'] ?? null;
-        $this->container['issues'] = $data['issues'] ?? null;
+        $this->container['sku'] = isset($data['sku']) ? $data['sku'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['submission_id'] = isset($data['submission_id']) ? $data['submission_id'] : null;
+        $this->container['issues'] = isset($data['issues']) ? $data['issues'] : null;
     }
 
     /**
@@ -409,7 +409,7 @@ class ListingsItemSubmissionResponse implements ModelInterface, ArrayAccess, \Js
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -186,9 +186,9 @@ class CreateFulfillmentReturnResult implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['return_items'] = $data['return_items'] ?? null;
-        $this->container['invalid_return_items'] = $data['invalid_return_items'] ?? null;
-        $this->container['return_authorizations'] = $data['return_authorizations'] ?? null;
+        $this->container['return_items'] = isset($data['return_items']) ? $data['return_items'] : null;
+        $this->container['invalid_return_items'] = isset($data['invalid_return_items']) ? $data['invalid_return_items'] : null;
+        $this->container['return_authorizations'] = isset($data['return_authorizations']) ? $data['return_authorizations'] : null;
     }
 
     /**
@@ -308,7 +308,7 @@ class CreateFulfillmentReturnResult implements ModelInterface, ArrayAccess, \Jso
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -212,10 +212,10 @@ class DetailedShippingTimeType implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['minimum_hours'] = $data['minimum_hours'] ?? null;
-        $this->container['maximum_hours'] = $data['maximum_hours'] ?? null;
-        $this->container['available_date'] = $data['available_date'] ?? null;
-        $this->container['availability_type'] = $data['availability_type'] ?? null;
+        $this->container['minimum_hours'] = isset($data['minimum_hours']) ? $data['minimum_hours'] : null;
+        $this->container['maximum_hours'] = isset($data['maximum_hours']) ? $data['maximum_hours'] : null;
+        $this->container['available_date'] = isset($data['available_date']) ? $data['available_date'] : null;
+        $this->container['availability_type'] = isset($data['availability_type']) ? $data['availability_type'] : null;
     }
 
     /**
@@ -376,7 +376,7 @@ class DetailedShippingTimeType implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

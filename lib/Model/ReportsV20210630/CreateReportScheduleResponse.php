@@ -180,7 +180,7 @@ class CreateReportScheduleResponse implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['report_schedule_id'] = $data['report_schedule_id'] ?? null;
+        $this->container['report_schedule_id'] = isset($data['report_schedule_id']) ? $data['report_schedule_id'] : null;
     }
 
     /**
@@ -279,7 +279,7 @@ class CreateReportScheduleResponse implements ModelInterface, ArrayAccess, \Json
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -182,8 +182,8 @@ class GetEligibleShipmentServicesRequest implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_request_details'] = $data['shipment_request_details'] ?? null;
-        $this->container['shipping_offering_filter'] = $data['shipping_offering_filter'] ?? null;
+        $this->container['shipment_request_details'] = isset($data['shipment_request_details']) ? $data['shipment_request_details'] : null;
+        $this->container['shipping_offering_filter'] = isset($data['shipping_offering_filter']) ? $data['shipping_offering_filter'] : null;
     }
 
     /**
@@ -283,7 +283,7 @@ class GetEligibleShipmentServicesRequest implements ModelInterface, ArrayAccess,
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

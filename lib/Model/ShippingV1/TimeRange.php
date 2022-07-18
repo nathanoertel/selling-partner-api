@@ -182,8 +182,8 @@ class TimeRange implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['start'] = $data['start'] ?? null;
-        $this->container['end'] = $data['end'] ?? null;
+        $this->container['start'] = isset($data['start']) ? $data['start'] : null;
+        $this->container['end'] = isset($data['end']) ? $data['end'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class TimeRange implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

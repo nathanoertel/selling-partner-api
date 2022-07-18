@@ -187,9 +187,9 @@ class AutomatedShippingSettings implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['has_automated_shipping_settings'] = $data['has_automated_shipping_settings'] ?? null;
-        $this->container['automated_carrier'] = $data['automated_carrier'] ?? null;
-        $this->container['automated_ship_method'] = $data['automated_ship_method'] ?? null;
+        $this->container['has_automated_shipping_settings'] = isset($data['has_automated_shipping_settings']) ? $data['has_automated_shipping_settings'] : null;
+        $this->container['automated_carrier'] = isset($data['automated_carrier']) ? $data['automated_carrier'] : null;
+        $this->container['automated_ship_method'] = isset($data['automated_ship_method']) ? $data['automated_ship_method'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class AutomatedShippingSettings implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

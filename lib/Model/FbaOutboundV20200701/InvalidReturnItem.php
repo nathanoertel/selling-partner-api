@@ -187,9 +187,9 @@ class InvalidReturnItem implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_return_item_id'] = $data['seller_return_item_id'] ?? null;
-        $this->container['seller_fulfillment_order_item_id'] = $data['seller_fulfillment_order_item_id'] ?? null;
-        $this->container['invalid_item_reason'] = $data['invalid_item_reason'] ?? null;
+        $this->container['seller_return_item_id'] = isset($data['seller_return_item_id']) ? $data['seller_return_item_id'] : null;
+        $this->container['seller_fulfillment_order_item_id'] = isset($data['seller_fulfillment_order_item_id']) ? $data['seller_fulfillment_order_item_id'] : null;
+        $this->container['invalid_item_reason'] = isset($data['invalid_item_reason']) ? $data['invalid_item_reason'] : null;
     }
 
     /**
@@ -318,7 +318,7 @@ class InvalidReturnItem implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

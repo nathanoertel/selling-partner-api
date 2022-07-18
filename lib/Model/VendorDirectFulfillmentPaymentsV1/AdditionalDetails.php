@@ -205,9 +205,9 @@ class AdditionalDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['detail'] = $data['detail'] ?? null;
-        $this->container['language_code'] = $data['language_code'] ?? null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['detail'] = isset($data['detail']) ? $data['detail'] : null;
+        $this->container['language_code'] = isset($data['language_code']) ? $data['language_code'] : null;
     }
 
     /**
@@ -352,7 +352,7 @@ class AdditionalDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

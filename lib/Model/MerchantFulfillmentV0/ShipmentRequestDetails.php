@@ -222,16 +222,16 @@ class ShipmentRequestDetails implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['seller_order_id'] = $data['seller_order_id'] ?? null;
-        $this->container['item_list'] = $data['item_list'] ?? null;
-        $this->container['ship_from_address'] = $data['ship_from_address'] ?? null;
-        $this->container['package_dimensions'] = $data['package_dimensions'] ?? null;
-        $this->container['weight'] = $data['weight'] ?? null;
-        $this->container['must_arrive_by_date'] = $data['must_arrive_by_date'] ?? null;
-        $this->container['ship_date'] = $data['ship_date'] ?? null;
-        $this->container['shipping_service_options'] = $data['shipping_service_options'] ?? null;
-        $this->container['label_customization'] = $data['label_customization'] ?? null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['seller_order_id'] = isset($data['seller_order_id']) ? $data['seller_order_id'] : null;
+        $this->container['item_list'] = isset($data['item_list']) ? $data['item_list'] : null;
+        $this->container['ship_from_address'] = isset($data['ship_from_address']) ? $data['ship_from_address'] : null;
+        $this->container['package_dimensions'] = isset($data['package_dimensions']) ? $data['package_dimensions'] : null;
+        $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
+        $this->container['must_arrive_by_date'] = isset($data['must_arrive_by_date']) ? $data['must_arrive_by_date'] : null;
+        $this->container['ship_date'] = isset($data['ship_date']) ? $data['ship_date'] : null;
+        $this->container['shipping_service_options'] = isset($data['shipping_service_options']) ? $data['shipping_service_options'] : null;
+        $this->container['label_customization'] = isset($data['label_customization']) ? $data['label_customization'] : null;
     }
 
     /**
@@ -538,7 +538,7 @@ class ShipmentRequestDetails implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

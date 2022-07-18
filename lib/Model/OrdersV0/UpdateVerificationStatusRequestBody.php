@@ -187,9 +187,9 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['external_reviewer_id'] = $data['external_reviewer_id'] ?? null;
-        $this->container['rejection_reason_id'] = $data['rejection_reason_id'] ?? null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['external_reviewer_id'] = isset($data['external_reviewer_id']) ? $data['external_reviewer_id'] : null;
+        $this->container['rejection_reason_id'] = isset($data['rejection_reason_id']) ? $data['rejection_reason_id'] : null;
     }
 
     /**
@@ -315,7 +315,7 @@ class UpdateVerificationStatusRequestBody implements ModelInterface, ArrayAccess
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

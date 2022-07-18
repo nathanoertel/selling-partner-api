@@ -205,8 +205,8 @@ class ContainerIdentification implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['container_identification_type'] = $data['container_identification_type'] ?? null;
-        $this->container['container_identification_number'] = $data['container_identification_number'] ?? null;
+        $this->container['container_identification_type'] = isset($data['container_identification_type']) ? $data['container_identification_type'] : null;
+        $this->container['container_identification_number'] = isset($data['container_identification_number']) ? $data['container_identification_number'] : null;
     }
 
     /**
@@ -328,7 +328,7 @@ class ContainerIdentification implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

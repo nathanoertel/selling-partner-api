@@ -191,10 +191,10 @@ class GetInboundGuidanceResult implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['sku_inbound_guidance_list'] = $data['sku_inbound_guidance_list'] ?? null;
-        $this->container['invalid_sku_list'] = $data['invalid_sku_list'] ?? null;
-        $this->container['asin_inbound_guidance_list'] = $data['asin_inbound_guidance_list'] ?? null;
-        $this->container['invalid_asin_list'] = $data['invalid_asin_list'] ?? null;
+        $this->container['sku_inbound_guidance_list'] = isset($data['sku_inbound_guidance_list']) ? $data['sku_inbound_guidance_list'] : null;
+        $this->container['invalid_sku_list'] = isset($data['invalid_sku_list']) ? $data['invalid_sku_list'] : null;
+        $this->container['asin_inbound_guidance_list'] = isset($data['asin_inbound_guidance_list']) ? $data['asin_inbound_guidance_list'] : null;
+        $this->container['invalid_asin_list'] = isset($data['invalid_asin_list']) ? $data['invalid_asin_list'] : null;
     }
 
     /**
@@ -337,7 +337,7 @@ class GetInboundGuidanceResult implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

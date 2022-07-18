@@ -220,15 +220,15 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['scheduled_package_id'] = $data['scheduled_package_id'] ?? null;
-        $this->container['package_dimensions'] = $data['package_dimensions'] ?? null;
-        $this->container['package_weight'] = $data['package_weight'] ?? null;
-        $this->container['package_items'] = $data['package_items'] ?? null;
-        $this->container['package_time_slot'] = $data['package_time_slot'] ?? null;
-        $this->container['package_identifier'] = $data['package_identifier'] ?? null;
-        $this->container['invoice'] = $data['invoice'] ?? null;
-        $this->container['package_status'] = $data['package_status'] ?? null;
-        $this->container['tracking_details'] = $data['tracking_details'] ?? null;
+        $this->container['scheduled_package_id'] = isset($data['scheduled_package_id']) ? $data['scheduled_package_id'] : null;
+        $this->container['package_dimensions'] = isset($data['package_dimensions']) ? $data['package_dimensions'] : null;
+        $this->container['package_weight'] = isset($data['package_weight']) ? $data['package_weight'] : null;
+        $this->container['package_items'] = isset($data['package_items']) ? $data['package_items'] : null;
+        $this->container['package_time_slot'] = isset($data['package_time_slot']) ? $data['package_time_slot'] : null;
+        $this->container['package_identifier'] = isset($data['package_identifier']) ? $data['package_identifier'] : null;
+        $this->container['invoice'] = isset($data['invoice']) ? $data['invoice'] : null;
+        $this->container['package_status'] = isset($data['package_status']) ? $data['package_status'] : null;
+        $this->container['tracking_details'] = isset($data['tracking_details']) ? $data['tracking_details'] : null;
     }
 
     /**
@@ -528,7 +528,7 @@ class Package implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

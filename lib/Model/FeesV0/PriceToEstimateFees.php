@@ -187,9 +187,9 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['listing_price'] = $data['listing_price'] ?? null;
-        $this->container['shipping'] = $data['shipping'] ?? null;
-        $this->container['points'] = $data['points'] ?? null;
+        $this->container['listing_price'] = isset($data['listing_price']) ? $data['listing_price'] : null;
+        $this->container['shipping'] = isset($data['shipping']) ? $data['shipping'] : null;
+        $this->container['points'] = isset($data['points']) ? $data['points'] : null;
     }
 
     /**
@@ -312,7 +312,7 @@ class PriceToEstimateFees implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

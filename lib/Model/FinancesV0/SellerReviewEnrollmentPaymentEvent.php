@@ -202,12 +202,12 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['enrollment_id'] = $data['enrollment_id'] ?? null;
-        $this->container['parent_asin'] = $data['parent_asin'] ?? null;
-        $this->container['fee_component'] = $data['fee_component'] ?? null;
-        $this->container['charge_component'] = $data['charge_component'] ?? null;
-        $this->container['total_amount'] = $data['total_amount'] ?? null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['enrollment_id'] = isset($data['enrollment_id']) ? $data['enrollment_id'] : null;
+        $this->container['parent_asin'] = isset($data['parent_asin']) ? $data['parent_asin'] : null;
+        $this->container['fee_component'] = isset($data['fee_component']) ? $data['fee_component'] : null;
+        $this->container['charge_component'] = isset($data['charge_component']) ? $data['charge_component'] : null;
+        $this->container['total_amount'] = isset($data['total_amount']) ? $data['total_amount'] : null;
     }
 
     /**
@@ -396,7 +396,7 @@ class SellerReviewEnrollmentPaymentEvent implements ModelInterface, ArrayAccess,
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -31,7 +31,7 @@ class AuthorizationSigner implements AuthorizationSignerContract
         $signingString = $this->createSigningString($canonicalRequest);
         $signature = $this->createSignature($signingString, $credentials->getSecretKey());
 
-        [, $signedHeaders] = $this->createCanonicalizedHeaders($request->getHeaders());
+        list($unused , $signedHeaders) = $this->createCanonicalizedHeaders($request->getHeaders());
         $credentialScope = $this->createCredentialScope();
         $credsForHeader = "Credential={$credentials->getAccessKeyId()}/{$credentialScope}";
         $headersForHeader = "SignedHeaders={$signedHeaders}";
@@ -96,7 +96,7 @@ class AuthorizationSigner implements AuthorizationSignerContract
         $params = explode('&', $query);
         $paramsMap = [];
         foreach ($params as $param) {
-            [$key, $value] = explode('=', $param);
+            list($key, $value) = explode('=', $param);
 
             if ($value === null) {
                 $paramsMap[$key] = '';
@@ -145,7 +145,7 @@ class AuthorizationSigner implements AuthorizationSignerContract
         $uri = $request->getUri();
         $path = $this->createCanonicalizedPath($uri->getPath());
         $query = $this->createCanonicalizedQuery($uri->getQuery());
-        [$headers, $headerNames] = $this->createCanonicalizedHeaders($request->getHeaders());
+        list($headers, $headerNames) = $this->createCanonicalizedHeaders($request->getHeaders());
         $hashedPayload = hash('sha256', $request->getBody());
 
         $canonicalRequest = "{$method}\n{$path}\n{$query}\n{$headers}\n{$headerNames}\n{$hashedPayload}";
@@ -178,9 +178,9 @@ class AuthorizationSigner implements AuthorizationSignerContract
         return hash_hmac('sha256', $signingString, $kSigning);
     }
 
-    public function setRequestTime(?\DateTime $datetime = null)
+    public function setRequestTime(\DateTime $datetime = null)
     {
-        $this->requestTime = $datetime ?? new \DateTime('now', new \DateTimeZone('UTC'));
+        $this->requestTime = isset($datetime) ? $datetime : new \DateTime('now', new \DateTimeZone('UTC'));
     }
 
     /**

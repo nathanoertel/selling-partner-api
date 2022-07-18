@@ -181,8 +181,8 @@ class GetShipmentItemsResult implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['item_data'] = $data['item_data'] ?? null;
-        $this->container['next_token'] = $data['next_token'] ?? null;
+        $this->container['item_data'] = isset($data['item_data']) ? $data['item_data'] : null;
+        $this->container['next_token'] = isset($data['next_token']) ? $data['next_token'] : null;
     }
 
     /**
@@ -279,7 +279,7 @@ class GetShipmentItemsResult implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -227,17 +227,17 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['item_sequence_number'] = $data['item_sequence_number'] ?? null;
-        $this->container['amazon_product_identifier'] = $data['amazon_product_identifier'] ?? null;
-        $this->container['vendor_product_identifier'] = $data['vendor_product_identifier'] ?? null;
-        $this->container['invoiced_quantity'] = $data['invoiced_quantity'] ?? null;
-        $this->container['net_cost'] = $data['net_cost'] ?? null;
-        $this->container['purchase_order_number'] = $data['purchase_order_number'] ?? null;
-        $this->container['hsn_code'] = $data['hsn_code'] ?? null;
-        $this->container['credit_note_details'] = $data['credit_note_details'] ?? null;
-        $this->container['tax_details'] = $data['tax_details'] ?? null;
-        $this->container['charge_details'] = $data['charge_details'] ?? null;
-        $this->container['allowance_details'] = $data['allowance_details'] ?? null;
+        $this->container['item_sequence_number'] = isset($data['item_sequence_number']) ? $data['item_sequence_number'] : null;
+        $this->container['amazon_product_identifier'] = isset($data['amazon_product_identifier']) ? $data['amazon_product_identifier'] : null;
+        $this->container['vendor_product_identifier'] = isset($data['vendor_product_identifier']) ? $data['vendor_product_identifier'] : null;
+        $this->container['invoiced_quantity'] = isset($data['invoiced_quantity']) ? $data['invoiced_quantity'] : null;
+        $this->container['net_cost'] = isset($data['net_cost']) ? $data['net_cost'] : null;
+        $this->container['purchase_order_number'] = isset($data['purchase_order_number']) ? $data['purchase_order_number'] : null;
+        $this->container['hsn_code'] = isset($data['hsn_code']) ? $data['hsn_code'] : null;
+        $this->container['credit_note_details'] = isset($data['credit_note_details']) ? $data['credit_note_details'] : null;
+        $this->container['tax_details'] = isset($data['tax_details']) ? $data['tax_details'] : null;
+        $this->container['charge_details'] = isset($data['charge_details']) ? $data['charge_details'] : null;
+        $this->container['allowance_details'] = isset($data['allowance_details']) ? $data['allowance_details'] : null;
     }
 
     /**
@@ -550,7 +550,7 @@ class InvoiceItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

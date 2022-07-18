@@ -227,17 +227,17 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_return_item_id'] = $data['seller_return_item_id'] ?? null;
-        $this->container['seller_fulfillment_order_item_id'] = $data['seller_fulfillment_order_item_id'] ?? null;
-        $this->container['amazon_shipment_id'] = $data['amazon_shipment_id'] ?? null;
-        $this->container['seller_return_reason_code'] = $data['seller_return_reason_code'] ?? null;
-        $this->container['return_comment'] = $data['return_comment'] ?? null;
-        $this->container['amazon_return_reason_code'] = $data['amazon_return_reason_code'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['status_changed_date'] = $data['status_changed_date'] ?? null;
-        $this->container['return_authorization_id'] = $data['return_authorization_id'] ?? null;
-        $this->container['return_received_condition'] = $data['return_received_condition'] ?? null;
-        $this->container['fulfillment_center_id'] = $data['fulfillment_center_id'] ?? null;
+        $this->container['seller_return_item_id'] = isset($data['seller_return_item_id']) ? $data['seller_return_item_id'] : null;
+        $this->container['seller_fulfillment_order_item_id'] = isset($data['seller_fulfillment_order_item_id']) ? $data['seller_fulfillment_order_item_id'] : null;
+        $this->container['amazon_shipment_id'] = isset($data['amazon_shipment_id']) ? $data['amazon_shipment_id'] : null;
+        $this->container['seller_return_reason_code'] = isset($data['seller_return_reason_code']) ? $data['seller_return_reason_code'] : null;
+        $this->container['return_comment'] = isset($data['return_comment']) ? $data['return_comment'] : null;
+        $this->container['amazon_return_reason_code'] = isset($data['amazon_return_reason_code']) ? $data['amazon_return_reason_code'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['status_changed_date'] = isset($data['status_changed_date']) ? $data['status_changed_date'] : null;
+        $this->container['return_authorization_id'] = isset($data['return_authorization_id']) ? $data['return_authorization_id'] : null;
+        $this->container['return_received_condition'] = isset($data['return_received_condition']) ? $data['return_received_condition'] : null;
+        $this->container['fulfillment_center_id'] = isset($data['fulfillment_center_id']) ? $data['fulfillment_center_id'] : null;
     }
 
     /**
@@ -559,7 +559,7 @@ class ReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

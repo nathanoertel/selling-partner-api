@@ -182,8 +182,8 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['next_token'] = $data['next_token'] ?? null;
-        $this->container['previous_token'] = $data['previous_token'] ?? null;
+        $this->container['next_token'] = isset($data['next_token']) ? $data['next_token'] : null;
+        $this->container['previous_token'] = isset($data['previous_token']) ? $data['previous_token'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class Pagination implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

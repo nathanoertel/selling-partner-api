@@ -187,9 +187,9 @@ class LabelResult implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['container_reference_id'] = $data['container_reference_id'] ?? null;
-        $this->container['tracking_id'] = $data['tracking_id'] ?? null;
-        $this->container['label'] = $data['label'] ?? null;
+        $this->container['container_reference_id'] = isset($data['container_reference_id']) ? $data['container_reference_id'] : null;
+        $this->container['tracking_id'] = isset($data['tracking_id']) ? $data['tracking_id'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
     }
 
     /**
@@ -317,7 +317,7 @@ class LabelResult implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

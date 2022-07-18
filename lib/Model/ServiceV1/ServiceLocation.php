@@ -202,8 +202,8 @@ class ServiceLocation implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['service_location_type'] = $data['service_location_type'] ?? null;
-        $this->container['address'] = $data['address'] ?? null;
+        $this->container['service_location_type'] = isset($data['service_location_type']) ? $data['service_location_type'] : null;
+        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
     }
 
     /**
@@ -319,7 +319,7 @@ class ServiceLocation implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -197,11 +197,11 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['ship_to'] = $data['ship_to'] ?? null;
-        $this->container['ship_from'] = $data['ship_from'] ?? null;
-        $this->container['service_types'] = $data['service_types'] ?? null;
-        $this->container['ship_date'] = $data['ship_date'] ?? null;
-        $this->container['container_specifications'] = $data['container_specifications'] ?? null;
+        $this->container['ship_to'] = isset($data['ship_to']) ? $data['ship_to'] : null;
+        $this->container['ship_from'] = isset($data['ship_from']) ? $data['ship_from'] : null;
+        $this->container['service_types'] = isset($data['service_types']) ? $data['service_types'] : null;
+        $this->container['ship_date'] = isset($data['ship_date']) ? $data['ship_date'] : null;
+        $this->container['container_specifications'] = isset($data['container_specifications']) ? $data['container_specifications'] : null;
     }
 
     /**
@@ -379,7 +379,7 @@ class GetRatesRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

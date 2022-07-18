@@ -177,7 +177,7 @@ class SubmitAcknowledgementRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['order_acknowledgements'] = $data['order_acknowledgements'] ?? null;
+        $this->container['order_acknowledgements'] = isset($data['order_acknowledgements']) ? $data['order_acknowledgements'] : null;
     }
 
     /**
@@ -251,7 +251,7 @@ class SubmitAcknowledgementRequest implements ModelInterface, ArrayAccess, \Json
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

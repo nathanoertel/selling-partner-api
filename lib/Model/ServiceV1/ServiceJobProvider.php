@@ -177,7 +177,7 @@ class ServiceJobProvider implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['service_job_provider_id'] = $data['service_job_provider_id'] ?? null;
+        $this->container['service_job_provider_id'] = isset($data['service_job_provider_id']) ? $data['service_job_provider_id'] : null;
     }
 
     /**
@@ -260,7 +260,7 @@ class ServiceJobProvider implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -192,10 +192,10 @@ class GetFulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['per_unit_declared_value'] = $data['per_unit_declared_value'] ?? null;
-        $this->container['seller_fulfillment_order_item_id'] = $data['seller_fulfillment_order_item_id'] ?? null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['per_unit_declared_value'] = isset($data['per_unit_declared_value']) ? $data['per_unit_declared_value'] : null;
+        $this->container['seller_fulfillment_order_item_id'] = isset($data['seller_fulfillment_order_item_id']) ? $data['seller_fulfillment_order_item_id'] : null;
     }
 
     /**
@@ -363,7 +363,7 @@ class GetFulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

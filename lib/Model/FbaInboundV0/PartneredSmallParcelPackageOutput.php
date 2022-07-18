@@ -197,11 +197,11 @@ class PartneredSmallParcelPackageOutput implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['dimensions'] = $data['dimensions'] ?? null;
-        $this->container['weight'] = $data['weight'] ?? null;
-        $this->container['carrier_name'] = $data['carrier_name'] ?? null;
-        $this->container['tracking_id'] = $data['tracking_id'] ?? null;
-        $this->container['package_status'] = $data['package_status'] ?? null;
+        $this->container['dimensions'] = isset($data['dimensions']) ? $data['dimensions'] : null;
+        $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
+        $this->container['carrier_name'] = isset($data['carrier_name']) ? $data['carrier_name'] : null;
+        $this->container['tracking_id'] = isset($data['tracking_id']) ? $data['tracking_id'] : null;
+        $this->container['package_status'] = isset($data['package_status']) ? $data['package_status'] : null;
     }
 
     /**
@@ -382,7 +382,7 @@ class PartneredSmallParcelPackageOutput implements ModelInterface, ArrayAccess, 
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

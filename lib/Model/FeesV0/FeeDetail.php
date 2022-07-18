@@ -202,12 +202,12 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['fee_type'] = $data['fee_type'] ?? null;
-        $this->container['fee_amount'] = $data['fee_amount'] ?? null;
-        $this->container['fee_promotion'] = $data['fee_promotion'] ?? null;
-        $this->container['tax_amount'] = $data['tax_amount'] ?? null;
-        $this->container['final_fee'] = $data['final_fee'] ?? null;
-        $this->container['included_fee_detail_list'] = $data['included_fee_detail_list'] ?? null;
+        $this->container['fee_type'] = isset($data['fee_type']) ? $data['fee_type'] : null;
+        $this->container['fee_amount'] = isset($data['fee_amount']) ? $data['fee_amount'] : null;
+        $this->container['fee_promotion'] = isset($data['fee_promotion']) ? $data['fee_promotion'] : null;
+        $this->container['tax_amount'] = isset($data['tax_amount']) ? $data['tax_amount'] : null;
+        $this->container['final_fee'] = isset($data['final_fee']) ? $data['final_fee'] : null;
+        $this->container['included_fee_detail_list'] = isset($data['included_fee_detail_list']) ? $data['included_fee_detail_list'] : null;
     }
 
     /**
@@ -405,7 +405,7 @@ class FeeDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

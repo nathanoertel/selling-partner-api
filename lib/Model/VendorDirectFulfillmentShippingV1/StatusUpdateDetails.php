@@ -202,12 +202,12 @@ class StatusUpdateDetails implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['tracking_number'] = $data['tracking_number'] ?? null;
-        $this->container['status_code'] = $data['status_code'] ?? null;
-        $this->container['reason_code'] = $data['reason_code'] ?? null;
-        $this->container['status_date_time'] = $data['status_date_time'] ?? null;
-        $this->container['status_location_address'] = $data['status_location_address'] ?? null;
-        $this->container['shipment_schedule'] = $data['shipment_schedule'] ?? null;
+        $this->container['tracking_number'] = isset($data['tracking_number']) ? $data['tracking_number'] : null;
+        $this->container['status_code'] = isset($data['status_code']) ? $data['status_code'] : null;
+        $this->container['reason_code'] = isset($data['reason_code']) ? $data['reason_code'] : null;
+        $this->container['status_date_time'] = isset($data['status_date_time']) ? $data['status_date_time'] : null;
+        $this->container['status_location_address'] = isset($data['status_location_address']) ? $data['status_location_address'] : null;
+        $this->container['shipment_schedule'] = isset($data['shipment_schedule']) ? $data['shipment_schedule'] : null;
     }
 
     /**
@@ -411,7 +411,7 @@ class StatusUpdateDetails implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

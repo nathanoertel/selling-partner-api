@@ -197,11 +197,11 @@ class CreateInboundShipmentPlanRequest implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['ship_from_address'] = $data['ship_from_address'] ?? null;
-        $this->container['label_prep_preference'] = $data['label_prep_preference'] ?? null;
-        $this->container['ship_to_country_code'] = $data['ship_to_country_code'] ?? null;
-        $this->container['ship_to_country_subdivision_code'] = $data['ship_to_country_subdivision_code'] ?? null;
-        $this->container['inbound_shipment_plan_request_items'] = $data['inbound_shipment_plan_request_items'] ?? null;
+        $this->container['ship_from_address'] = isset($data['ship_from_address']) ? $data['ship_from_address'] : null;
+        $this->container['label_prep_preference'] = isset($data['label_prep_preference']) ? $data['label_prep_preference'] : null;
+        $this->container['ship_to_country_code'] = isset($data['ship_to_country_code']) ? $data['ship_to_country_code'] : null;
+        $this->container['ship_to_country_subdivision_code'] = isset($data['ship_to_country_subdivision_code']) ? $data['ship_to_country_subdivision_code'] : null;
+        $this->container['inbound_shipment_plan_request_items'] = isset($data['inbound_shipment_plan_request_items']) ? $data['inbound_shipment_plan_request_items'] : null;
     }
 
     /**
@@ -376,7 +376,7 @@ class CreateInboundShipmentPlanRequest implements ModelInterface, ArrayAccess, \
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -180,7 +180,7 @@ class ProductTypeList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['product_types'] = $data['product_types'] ?? null;
+        $this->container['product_types'] = isset($data['product_types']) ? $data['product_types'] : null;
     }
 
     /**
@@ -279,7 +279,7 @@ class ProductTypeList implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

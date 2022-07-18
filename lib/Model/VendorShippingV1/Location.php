@@ -187,9 +187,9 @@ class Location implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['location_code'] = $data['location_code'] ?? null;
-        $this->container['country_code'] = $data['country_code'] ?? null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['location_code'] = isset($data['location_code']) ? $data['location_code'] : null;
+        $this->container['country_code'] = isset($data['country_code']) ? $data['country_code'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class Location implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

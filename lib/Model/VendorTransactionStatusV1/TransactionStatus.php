@@ -176,7 +176,7 @@ class TransactionStatus implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['transaction_status'] = $data['transaction_status'] ?? null;
+        $this->container['transaction_status'] = isset($data['transaction_status']) ? $data['transaction_status'] : null;
     }
 
     /**
@@ -250,7 +250,7 @@ class TransactionStatus implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

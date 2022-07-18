@@ -182,8 +182,8 @@ class UpdatePackageDetails implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['scheduled_package_id'] = $data['scheduled_package_id'] ?? null;
-        $this->container['package_time_slot'] = $data['package_time_slot'] ?? null;
+        $this->container['scheduled_package_id'] = isset($data['scheduled_package_id']) ? $data['scheduled_package_id'] : null;
+        $this->container['package_time_slot'] = isset($data['package_time_slot']) ? $data['package_time_slot'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class UpdatePackageDetails implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

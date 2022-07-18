@@ -187,9 +187,9 @@ class BatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['uri'] = $data['uri'] ?? null;
-        $this->container['method'] = $data['method'] ?? null;
-        $this->container['headers'] = $data['headers'] ?? null;
+        $this->container['uri'] = isset($data['uri']) ? $data['uri'] : null;
+        $this->container['method'] = isset($data['method']) ? $data['method'] : null;
+        $this->container['headers'] = isset($data['headers']) ? $data['headers'] : null;
     }
 
     /**
@@ -314,7 +314,7 @@ class BatchRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

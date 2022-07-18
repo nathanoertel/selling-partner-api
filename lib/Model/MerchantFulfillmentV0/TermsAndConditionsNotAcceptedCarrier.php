@@ -177,7 +177,7 @@ class TermsAndConditionsNotAcceptedCarrier implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->container['carrier_name'] = $data['carrier_name'] ?? null;
+        $this->container['carrier_name'] = isset($data['carrier_name']) ? $data['carrier_name'] : null;
     }
 
     /**
@@ -254,7 +254,7 @@ class TermsAndConditionsNotAcceptedCarrier implements ModelInterface, ArrayAcces
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

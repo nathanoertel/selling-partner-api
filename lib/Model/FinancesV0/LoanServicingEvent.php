@@ -182,8 +182,8 @@ class LoanServicingEvent implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['loan_amount'] = $data['loan_amount'] ?? null;
-        $this->container['source_business_event_type'] = $data['source_business_event_type'] ?? null;
+        $this->container['loan_amount'] = isset($data['loan_amount']) ? $data['loan_amount'] : null;
+        $this->container['source_business_event_type'] = isset($data['source_business_event_type']) ? $data['source_business_event_type'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class LoanServicingEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -219,11 +219,11 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['purchase_order_number'] = $data['purchase_order_number'] ?? null;
-        $this->container['lot_number'] = $data['lot_number'] ?? null;
-        $this->container['expiry'] = $data['expiry'] ?? null;
-        $this->container['maximum_retail_price'] = $data['maximum_retail_price'] ?? null;
-        $this->container['handling_code'] = $data['handling_code'] ?? null;
+        $this->container['purchase_order_number'] = isset($data['purchase_order_number']) ? $data['purchase_order_number'] : null;
+        $this->container['lot_number'] = isset($data['lot_number']) ? $data['lot_number'] : null;
+        $this->container['expiry'] = isset($data['expiry']) ? $data['expiry'] : null;
+        $this->container['maximum_retail_price'] = isset($data['maximum_retail_price']) ? $data['maximum_retail_price'] : null;
+        $this->container['handling_code'] = isset($data['handling_code']) ? $data['handling_code'] : null;
     }
 
     /**
@@ -408,7 +408,7 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

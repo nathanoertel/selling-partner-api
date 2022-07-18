@@ -197,11 +197,11 @@ class GetFeatureSkuResult implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['feature_name'] = $data['feature_name'] ?? null;
-        $this->container['is_eligible'] = $data['is_eligible'] ?? null;
-        $this->container['ineligible_reasons'] = $data['ineligible_reasons'] ?? null;
-        $this->container['sku_info'] = $data['sku_info'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['feature_name'] = isset($data['feature_name']) ? $data['feature_name'] : null;
+        $this->container['is_eligible'] = isset($data['is_eligible']) ? $data['is_eligible'] : null;
+        $this->container['ineligible_reasons'] = isset($data['ineligible_reasons']) ? $data['ineligible_reasons'] : null;
+        $this->container['sku_info'] = isset($data['sku_info']) ? $data['sku_info'] : null;
     }
 
     /**
@@ -376,7 +376,7 @@ class GetFeatureSkuResult implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

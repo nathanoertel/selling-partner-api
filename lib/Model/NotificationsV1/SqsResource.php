@@ -177,7 +177,7 @@ class SqsResource implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['arn'] = $data['arn'] ?? null;
+        $this->container['arn'] = isset($data['arn']) ? $data['arn'] : null;
     }
 
     /**
@@ -269,7 +269,7 @@ class SqsResource implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

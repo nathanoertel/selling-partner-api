@@ -182,8 +182,8 @@ class ResearchingQuantity implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['total_researching_quantity'] = $data['total_researching_quantity'] ?? null;
-        $this->container['researching_quantity_breakdown'] = $data['researching_quantity_breakdown'] ?? null;
+        $this->container['total_researching_quantity'] = isset($data['total_researching_quantity']) ? $data['total_researching_quantity'] : null;
+        $this->container['researching_quantity_breakdown'] = isset($data['researching_quantity_breakdown']) ? $data['researching_quantity_breakdown'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class ResearchingQuantity implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

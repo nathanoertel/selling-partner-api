@@ -182,8 +182,8 @@ class ItemIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['identifier_type'] = $data['identifier_type'] ?? null;
-        $this->container['identifier'] = $data['identifier'] ?? null;
+        $this->container['identifier_type'] = isset($data['identifier_type']) ? $data['identifier_type'] : null;
+        $this->container['identifier'] = isset($data['identifier']) ? $data['identifier'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class ItemIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

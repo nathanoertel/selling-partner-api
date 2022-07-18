@@ -187,9 +187,9 @@ class OrderedQuantityDetails implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['updated_date'] = $data['updated_date'] ?? null;
-        $this->container['ordered_quantity'] = $data['ordered_quantity'] ?? null;
-        $this->container['cancelled_quantity'] = $data['cancelled_quantity'] ?? null;
+        $this->container['updated_date'] = isset($data['updated_date']) ? $data['updated_date'] : null;
+        $this->container['ordered_quantity'] = isset($data['ordered_quantity']) ? $data['ordered_quantity'] : null;
+        $this->container['cancelled_quantity'] = isset($data['cancelled_quantity']) ? $data['cancelled_quantity'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class OrderedQuantityDetails implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

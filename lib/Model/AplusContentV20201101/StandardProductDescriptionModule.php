@@ -177,7 +177,7 @@ class StandardProductDescriptionModule implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['body'] = $data['body'] ?? null;
+        $this->container['body'] = isset($data['body']) ? $data['body'] : null;
     }
 
     /**
@@ -254,7 +254,7 @@ class StandardProductDescriptionModule implements ModelInterface, ArrayAccess, \
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

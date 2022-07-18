@@ -182,8 +182,8 @@ class AplusPaginatedResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['warnings'] = $data['warnings'] ?? null;
-        $this->container['next_page_token'] = $data['next_page_token'] ?? null;
+        $this->container['warnings'] = isset($data['warnings']) ? $data['warnings'] : null;
+        $this->container['next_page_token'] = isset($data['next_page_token']) ? $data['next_page_token'] : null;
     }
 
     /**
@@ -291,7 +291,7 @@ class AplusPaginatedResponse implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

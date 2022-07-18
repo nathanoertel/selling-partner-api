@@ -187,9 +187,9 @@ class ImageComponent implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['upload_destination_id'] = $data['upload_destination_id'] ?? null;
-        $this->container['image_crop_specification'] = $data['image_crop_specification'] ?? null;
-        $this->container['alt_text'] = $data['alt_text'] ?? null;
+        $this->container['upload_destination_id'] = isset($data['upload_destination_id']) ? $data['upload_destination_id'] : null;
+        $this->container['image_crop_specification'] = isset($data['image_crop_specification']) ? $data['image_crop_specification'] : null;
+        $this->container['alt_text'] = isset($data['alt_text']) ? $data['alt_text'] : null;
     }
 
     /**
@@ -335,7 +335,7 @@ class ImageComponent implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

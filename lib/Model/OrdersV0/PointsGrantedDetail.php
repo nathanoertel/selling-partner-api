@@ -182,8 +182,8 @@ class PointsGrantedDetail implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['points_number'] = $data['points_number'] ?? null;
-        $this->container['points_monetary_value'] = $data['points_monetary_value'] ?? null;
+        $this->container['points_number'] = isset($data['points_number']) ? $data['points_number'] : null;
+        $this->container['points_monetary_value'] = isset($data['points_monetary_value']) ? $data['points_monetary_value'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class PointsGrantedDetail implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

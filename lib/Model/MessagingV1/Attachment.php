@@ -182,8 +182,8 @@ class Attachment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['upload_destination_id'] = $data['upload_destination_id'] ?? null;
-        $this->container['file_name'] = $data['file_name'] ?? null;
+        $this->container['upload_destination_id'] = isset($data['upload_destination_id']) ? $data['upload_destination_id'] : null;
+        $this->container['file_name'] = isset($data['file_name']) ? $data['file_name'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class Attachment implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

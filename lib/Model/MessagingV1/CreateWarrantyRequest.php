@@ -187,9 +187,9 @@ class CreateWarrantyRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['attachments'] = $data['attachments'] ?? null;
-        $this->container['coverage_start_date'] = $data['coverage_start_date'] ?? null;
-        $this->container['coverage_end_date'] = $data['coverage_end_date'] ?? null;
+        $this->container['attachments'] = isset($data['attachments']) ? $data['attachments'] : null;
+        $this->container['coverage_start_date'] = isset($data['coverage_start_date']) ? $data['coverage_start_date'] : null;
+        $this->container['coverage_end_date'] = isset($data['coverage_end_date']) ? $data['coverage_end_date'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class CreateWarrantyRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

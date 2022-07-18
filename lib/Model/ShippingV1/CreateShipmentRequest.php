@@ -192,10 +192,10 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['client_reference_id'] = $data['client_reference_id'] ?? null;
-        $this->container['ship_to'] = $data['ship_to'] ?? null;
-        $this->container['ship_from'] = $data['ship_from'] ?? null;
-        $this->container['containers'] = $data['containers'] ?? null;
+        $this->container['client_reference_id'] = isset($data['client_reference_id']) ? $data['client_reference_id'] : null;
+        $this->container['ship_to'] = isset($data['ship_to']) ? $data['ship_to'] : null;
+        $this->container['ship_from'] = isset($data['ship_from']) ? $data['ship_from'] : null;
+        $this->container['containers'] = isset($data['containers']) ? $data['containers'] : null;
     }
 
     /**
@@ -358,7 +358,7 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

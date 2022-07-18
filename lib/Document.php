@@ -35,8 +35,8 @@ class Document
      */
     public function __construct(
         object $documentInfo,
-        ?array $documentType = ReportType::__FEED_RESULT_REPORT,  // $documentType will be required in the next major version
-        ?Client $client = null
+        array $documentType = ReportType::__FEED_RESULT_REPORT,  // $documentType will be required in the next major version
+        Client $client = null
     ) {
         // Make sure $documentInfo is a valid type
         if (!(
@@ -69,10 +69,11 @@ class Document
         $this->url = $documentInfo->getUrl();
 
         if (method_exists($documentInfo, "getCompressionAlgorithm")) {
-            $this->compressionAlgo = $documentInfo->getCompressionAlgorithm() ?? null;
+            $val = $documentInfo->getCompressionAlgorithm();
+            $this->compressionAlgo = isset($val) ? $val : null;
         }
 
-        $this->client = $client ?? new Client();
+        $this->client = isset($client) ? $client : new Client();
     }
 
     /**

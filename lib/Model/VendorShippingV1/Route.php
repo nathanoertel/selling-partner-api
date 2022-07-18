@@ -177,7 +177,7 @@ class Route implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['stops'] = $data['stops'] ?? null;
+        $this->container['stops'] = isset($data['stops']) ? $data['stops'] : null;
     }
 
     /**
@@ -254,7 +254,7 @@ class Route implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

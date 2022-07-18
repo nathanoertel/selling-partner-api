@@ -182,8 +182,8 @@ class ItemSalesRanksByMarketplace implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['ranks'] = $data['ranks'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['ranks'] = isset($data['ranks']) ? $data['ranks'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class ItemSalesRanksByMarketplace implements ModelInterface, ArrayAccess, \JsonS
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -202,12 +202,12 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['carton_identifiers'] = $data['carton_identifiers'] ?? null;
-        $this->container['carton_sequence_number'] = $data['carton_sequence_number'] ?? null;
-        $this->container['dimensions'] = $data['dimensions'] ?? null;
-        $this->container['weight'] = $data['weight'] ?? null;
-        $this->container['tracking_number'] = $data['tracking_number'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['carton_identifiers'] = isset($data['carton_identifiers']) ? $data['carton_identifiers'] : null;
+        $this->container['carton_sequence_number'] = isset($data['carton_sequence_number']) ? $data['carton_sequence_number'] : null;
+        $this->container['dimensions'] = isset($data['dimensions']) ? $data['dimensions'] : null;
+        $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
+        $this->container['tracking_number'] = isset($data['tracking_number']) ? $data['tracking_number'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -402,7 +402,7 @@ class Carton implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

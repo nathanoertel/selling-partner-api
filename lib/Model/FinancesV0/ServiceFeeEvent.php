@@ -207,13 +207,13 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['fee_reason'] = $data['fee_reason'] ?? null;
-        $this->container['fee_list'] = $data['fee_list'] ?? null;
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['fn_sku'] = $data['fn_sku'] ?? null;
-        $this->container['fee_description'] = $data['fee_description'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['fee_reason'] = isset($data['fee_reason']) ? $data['fee_reason'] : null;
+        $this->container['fee_list'] = isset($data['fee_list']) ? $data['fee_list'] : null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['fn_sku'] = isset($data['fn_sku']) ? $data['fn_sku'] : null;
+        $this->container['fee_description'] = isset($data['fee_description']) ? $data['fee_description'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
     }
 
     /**
@@ -425,7 +425,7 @@ class ServiceFeeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

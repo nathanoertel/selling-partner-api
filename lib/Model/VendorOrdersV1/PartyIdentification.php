@@ -186,9 +186,9 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['party_id'] = $data['party_id'] ?? null;
-        $this->container['address'] = $data['address'] ?? null;
-        $this->container['tax_info'] = $data['tax_info'] ?? null;
+        $this->container['party_id'] = isset($data['party_id']) ? $data['party_id'] : null;
+        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['tax_info'] = isset($data['tax_info']) ? $data['tax_info'] : null;
     }
 
     /**
@@ -311,7 +311,7 @@ class PartyIdentification implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

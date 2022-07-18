@@ -192,10 +192,10 @@ class TransportHeader implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_id'] = $data['seller_id'] ?? null;
-        $this->container['shipment_id'] = $data['shipment_id'] ?? null;
-        $this->container['is_partnered'] = $data['is_partnered'] ?? null;
-        $this->container['shipment_type'] = $data['shipment_type'] ?? null;
+        $this->container['seller_id'] = isset($data['seller_id']) ? $data['seller_id'] : null;
+        $this->container['shipment_id'] = isset($data['shipment_id']) ? $data['shipment_id'] : null;
+        $this->container['is_partnered'] = isset($data['is_partnered']) ? $data['is_partnered'] : null;
+        $this->container['shipment_type'] = isset($data['shipment_type']) ? $data['shipment_type'] : null;
     }
 
     /**
@@ -350,7 +350,7 @@ class TransportHeader implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

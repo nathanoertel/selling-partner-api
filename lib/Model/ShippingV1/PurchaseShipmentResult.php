@@ -187,9 +187,9 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_id'] = $data['shipment_id'] ?? null;
-        $this->container['service_rate'] = $data['service_rate'] ?? null;
-        $this->container['label_results'] = $data['label_results'] ?? null;
+        $this->container['shipment_id'] = isset($data['shipment_id']) ? $data['shipment_id'] : null;
+        $this->container['service_rate'] = isset($data['service_rate']) ? $data['service_rate'] : null;
+        $this->container['label_results'] = isset($data['label_results']) ? $data['label_results'] : null;
     }
 
     /**
@@ -318,7 +318,7 @@ class PurchaseShipmentResult implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

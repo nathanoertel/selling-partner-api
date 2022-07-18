@@ -261,11 +261,11 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['method_of_payment'] = $data['method_of_payment'] ?? null;
-        $this->container['international_commercial_terms'] = $data['international_commercial_terms'] ?? null;
-        $this->container['port_of_delivery'] = $data['port_of_delivery'] ?? null;
-        $this->container['import_containers'] = $data['import_containers'] ?? null;
-        $this->container['shipping_instructions'] = $data['shipping_instructions'] ?? null;
+        $this->container['method_of_payment'] = isset($data['method_of_payment']) ? $data['method_of_payment'] : null;
+        $this->container['international_commercial_terms'] = isset($data['international_commercial_terms']) ? $data['international_commercial_terms'] : null;
+        $this->container['port_of_delivery'] = isset($data['port_of_delivery']) ? $data['port_of_delivery'] : null;
+        $this->container['import_containers'] = isset($data['import_containers']) ? $data['import_containers'] : null;
+        $this->container['shipping_instructions'] = isset($data['shipping_instructions']) ? $data['shipping_instructions'] : null;
     }
 
     /**
@@ -485,7 +485,7 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

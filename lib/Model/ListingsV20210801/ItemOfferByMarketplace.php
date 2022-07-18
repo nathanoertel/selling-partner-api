@@ -210,10 +210,10 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['offer_type'] = $data['offer_type'] ?? null;
-        $this->container['price'] = $data['price'] ?? null;
-        $this->container['points'] = $data['points'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['offer_type'] = isset($data['offer_type']) ? $data['offer_type'] : null;
+        $this->container['price'] = isset($data['price']) ? $data['price'] : null;
+        $this->container['points'] = isset($data['points']) ? $data['points'] : null;
     }
 
     /**
@@ -384,7 +384,7 @@ class ItemOfferByMarketplace implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -187,9 +187,9 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['company_legal_name'] = $data['company_legal_name'] ?? null;
-        $this->container['taxing_region'] = $data['taxing_region'] ?? null;
-        $this->container['tax_classifications'] = $data['tax_classifications'] ?? null;
+        $this->container['company_legal_name'] = isset($data['company_legal_name']) ? $data['company_legal_name'] : null;
+        $this->container['taxing_region'] = isset($data['taxing_region']) ? $data['taxing_region'] : null;
+        $this->container['tax_classifications'] = isset($data['tax_classifications']) ? $data['tax_classifications'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class MarketplaceTaxInfo implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

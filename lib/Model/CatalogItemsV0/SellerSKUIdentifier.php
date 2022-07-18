@@ -186,9 +186,9 @@ class SellerSKUIdentifier implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['seller_id'] = $data['seller_id'] ?? null;
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['seller_id'] = isset($data['seller_id']) ? $data['seller_id'] : null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
     }
 
     /**
@@ -317,7 +317,7 @@ class SellerSKUIdentifier implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

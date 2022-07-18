@@ -322,23 +322,23 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_identifier'] = $data['shipment_identifier'] ?? null;
-        $this->container['shipment_confirmation_type'] = $data['shipment_confirmation_type'] ?? null;
-        $this->container['shipment_type'] = $data['shipment_type'] ?? null;
-        $this->container['shipment_structure'] = $data['shipment_structure'] ?? null;
-        $this->container['transportation_details'] = $data['transportation_details'] ?? null;
-        $this->container['amazon_reference_number'] = $data['amazon_reference_number'] ?? null;
-        $this->container['shipment_confirmation_date'] = $data['shipment_confirmation_date'] ?? null;
-        $this->container['shipped_date'] = $data['shipped_date'] ?? null;
-        $this->container['estimated_delivery_date'] = $data['estimated_delivery_date'] ?? null;
-        $this->container['selling_party'] = $data['selling_party'] ?? null;
-        $this->container['ship_from_party'] = $data['ship_from_party'] ?? null;
-        $this->container['ship_to_party'] = $data['ship_to_party'] ?? null;
-        $this->container['shipment_measurements'] = $data['shipment_measurements'] ?? null;
-        $this->container['import_details'] = $data['import_details'] ?? null;
-        $this->container['shipped_items'] = $data['shipped_items'] ?? null;
-        $this->container['cartons'] = $data['cartons'] ?? null;
-        $this->container['pallets'] = $data['pallets'] ?? null;
+        $this->container['shipment_identifier'] = isset($data['shipment_identifier']) ? $data['shipment_identifier'] : null;
+        $this->container['shipment_confirmation_type'] = isset($data['shipment_confirmation_type']) ? $data['shipment_confirmation_type'] : null;
+        $this->container['shipment_type'] = isset($data['shipment_type']) ? $data['shipment_type'] : null;
+        $this->container['shipment_structure'] = isset($data['shipment_structure']) ? $data['shipment_structure'] : null;
+        $this->container['transportation_details'] = isset($data['transportation_details']) ? $data['transportation_details'] : null;
+        $this->container['amazon_reference_number'] = isset($data['amazon_reference_number']) ? $data['amazon_reference_number'] : null;
+        $this->container['shipment_confirmation_date'] = isset($data['shipment_confirmation_date']) ? $data['shipment_confirmation_date'] : null;
+        $this->container['shipped_date'] = isset($data['shipped_date']) ? $data['shipped_date'] : null;
+        $this->container['estimated_delivery_date'] = isset($data['estimated_delivery_date']) ? $data['estimated_delivery_date'] : null;
+        $this->container['selling_party'] = isset($data['selling_party']) ? $data['selling_party'] : null;
+        $this->container['ship_from_party'] = isset($data['ship_from_party']) ? $data['ship_from_party'] : null;
+        $this->container['ship_to_party'] = isset($data['ship_to_party']) ? $data['ship_to_party'] : null;
+        $this->container['shipment_measurements'] = isset($data['shipment_measurements']) ? $data['shipment_measurements'] : null;
+        $this->container['import_details'] = isset($data['import_details']) ? $data['import_details'] : null;
+        $this->container['shipped_items'] = isset($data['shipped_items']) ? $data['shipped_items'] : null;
+        $this->container['cartons'] = isset($data['cartons']) ? $data['cartons'] : null;
+        $this->container['pallets'] = isset($data['pallets']) ? $data['pallets'] : null;
     }
 
     /**
@@ -858,7 +858,7 @@ class ShipmentConfirmation implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -192,10 +192,10 @@ class ItemIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['item_condition'] = $data['item_condition'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['item_condition'] = isset($data['item_condition']) ? $data['item_condition'] : null;
     }
 
     /**
@@ -343,7 +343,7 @@ class ItemIdentifier implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

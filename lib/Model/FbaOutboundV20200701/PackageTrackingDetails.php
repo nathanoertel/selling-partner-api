@@ -241,20 +241,20 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['package_number'] = $data['package_number'] ?? null;
-        $this->container['tracking_number'] = $data['tracking_number'] ?? null;
-        $this->container['customer_tracking_link'] = $data['customer_tracking_link'] ?? null;
-        $this->container['carrier_code'] = $data['carrier_code'] ?? null;
-        $this->container['carrier_phone_number'] = $data['carrier_phone_number'] ?? null;
-        $this->container['carrier_url'] = $data['carrier_url'] ?? null;
-        $this->container['ship_date'] = $data['ship_date'] ?? null;
-        $this->container['estimated_arrival_date'] = $data['estimated_arrival_date'] ?? null;
-        $this->container['ship_to_address'] = $data['ship_to_address'] ?? null;
-        $this->container['current_status'] = $data['current_status'] ?? null;
-        $this->container['current_status_description'] = $data['current_status_description'] ?? null;
-        $this->container['signed_for_by'] = $data['signed_for_by'] ?? null;
-        $this->container['additional_location_info'] = $data['additional_location_info'] ?? null;
-        $this->container['tracking_events'] = $data['tracking_events'] ?? null;
+        $this->container['package_number'] = isset($data['package_number']) ? $data['package_number'] : null;
+        $this->container['tracking_number'] = isset($data['tracking_number']) ? $data['tracking_number'] : null;
+        $this->container['customer_tracking_link'] = isset($data['customer_tracking_link']) ? $data['customer_tracking_link'] : null;
+        $this->container['carrier_code'] = isset($data['carrier_code']) ? $data['carrier_code'] : null;
+        $this->container['carrier_phone_number'] = isset($data['carrier_phone_number']) ? $data['carrier_phone_number'] : null;
+        $this->container['carrier_url'] = isset($data['carrier_url']) ? $data['carrier_url'] : null;
+        $this->container['ship_date'] = isset($data['ship_date']) ? $data['ship_date'] : null;
+        $this->container['estimated_arrival_date'] = isset($data['estimated_arrival_date']) ? $data['estimated_arrival_date'] : null;
+        $this->container['ship_to_address'] = isset($data['ship_to_address']) ? $data['ship_to_address'] : null;
+        $this->container['current_status'] = isset($data['current_status']) ? $data['current_status'] : null;
+        $this->container['current_status_description'] = isset($data['current_status_description']) ? $data['current_status_description'] : null;
+        $this->container['signed_for_by'] = isset($data['signed_for_by']) ? $data['signed_for_by'] : null;
+        $this->container['additional_location_info'] = isset($data['additional_location_info']) ? $data['additional_location_info'] : null;
+        $this->container['tracking_events'] = isset($data['tracking_events']) ? $data['tracking_events'] : null;
     }
 
     /**
@@ -630,7 +630,7 @@ class PackageTrackingDetails implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

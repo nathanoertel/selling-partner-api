@@ -197,11 +197,11 @@ class RejectedShippingService implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['carrier_name'] = $data['carrier_name'] ?? null;
-        $this->container['shipping_service_name'] = $data['shipping_service_name'] ?? null;
-        $this->container['shipping_service_id'] = $data['shipping_service_id'] ?? null;
-        $this->container['rejection_reason_code'] = $data['rejection_reason_code'] ?? null;
-        $this->container['rejection_reason_message'] = $data['rejection_reason_message'] ?? null;
+        $this->container['carrier_name'] = isset($data['carrier_name']) ? $data['carrier_name'] : null;
+        $this->container['shipping_service_name'] = isset($data['shipping_service_name']) ? $data['shipping_service_name'] : null;
+        $this->container['shipping_service_id'] = isset($data['shipping_service_id']) ? $data['shipping_service_id'] : null;
+        $this->container['rejection_reason_code'] = isset($data['rejection_reason_code']) ? $data['rejection_reason_code'] : null;
+        $this->container['rejection_reason_message'] = isset($data['rejection_reason_message']) ? $data['rejection_reason_message'] : null;
     }
 
     /**
@@ -379,7 +379,7 @@ class RejectedShippingService implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

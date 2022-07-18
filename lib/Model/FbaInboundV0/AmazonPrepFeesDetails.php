@@ -182,8 +182,8 @@ class AmazonPrepFeesDetails implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['prep_instruction'] = $data['prep_instruction'] ?? null;
-        $this->container['fee_per_unit'] = $data['fee_per_unit'] ?? null;
+        $this->container['prep_instruction'] = isset($data['prep_instruction']) ? $data['prep_instruction'] : null;
+        $this->container['fee_per_unit'] = isset($data['fee_per_unit']) ? $data['fee_per_unit'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class AmazonPrepFeesDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

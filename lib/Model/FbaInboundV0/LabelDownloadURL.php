@@ -176,7 +176,7 @@ class LabelDownloadURL implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['download_url'] = $data['download_url'] ?? null;
+        $this->container['download_url'] = isset($data['download_url']) ? $data['download_url'] : null;
     }
 
     /**
@@ -250,7 +250,7 @@ class LabelDownloadURL implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

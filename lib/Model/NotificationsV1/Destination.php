@@ -187,9 +187,9 @@ class Destination implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['destination_id'] = $data['destination_id'] ?? null;
-        $this->container['resource'] = $data['resource'] ?? null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['destination_id'] = isset($data['destination_id']) ? $data['destination_id'] : null;
+        $this->container['resource'] = isset($data['resource']) ? $data['resource'] : null;
     }
 
     /**
@@ -326,7 +326,7 @@ class Destination implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

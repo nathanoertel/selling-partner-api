@@ -192,10 +192,10 @@ class GetFeatureInventoryResult implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['feature_name'] = $data['feature_name'] ?? null;
-        $this->container['next_token'] = $data['next_token'] ?? null;
-        $this->container['feature_skus'] = $data['feature_skus'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['feature_name'] = isset($data['feature_name']) ? $data['feature_name'] : null;
+        $this->container['next_token'] = isset($data['next_token']) ? $data['next_token'] : null;
+        $this->container['feature_skus'] = isset($data['feature_skus']) ? $data['feature_skus'] : null;
     }
 
     /**
@@ -344,7 +344,7 @@ class GetFeatureInventoryResult implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

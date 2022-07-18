@@ -215,11 +215,11 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipped_date'] = $data['shipped_date'] ?? null;
-        $this->container['shipment_status'] = $data['shipment_status'] ?? null;
-        $this->container['is_priority_shipment'] = $data['is_priority_shipment'] ?? null;
-        $this->container['vendor_order_number'] = $data['vendor_order_number'] ?? null;
-        $this->container['estimated_delivery_date'] = $data['estimated_delivery_date'] ?? null;
+        $this->container['shipped_date'] = isset($data['shipped_date']) ? $data['shipped_date'] : null;
+        $this->container['shipment_status'] = isset($data['shipment_status']) ? $data['shipment_status'] : null;
+        $this->container['is_priority_shipment'] = isset($data['is_priority_shipment']) ? $data['is_priority_shipment'] : null;
+        $this->container['vendor_order_number'] = isset($data['vendor_order_number']) ? $data['vendor_order_number'] : null;
+        $this->container['estimated_delivery_date'] = isset($data['estimated_delivery_date']) ? $data['estimated_delivery_date'] : null;
     }
 
     /**
@@ -410,7 +410,7 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

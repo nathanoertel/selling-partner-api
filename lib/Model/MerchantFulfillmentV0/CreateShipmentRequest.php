@@ -202,12 +202,12 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_request_details'] = $data['shipment_request_details'] ?? null;
-        $this->container['shipping_service_id'] = $data['shipping_service_id'] ?? null;
-        $this->container['shipping_service_offer_id'] = $data['shipping_service_offer_id'] ?? null;
-        $this->container['hazmat_type'] = $data['hazmat_type'] ?? null;
-        $this->container['label_format_option'] = $data['label_format_option'] ?? null;
-        $this->container['shipment_level_seller_inputs_list'] = $data['shipment_level_seller_inputs_list'] ?? null;
+        $this->container['shipment_request_details'] = isset($data['shipment_request_details']) ? $data['shipment_request_details'] : null;
+        $this->container['shipping_service_id'] = isset($data['shipping_service_id']) ? $data['shipping_service_id'] : null;
+        $this->container['shipping_service_offer_id'] = isset($data['shipping_service_offer_id']) ? $data['shipping_service_offer_id'] : null;
+        $this->container['hazmat_type'] = isset($data['hazmat_type']) ? $data['hazmat_type'] : null;
+        $this->container['label_format_option'] = isset($data['label_format_option']) ? $data['label_format_option'] : null;
+        $this->container['shipment_level_seller_inputs_list'] = isset($data['shipment_level_seller_inputs_list']) ? $data['shipment_level_seller_inputs_list'] : null;
     }
 
     /**
@@ -402,7 +402,7 @@ class CreateShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

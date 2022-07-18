@@ -252,22 +252,22 @@ class FulfillmentOrder implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_fulfillment_order_id'] = $data['seller_fulfillment_order_id'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['displayable_order_id'] = $data['displayable_order_id'] ?? null;
-        $this->container['displayable_order_date'] = $data['displayable_order_date'] ?? null;
-        $this->container['displayable_order_comment'] = $data['displayable_order_comment'] ?? null;
-        $this->container['shipping_speed_category'] = $data['shipping_speed_category'] ?? null;
-        $this->container['delivery_window'] = $data['delivery_window'] ?? null;
-        $this->container['destination_address'] = $data['destination_address'] ?? null;
-        $this->container['fulfillment_action'] = $data['fulfillment_action'] ?? null;
-        $this->container['fulfillment_policy'] = $data['fulfillment_policy'] ?? null;
-        $this->container['cod_settings'] = $data['cod_settings'] ?? null;
-        $this->container['received_date'] = $data['received_date'] ?? null;
-        $this->container['fulfillment_order_status'] = $data['fulfillment_order_status'] ?? null;
-        $this->container['status_updated_date'] = $data['status_updated_date'] ?? null;
-        $this->container['notification_emails'] = $data['notification_emails'] ?? null;
-        $this->container['feature_constraints'] = $data['feature_constraints'] ?? null;
+        $this->container['seller_fulfillment_order_id'] = isset($data['seller_fulfillment_order_id']) ? $data['seller_fulfillment_order_id'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['displayable_order_id'] = isset($data['displayable_order_id']) ? $data['displayable_order_id'] : null;
+        $this->container['displayable_order_date'] = isset($data['displayable_order_date']) ? $data['displayable_order_date'] : null;
+        $this->container['displayable_order_comment'] = isset($data['displayable_order_comment']) ? $data['displayable_order_comment'] : null;
+        $this->container['shipping_speed_category'] = isset($data['shipping_speed_category']) ? $data['shipping_speed_category'] : null;
+        $this->container['delivery_window'] = isset($data['delivery_window']) ? $data['delivery_window'] : null;
+        $this->container['destination_address'] = isset($data['destination_address']) ? $data['destination_address'] : null;
+        $this->container['fulfillment_action'] = isset($data['fulfillment_action']) ? $data['fulfillment_action'] : null;
+        $this->container['fulfillment_policy'] = isset($data['fulfillment_policy']) ? $data['fulfillment_policy'] : null;
+        $this->container['cod_settings'] = isset($data['cod_settings']) ? $data['cod_settings'] : null;
+        $this->container['received_date'] = isset($data['received_date']) ? $data['received_date'] : null;
+        $this->container['fulfillment_order_status'] = isset($data['fulfillment_order_status']) ? $data['fulfillment_order_status'] : null;
+        $this->container['status_updated_date'] = isset($data['status_updated_date']) ? $data['status_updated_date'] : null;
+        $this->container['notification_emails'] = isset($data['notification_emails']) ? $data['notification_emails'] : null;
+        $this->container['feature_constraints'] = isset($data['feature_constraints']) ? $data['feature_constraints'] : null;
     }
 
     /**
@@ -716,7 +716,7 @@ class FulfillmentOrder implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

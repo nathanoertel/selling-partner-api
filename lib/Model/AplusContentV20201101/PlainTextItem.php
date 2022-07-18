@@ -182,8 +182,8 @@ class PlainTextItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['position'] = $data['position'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
+        $this->container['position'] = isset($data['position']) ? $data['position'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
     }
 
     /**
@@ -310,7 +310,7 @@ class PlainTextItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

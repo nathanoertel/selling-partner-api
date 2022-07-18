@@ -182,8 +182,8 @@ class BuyerRequestedCancel implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['is_buyer_requested_cancel'] = $data['is_buyer_requested_cancel'] ?? null;
-        $this->container['buyer_cancel_reason'] = $data['buyer_cancel_reason'] ?? null;
+        $this->container['is_buyer_requested_cancel'] = isset($data['is_buyer_requested_cancel']) ? $data['is_buyer_requested_cancel'] : null;
+        $this->container['buyer_cancel_reason'] = isset($data['buyer_cancel_reason']) ? $data['buyer_cancel_reason'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class BuyerRequestedCancel implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

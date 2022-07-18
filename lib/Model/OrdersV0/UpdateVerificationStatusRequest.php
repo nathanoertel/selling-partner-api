@@ -177,7 +177,7 @@ class UpdateVerificationStatusRequest implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['regulated_order_verification_status'] = $data['regulated_order_verification_status'] ?? null;
+        $this->container['regulated_order_verification_status'] = isset($data['regulated_order_verification_status']) ? $data['regulated_order_verification_status'] : null;
     }
 
     /**
@@ -254,7 +254,7 @@ class UpdateVerificationStatusRequest implements ModelInterface, ArrayAccess, \J
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

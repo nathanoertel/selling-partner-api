@@ -215,9 +215,9 @@ class ChargeDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['charge_amount'] = $data['charge_amount'] ?? null;
-        $this->container['tax_details'] = $data['tax_details'] ?? null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['charge_amount'] = isset($data['charge_amount']) ? $data['charge_amount'] : null;
+        $this->container['tax_details'] = isset($data['tax_details']) ? $data['tax_details'] : null;
     }
 
     /**
@@ -362,7 +362,7 @@ class ChargeDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

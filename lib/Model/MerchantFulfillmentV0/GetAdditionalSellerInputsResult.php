@@ -182,8 +182,8 @@ class GetAdditionalSellerInputsResult implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_level_fields'] = $data['shipment_level_fields'] ?? null;
-        $this->container['item_level_fields_list'] = $data['item_level_fields_list'] ?? null;
+        $this->container['shipment_level_fields'] = isset($data['shipment_level_fields']) ? $data['shipment_level_fields'] : null;
+        $this->container['item_level_fields_list'] = isset($data['item_level_fields_list']) ? $data['item_level_fields_list'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class GetAdditionalSellerInputsResult implements ModelInterface, ArrayAccess, \J
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

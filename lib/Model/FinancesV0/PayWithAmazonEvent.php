@@ -222,16 +222,16 @@ class PayWithAmazonEvent implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_order_id'] = $data['seller_order_id'] ?? null;
-        $this->container['transaction_posted_date'] = $data['transaction_posted_date'] ?? null;
-        $this->container['business_object_type'] = $data['business_object_type'] ?? null;
-        $this->container['sales_channel'] = $data['sales_channel'] ?? null;
-        $this->container['charge'] = $data['charge'] ?? null;
-        $this->container['fee_list'] = $data['fee_list'] ?? null;
-        $this->container['payment_amount_type'] = $data['payment_amount_type'] ?? null;
-        $this->container['amount_description'] = $data['amount_description'] ?? null;
-        $this->container['fulfillment_channel'] = $data['fulfillment_channel'] ?? null;
-        $this->container['store_name'] = $data['store_name'] ?? null;
+        $this->container['seller_order_id'] = isset($data['seller_order_id']) ? $data['seller_order_id'] : null;
+        $this->container['transaction_posted_date'] = isset($data['transaction_posted_date']) ? $data['transaction_posted_date'] : null;
+        $this->container['business_object_type'] = isset($data['business_object_type']) ? $data['business_object_type'] : null;
+        $this->container['sales_channel'] = isset($data['sales_channel']) ? $data['sales_channel'] : null;
+        $this->container['charge'] = isset($data['charge']) ? $data['charge'] : null;
+        $this->container['fee_list'] = isset($data['fee_list']) ? $data['fee_list'] : null;
+        $this->container['payment_amount_type'] = isset($data['payment_amount_type']) ? $data['payment_amount_type'] : null;
+        $this->container['amount_description'] = isset($data['amount_description']) ? $data['amount_description'] : null;
+        $this->container['fulfillment_channel'] = isset($data['fulfillment_channel']) ? $data['fulfillment_channel'] : null;
+        $this->container['store_name'] = isset($data['store_name']) ? $data['store_name'] : null;
     }
 
     /**
@@ -512,7 +512,7 @@ class PayWithAmazonEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -177,7 +177,7 @@ class CreateFulfillmentReturnRequest implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -254,7 +254,7 @@ class CreateFulfillmentReturnRequest implements ModelInterface, ArrayAccess, \Js
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

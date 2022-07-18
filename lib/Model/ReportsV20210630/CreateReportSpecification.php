@@ -197,11 +197,11 @@ class CreateReportSpecification implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['report_options'] = $data['report_options'] ?? null;
-        $this->container['report_type'] = $data['report_type'] ?? null;
-        $this->container['data_start_time'] = $data['data_start_time'] ?? null;
-        $this->container['data_end_time'] = $data['data_end_time'] ?? null;
-        $this->container['marketplace_ids'] = $data['marketplace_ids'] ?? null;
+        $this->container['report_options'] = isset($data['report_options']) ? $data['report_options'] : null;
+        $this->container['report_type'] = isset($data['report_type']) ? $data['report_type'] : null;
+        $this->container['data_start_time'] = isset($data['data_start_time']) ? $data['data_start_time'] : null;
+        $this->container['data_end_time'] = isset($data['data_end_time']) ? $data['data_end_time'] : null;
+        $this->container['marketplace_ids'] = isset($data['marketplace_ids']) ? $data['marketplace_ids'] : null;
     }
 
     /**
@@ -388,7 +388,7 @@ class CreateReportSpecification implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

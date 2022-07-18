@@ -187,9 +187,9 @@ class OrderItemsBuyerInfoList implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['order_items'] = $data['order_items'] ?? null;
-        $this->container['next_token'] = $data['next_token'] ?? null;
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
+        $this->container['order_items'] = isset($data['order_items']) ? $data['order_items'] : null;
+        $this->container['next_token'] = isset($data['next_token']) ? $data['next_token'] : null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
     }
 
     /**
@@ -315,7 +315,7 @@ class OrderItemsBuyerInfoList implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

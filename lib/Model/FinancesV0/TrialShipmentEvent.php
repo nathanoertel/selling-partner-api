@@ -197,11 +197,11 @@ class TrialShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['financial_event_group_id'] = $data['financial_event_group_id'] ?? null;
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['sku'] = $data['sku'] ?? null;
-        $this->container['fee_list'] = $data['fee_list'] ?? null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['financial_event_group_id'] = isset($data['financial_event_group_id']) ? $data['financial_event_group_id'] : null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['sku'] = isset($data['sku']) ? $data['sku'] : null;
+        $this->container['fee_list'] = isset($data['fee_list']) ? $data['fee_list'] : null;
     }
 
     /**
@@ -367,7 +367,7 @@ class TrialShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

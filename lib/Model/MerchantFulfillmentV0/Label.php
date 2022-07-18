@@ -197,11 +197,11 @@ class Label implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['custom_text_for_label'] = $data['custom_text_for_label'] ?? null;
-        $this->container['dimensions'] = $data['dimensions'] ?? null;
-        $this->container['file_contents'] = $data['file_contents'] ?? null;
-        $this->container['label_format'] = $data['label_format'] ?? null;
-        $this->container['standard_id_for_label'] = $data['standard_id_for_label'] ?? null;
+        $this->container['custom_text_for_label'] = isset($data['custom_text_for_label']) ? $data['custom_text_for_label'] : null;
+        $this->container['dimensions'] = isset($data['dimensions']) ? $data['dimensions'] : null;
+        $this->container['file_contents'] = isset($data['file_contents']) ? $data['file_contents'] : null;
+        $this->container['label_format'] = isset($data['label_format']) ? $data['label_format'] : null;
+        $this->container['standard_id_for_label'] = isset($data['standard_id_for_label']) ? $data['standard_id_for_label'] : null;
     }
 
     /**
@@ -381,7 +381,7 @@ class Label implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

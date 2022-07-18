@@ -207,9 +207,9 @@ class ListingsItemPutRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['product_type'] = $data['product_type'] ?? null;
-        $this->container['requirements'] = $data['requirements'] ?? null;
-        $this->container['attributes'] = $data['attributes'] ?? null;
+        $this->container['product_type'] = isset($data['product_type']) ? $data['product_type'] : null;
+        $this->container['requirements'] = isset($data['requirements']) ? $data['requirements'] : null;
+        $this->container['attributes'] = isset($data['attributes']) ? $data['attributes'] : null;
     }
 
     /**
@@ -354,7 +354,7 @@ class ListingsItemPutRequest implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

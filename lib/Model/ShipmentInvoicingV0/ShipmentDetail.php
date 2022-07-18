@@ -242,20 +242,20 @@ class ShipmentDetail implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['warehouse_id'] = $data['warehouse_id'] ?? null;
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['amazon_shipment_id'] = $data['amazon_shipment_id'] ?? null;
-        $this->container['purchase_date'] = $data['purchase_date'] ?? null;
-        $this->container['shipping_address'] = $data['shipping_address'] ?? null;
-        $this->container['payment_method_details'] = $data['payment_method_details'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['seller_id'] = $data['seller_id'] ?? null;
-        $this->container['buyer_name'] = $data['buyer_name'] ?? null;
-        $this->container['buyer_county'] = $data['buyer_county'] ?? null;
-        $this->container['buyer_tax_info'] = $data['buyer_tax_info'] ?? null;
-        $this->container['marketplace_tax_info'] = $data['marketplace_tax_info'] ?? null;
-        $this->container['seller_display_name'] = $data['seller_display_name'] ?? null;
-        $this->container['shipment_items'] = $data['shipment_items'] ?? null;
+        $this->container['warehouse_id'] = isset($data['warehouse_id']) ? $data['warehouse_id'] : null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['amazon_shipment_id'] = isset($data['amazon_shipment_id']) ? $data['amazon_shipment_id'] : null;
+        $this->container['purchase_date'] = isset($data['purchase_date']) ? $data['purchase_date'] : null;
+        $this->container['shipping_address'] = isset($data['shipping_address']) ? $data['shipping_address'] : null;
+        $this->container['payment_method_details'] = isset($data['payment_method_details']) ? $data['payment_method_details'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['seller_id'] = isset($data['seller_id']) ? $data['seller_id'] : null;
+        $this->container['buyer_name'] = isset($data['buyer_name']) ? $data['buyer_name'] : null;
+        $this->container['buyer_county'] = isset($data['buyer_county']) ? $data['buyer_county'] : null;
+        $this->container['buyer_tax_info'] = isset($data['buyer_tax_info']) ? $data['buyer_tax_info'] : null;
+        $this->container['marketplace_tax_info'] = isset($data['marketplace_tax_info']) ? $data['marketplace_tax_info'] : null;
+        $this->container['seller_display_name'] = isset($data['seller_display_name']) ? $data['seller_display_name'] : null;
+        $this->container['shipment_items'] = isset($data['shipment_items']) ? $data['shipment_items'] : null;
     }
 
     /**
@@ -628,7 +628,7 @@ class ShipmentDetail implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

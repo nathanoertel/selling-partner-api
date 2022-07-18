@@ -187,9 +187,9 @@ class ScheduledDeliveryShipment implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['scheduled_delivery_service_type'] = $data['scheduled_delivery_service_type'] ?? null;
-        $this->container['earliest_nominated_delivery_date'] = $data['earliest_nominated_delivery_date'] ?? null;
-        $this->container['latest_nominated_delivery_date'] = $data['latest_nominated_delivery_date'] ?? null;
+        $this->container['scheduled_delivery_service_type'] = isset($data['scheduled_delivery_service_type']) ? $data['scheduled_delivery_service_type'] : null;
+        $this->container['earliest_nominated_delivery_date'] = isset($data['earliest_nominated_delivery_date']) ? $data['earliest_nominated_delivery_date'] : null;
+        $this->container['latest_nominated_delivery_date'] = isset($data['latest_nominated_delivery_date']) ? $data['latest_nominated_delivery_date'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class ScheduledDeliveryShipment implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

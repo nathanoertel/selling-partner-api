@@ -182,8 +182,8 @@ class AppointmentTime implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['start_time'] = $data['start_time'] ?? null;
-        $this->container['duration_in_minutes'] = $data['duration_in_minutes'] ?? null;
+        $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+        $this->container['duration_in_minutes'] = isset($data['duration_in_minutes']) ? $data['duration_in_minutes'] : null;
     }
 
     /**
@@ -295,7 +295,7 @@ class AppointmentTime implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

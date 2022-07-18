@@ -176,7 +176,7 @@ class CommonTransportResult implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['transport_result'] = $data['transport_result'] ?? null;
+        $this->container['transport_result'] = isset($data['transport_result']) ? $data['transport_result'] : null;
     }
 
     /**
@@ -250,7 +250,7 @@ class CommonTransportResult implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

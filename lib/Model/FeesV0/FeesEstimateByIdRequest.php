@@ -187,9 +187,9 @@ class FeesEstimateByIdRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['fees_estimate_request'] = $data['fees_estimate_request'] ?? null;
-        $this->container['id_type'] = $data['id_type'] ?? null;
-        $this->container['id_value'] = $data['id_value'] ?? null;
+        $this->container['fees_estimate_request'] = isset($data['fees_estimate_request']) ? $data['fees_estimate_request'] : null;
+        $this->container['id_type'] = isset($data['id_type']) ? $data['id_type'] : null;
+        $this->container['id_value'] = isset($data['id_value']) ? $data['id_value'] : null;
     }
 
     /**
@@ -315,7 +315,7 @@ class FeesEstimateByIdRequest implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

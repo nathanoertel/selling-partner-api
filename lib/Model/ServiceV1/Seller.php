@@ -177,7 +177,7 @@ class Seller implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_id'] = $data['seller_id'] ?? null;
+        $this->container['seller_id'] = isset($data['seller_id']) ? $data['seller_id'] : null;
     }
 
     /**
@@ -260,7 +260,7 @@ class Seller implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

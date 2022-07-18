@@ -187,9 +187,9 @@ class AcknowledgementStatusDetails implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['acknowledgement_date'] = $data['acknowledgement_date'] ?? null;
-        $this->container['accepted_quantity'] = $data['accepted_quantity'] ?? null;
-        $this->container['rejected_quantity'] = $data['rejected_quantity'] ?? null;
+        $this->container['acknowledgement_date'] = isset($data['acknowledgement_date']) ? $data['acknowledgement_date'] : null;
+        $this->container['accepted_quantity'] = isset($data['accepted_quantity']) ? $data['accepted_quantity'] : null;
+        $this->container['rejected_quantity'] = isset($data['rejected_quantity']) ? $data['rejected_quantity'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class AcknowledgementStatusDetails implements ModelInterface, ArrayAccess, \Json
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

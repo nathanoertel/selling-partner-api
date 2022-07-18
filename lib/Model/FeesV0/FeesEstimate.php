@@ -187,9 +187,9 @@ class FeesEstimate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['time_of_fees_estimation'] = $data['time_of_fees_estimation'] ?? null;
-        $this->container['total_fees_estimate'] = $data['total_fees_estimate'] ?? null;
-        $this->container['fee_detail_list'] = $data['fee_detail_list'] ?? null;
+        $this->container['time_of_fees_estimation'] = isset($data['time_of_fees_estimation']) ? $data['time_of_fees_estimation'] : null;
+        $this->container['total_fees_estimate'] = isset($data['total_fees_estimate']) ? $data['total_fees_estimate'] : null;
+        $this->container['fee_detail_list'] = isset($data['fee_detail_list']) ? $data['fee_detail_list'] : null;
     }
 
     /**
@@ -312,7 +312,7 @@ class FeesEstimate implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

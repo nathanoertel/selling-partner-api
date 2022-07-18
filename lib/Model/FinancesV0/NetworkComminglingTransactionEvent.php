@@ -212,14 +212,14 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['transaction_type'] = $data['transaction_type'] ?? null;
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['net_co_transaction_id'] = $data['net_co_transaction_id'] ?? null;
-        $this->container['swap_reason'] = $data['swap_reason'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['tax_exclusive_amount'] = $data['tax_exclusive_amount'] ?? null;
-        $this->container['tax_amount'] = $data['tax_amount'] ?? null;
+        $this->container['transaction_type'] = isset($data['transaction_type']) ? $data['transaction_type'] : null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['net_co_transaction_id'] = isset($data['net_co_transaction_id']) ? $data['net_co_transaction_id'] : null;
+        $this->container['swap_reason'] = isset($data['swap_reason']) ? $data['swap_reason'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['tax_exclusive_amount'] = isset($data['tax_exclusive_amount']) ? $data['tax_exclusive_amount'] : null;
+        $this->container['tax_amount'] = isset($data['tax_amount']) ? $data['tax_amount'] : null;
     }
 
     /**
@@ -454,7 +454,7 @@ class NetworkComminglingTransactionEvent implements ModelInterface, ArrayAccess,
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

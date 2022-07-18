@@ -176,7 +176,7 @@ class ListingOffersRequestParamsAllOf implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
     }
 
     /**
@@ -252,7 +252,7 @@ class ListingOffersRequestParamsAllOf implements ModelInterface, ArrayAccess, \J
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

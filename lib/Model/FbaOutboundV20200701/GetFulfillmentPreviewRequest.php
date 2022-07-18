@@ -207,13 +207,13 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['address'] = $data['address'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
-        $this->container['shipping_speed_categories'] = $data['shipping_speed_categories'] ?? null;
-        $this->container['include_cod_fulfillment_preview'] = $data['include_cod_fulfillment_preview'] ?? null;
-        $this->container['include_delivery_windows'] = $data['include_delivery_windows'] ?? null;
-        $this->container['feature_constraints'] = $data['feature_constraints'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['address'] = isset($data['address']) ? $data['address'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
+        $this->container['shipping_speed_categories'] = isset($data['shipping_speed_categories']) ? $data['shipping_speed_categories'] : null;
+        $this->container['include_cod_fulfillment_preview'] = isset($data['include_cod_fulfillment_preview']) ? $data['include_cod_fulfillment_preview'] : null;
+        $this->container['include_delivery_windows'] = isset($data['include_delivery_windows']) ? $data['include_delivery_windows'] : null;
+        $this->container['feature_constraints'] = isset($data['feature_constraints']) ? $data['feature_constraints'] : null;
     }
 
     /**
@@ -431,7 +431,7 @@ class GetFulfillmentPreviewRequest implements ModelInterface, ArrayAccess, \Json
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

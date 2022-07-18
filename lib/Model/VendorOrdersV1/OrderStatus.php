@@ -225,13 +225,13 @@ class OrderStatus implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['purchase_order_number'] = $data['purchase_order_number'] ?? null;
-        $this->container['purchase_order_status'] = $data['purchase_order_status'] ?? null;
-        $this->container['purchase_order_date'] = $data['purchase_order_date'] ?? null;
-        $this->container['last_updated_date'] = $data['last_updated_date'] ?? null;
-        $this->container['selling_party'] = $data['selling_party'] ?? null;
-        $this->container['ship_to_party'] = $data['ship_to_party'] ?? null;
-        $this->container['item_status'] = $data['item_status'] ?? null;
+        $this->container['purchase_order_number'] = isset($data['purchase_order_number']) ? $data['purchase_order_number'] : null;
+        $this->container['purchase_order_status'] = isset($data['purchase_order_status']) ? $data['purchase_order_status'] : null;
+        $this->container['purchase_order_date'] = isset($data['purchase_order_date']) ? $data['purchase_order_date'] : null;
+        $this->container['last_updated_date'] = isset($data['last_updated_date']) ? $data['last_updated_date'] : null;
+        $this->container['selling_party'] = isset($data['selling_party']) ? $data['selling_party'] : null;
+        $this->container['ship_to_party'] = isset($data['ship_to_party']) ? $data['ship_to_party'] : null;
+        $this->container['item_status'] = isset($data['item_status']) ? $data['item_status'] : null;
     }
 
     /**
@@ -480,7 +480,7 @@ class OrderStatus implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

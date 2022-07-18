@@ -177,7 +177,7 @@ class GenerateOrderScenarioRequest implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(array $data = null)
     {
-        $this->container['orders'] = $data['orders'] ?? null;
+        $this->container['orders'] = isset($data['orders']) ? $data['orders'] : null;
     }
 
     /**
@@ -251,7 +251,7 @@ class GenerateOrderScenarioRequest implements ModelInterface, ArrayAccess, \Json
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

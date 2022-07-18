@@ -187,9 +187,9 @@ class ContentRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['content_reference_key'] = $data['content_reference_key'] ?? null;
-        $this->container['content_metadata'] = $data['content_metadata'] ?? null;
-        $this->container['content_document'] = $data['content_document'] ?? null;
+        $this->container['content_reference_key'] = isset($data['content_reference_key']) ? $data['content_reference_key'] : null;
+        $this->container['content_metadata'] = isset($data['content_metadata']) ? $data['content_metadata'] : null;
+        $this->container['content_document'] = isset($data['content_document']) ? $data['content_document'] : null;
     }
 
     /**
@@ -321,7 +321,7 @@ class ContentRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

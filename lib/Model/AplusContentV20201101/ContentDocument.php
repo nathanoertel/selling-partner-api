@@ -197,11 +197,11 @@ class ContentDocument implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['content_type'] = $data['content_type'] ?? null;
-        $this->container['content_sub_type'] = $data['content_sub_type'] ?? null;
-        $this->container['locale'] = $data['locale'] ?? null;
-        $this->container['content_module_list'] = $data['content_module_list'] ?? null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
+        $this->container['content_sub_type'] = isset($data['content_sub_type']) ? $data['content_sub_type'] : null;
+        $this->container['locale'] = isset($data['locale']) ? $data['locale'] : null;
+        $this->container['content_module_list'] = isset($data['content_module_list']) ? $data['content_module_list'] : null;
     }
 
     /**
@@ -418,7 +418,7 @@ class ContentDocument implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

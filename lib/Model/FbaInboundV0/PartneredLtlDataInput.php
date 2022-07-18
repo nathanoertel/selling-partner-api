@@ -207,13 +207,13 @@ class PartneredLtlDataInput implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['contact'] = $data['contact'] ?? null;
-        $this->container['box_count'] = $data['box_count'] ?? null;
-        $this->container['seller_freight_class'] = $data['seller_freight_class'] ?? null;
-        $this->container['freight_ready_date'] = $data['freight_ready_date'] ?? null;
-        $this->container['pallet_list'] = $data['pallet_list'] ?? null;
-        $this->container['total_weight'] = $data['total_weight'] ?? null;
-        $this->container['seller_declared_value'] = $data['seller_declared_value'] ?? null;
+        $this->container['contact'] = isset($data['contact']) ? $data['contact'] : null;
+        $this->container['box_count'] = isset($data['box_count']) ? $data['box_count'] : null;
+        $this->container['seller_freight_class'] = isset($data['seller_freight_class']) ? $data['seller_freight_class'] : null;
+        $this->container['freight_ready_date'] = isset($data['freight_ready_date']) ? $data['freight_ready_date'] : null;
+        $this->container['pallet_list'] = isset($data['pallet_list']) ? $data['pallet_list'] : null;
+        $this->container['total_weight'] = isset($data['total_weight']) ? $data['total_weight'] : null;
+        $this->container['seller_declared_value'] = isset($data['seller_declared_value']) ? $data['seller_declared_value'] : null;
     }
 
     /**
@@ -425,7 +425,7 @@ class PartneredLtlDataInput implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

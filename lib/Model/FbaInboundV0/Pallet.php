@@ -187,9 +187,9 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['dimensions'] = $data['dimensions'] ?? null;
-        $this->container['weight'] = $data['weight'] ?? null;
-        $this->container['is_stacked'] = $data['is_stacked'] ?? null;
+        $this->container['dimensions'] = isset($data['dimensions']) ? $data['dimensions'] : null;
+        $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
+        $this->container['is_stacked'] = isset($data['is_stacked']) ? $data['is_stacked'] : null;
     }
 
     /**
@@ -315,7 +315,7 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

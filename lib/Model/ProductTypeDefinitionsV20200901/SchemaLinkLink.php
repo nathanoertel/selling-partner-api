@@ -198,8 +198,8 @@ class SchemaLinkLink implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['resource'] = $data['resource'] ?? null;
-        $this->container['verb'] = $data['verb'] ?? null;
+        $this->container['resource'] = isset($data['resource']) ? $data['resource'] : null;
+        $this->container['verb'] = isset($data['verb']) ? $data['verb'] : null;
     }
 
     /**
@@ -321,7 +321,7 @@ class SchemaLinkLink implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

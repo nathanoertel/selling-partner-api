@@ -200,8 +200,8 @@ class TaxRegistrationDetails implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['tax_registration_type'] = $data['tax_registration_type'] ?? null;
-        $this->container['tax_registration_number'] = $data['tax_registration_number'] ?? null;
+        $this->container['tax_registration_type'] = isset($data['tax_registration_type']) ? $data['tax_registration_type'] : null;
+        $this->container['tax_registration_number'] = isset($data['tax_registration_number']) ? $data['tax_registration_number'] : null;
     }
 
     /**
@@ -323,7 +323,7 @@ class TaxRegistrationDetails implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -512,52 +512,52 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['seller_order_id'] = $data['seller_order_id'] ?? null;
-        $this->container['purchase_date'] = $data['purchase_date'] ?? null;
-        $this->container['last_update_date'] = $data['last_update_date'] ?? null;
-        $this->container['order_status'] = $data['order_status'] ?? null;
-        $this->container['fulfillment_channel'] = $data['fulfillment_channel'] ?? null;
-        $this->container['sales_channel'] = $data['sales_channel'] ?? null;
-        $this->container['order_channel'] = $data['order_channel'] ?? null;
-        $this->container['ship_service_level'] = $data['ship_service_level'] ?? null;
-        $this->container['order_total'] = $data['order_total'] ?? null;
-        $this->container['number_of_items_shipped'] = $data['number_of_items_shipped'] ?? null;
-        $this->container['number_of_items_unshipped'] = $data['number_of_items_unshipped'] ?? null;
-        $this->container['payment_execution_detail'] = $data['payment_execution_detail'] ?? null;
-        $this->container['payment_method'] = $data['payment_method'] ?? null;
-        $this->container['payment_method_details'] = $data['payment_method_details'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['shipment_service_level_category'] = $data['shipment_service_level_category'] ?? null;
-        $this->container['easy_ship_shipment_status'] = $data['easy_ship_shipment_status'] ?? null;
-        $this->container['cba_displayable_shipping_label'] = $data['cba_displayable_shipping_label'] ?? null;
-        $this->container['order_type'] = $data['order_type'] ?? null;
-        $this->container['earliest_ship_date'] = $data['earliest_ship_date'] ?? null;
-        $this->container['latest_ship_date'] = $data['latest_ship_date'] ?? null;
-        $this->container['earliest_delivery_date'] = $data['earliest_delivery_date'] ?? null;
-        $this->container['latest_delivery_date'] = $data['latest_delivery_date'] ?? null;
-        $this->container['is_business_order'] = $data['is_business_order'] ?? null;
-        $this->container['is_prime'] = $data['is_prime'] ?? null;
-        $this->container['is_premium_order'] = $data['is_premium_order'] ?? null;
-        $this->container['is_global_express_enabled'] = $data['is_global_express_enabled'] ?? null;
-        $this->container['replaced_order_id'] = $data['replaced_order_id'] ?? null;
-        $this->container['is_replacement_order'] = $data['is_replacement_order'] ?? null;
-        $this->container['promise_response_due_date'] = $data['promise_response_due_date'] ?? null;
-        $this->container['is_estimated_ship_date_set'] = $data['is_estimated_ship_date_set'] ?? null;
-        $this->container['is_sold_by_ab'] = $data['is_sold_by_ab'] ?? null;
-        $this->container['is_iba'] = $data['is_iba'] ?? null;
-        $this->container['default_ship_from_location_address'] = $data['default_ship_from_location_address'] ?? null;
-        $this->container['buyer_invoice_preference'] = $data['buyer_invoice_preference'] ?? null;
-        $this->container['buyer_tax_information'] = $data['buyer_tax_information'] ?? null;
-        $this->container['fulfillment_instruction'] = $data['fulfillment_instruction'] ?? null;
-        $this->container['is_ispu'] = $data['is_ispu'] ?? null;
-        $this->container['is_access_point_order'] = $data['is_access_point_order'] ?? null;
-        $this->container['marketplace_tax_info'] = $data['marketplace_tax_info'] ?? null;
-        $this->container['seller_display_name'] = $data['seller_display_name'] ?? null;
-        $this->container['shipping_address'] = $data['shipping_address'] ?? null;
-        $this->container['buyer_info'] = $data['buyer_info'] ?? null;
-        $this->container['automated_shipping_settings'] = $data['automated_shipping_settings'] ?? null;
-        $this->container['has_regulated_items'] = $data['has_regulated_items'] ?? null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['seller_order_id'] = isset($data['seller_order_id']) ? $data['seller_order_id'] : null;
+        $this->container['purchase_date'] = isset($data['purchase_date']) ? $data['purchase_date'] : null;
+        $this->container['last_update_date'] = isset($data['last_update_date']) ? $data['last_update_date'] : null;
+        $this->container['order_status'] = isset($data['order_status']) ? $data['order_status'] : null;
+        $this->container['fulfillment_channel'] = isset($data['fulfillment_channel']) ? $data['fulfillment_channel'] : null;
+        $this->container['sales_channel'] = isset($data['sales_channel']) ? $data['sales_channel'] : null;
+        $this->container['order_channel'] = isset($data['order_channel']) ? $data['order_channel'] : null;
+        $this->container['ship_service_level'] = isset($data['ship_service_level']) ? $data['ship_service_level'] : null;
+        $this->container['order_total'] = isset($data['order_total']) ? $data['order_total'] : null;
+        $this->container['number_of_items_shipped'] = isset($data['number_of_items_shipped']) ? $data['number_of_items_shipped'] : null;
+        $this->container['number_of_items_unshipped'] = isset($data['number_of_items_unshipped']) ? $data['number_of_items_unshipped'] : null;
+        $this->container['payment_execution_detail'] = isset($data['payment_execution_detail']) ? $data['payment_execution_detail'] : null;
+        $this->container['payment_method'] = isset($data['payment_method']) ? $data['payment_method'] : null;
+        $this->container['payment_method_details'] = isset($data['payment_method_details']) ? $data['payment_method_details'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['shipment_service_level_category'] = isset($data['shipment_service_level_category']) ? $data['shipment_service_level_category'] : null;
+        $this->container['easy_ship_shipment_status'] = isset($data['easy_ship_shipment_status']) ? $data['easy_ship_shipment_status'] : null;
+        $this->container['cba_displayable_shipping_label'] = isset($data['cba_displayable_shipping_label']) ? $data['cba_displayable_shipping_label'] : null;
+        $this->container['order_type'] = isset($data['order_type']) ? $data['order_type'] : null;
+        $this->container['earliest_ship_date'] = isset($data['earliest_ship_date']) ? $data['earliest_ship_date'] : null;
+        $this->container['latest_ship_date'] = isset($data['latest_ship_date']) ? $data['latest_ship_date'] : null;
+        $this->container['earliest_delivery_date'] = isset($data['earliest_delivery_date']) ? $data['earliest_delivery_date'] : null;
+        $this->container['latest_delivery_date'] = isset($data['latest_delivery_date']) ? $data['latest_delivery_date'] : null;
+        $this->container['is_business_order'] = isset($data['is_business_order']) ? $data['is_business_order'] : null;
+        $this->container['is_prime'] = isset($data['is_prime']) ? $data['is_prime'] : null;
+        $this->container['is_premium_order'] = isset($data['is_premium_order']) ? $data['is_premium_order'] : null;
+        $this->container['is_global_express_enabled'] = isset($data['is_global_express_enabled']) ? $data['is_global_express_enabled'] : null;
+        $this->container['replaced_order_id'] = isset($data['replaced_order_id']) ? $data['replaced_order_id'] : null;
+        $this->container['is_replacement_order'] = isset($data['is_replacement_order']) ? $data['is_replacement_order'] : null;
+        $this->container['promise_response_due_date'] = isset($data['promise_response_due_date']) ? $data['promise_response_due_date'] : null;
+        $this->container['is_estimated_ship_date_set'] = isset($data['is_estimated_ship_date_set']) ? $data['is_estimated_ship_date_set'] : null;
+        $this->container['is_sold_by_ab'] = isset($data['is_sold_by_ab']) ? $data['is_sold_by_ab'] : null;
+        $this->container['is_iba'] = isset($data['is_iba']) ? $data['is_iba'] : null;
+        $this->container['default_ship_from_location_address'] = isset($data['default_ship_from_location_address']) ? $data['default_ship_from_location_address'] : null;
+        $this->container['buyer_invoice_preference'] = isset($data['buyer_invoice_preference']) ? $data['buyer_invoice_preference'] : null;
+        $this->container['buyer_tax_information'] = isset($data['buyer_tax_information']) ? $data['buyer_tax_information'] : null;
+        $this->container['fulfillment_instruction'] = isset($data['fulfillment_instruction']) ? $data['fulfillment_instruction'] : null;
+        $this->container['is_ispu'] = isset($data['is_ispu']) ? $data['is_ispu'] : null;
+        $this->container['is_access_point_order'] = isset($data['is_access_point_order']) ? $data['is_access_point_order'] : null;
+        $this->container['marketplace_tax_info'] = isset($data['marketplace_tax_info']) ? $data['marketplace_tax_info'] : null;
+        $this->container['seller_display_name'] = isset($data['seller_display_name']) ? $data['seller_display_name'] : null;
+        $this->container['shipping_address'] = isset($data['shipping_address']) ? $data['shipping_address'] : null;
+        $this->container['buyer_info'] = isset($data['buyer_info']) ? $data['buyer_info'] : null;
+        $this->container['automated_shipping_settings'] = isset($data['automated_shipping_settings']) ? $data['automated_shipping_settings'] : null;
+        $this->container['has_regulated_items'] = isset($data['has_regulated_items']) ? $data['has_regulated_items'] : null;
     }
 
     /**
@@ -1773,7 +1773,7 @@ class Order implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

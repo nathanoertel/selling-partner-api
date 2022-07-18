@@ -212,14 +212,14 @@ class FeesEstimateIdentifier implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['seller_id'] = $data['seller_id'] ?? null;
-        $this->container['id_type'] = $data['id_type'] ?? null;
-        $this->container['id_value'] = $data['id_value'] ?? null;
-        $this->container['is_amazon_fulfilled'] = $data['is_amazon_fulfilled'] ?? null;
-        $this->container['price_to_estimate_fees'] = $data['price_to_estimate_fees'] ?? null;
-        $this->container['seller_input_identifier'] = $data['seller_input_identifier'] ?? null;
-        $this->container['optional_fulfillment_program'] = $data['optional_fulfillment_program'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['seller_id'] = isset($data['seller_id']) ? $data['seller_id'] : null;
+        $this->container['id_type'] = isset($data['id_type']) ? $data['id_type'] : null;
+        $this->container['id_value'] = isset($data['id_value']) ? $data['id_value'] : null;
+        $this->container['is_amazon_fulfilled'] = isset($data['is_amazon_fulfilled']) ? $data['is_amazon_fulfilled'] : null;
+        $this->container['price_to_estimate_fees'] = isset($data['price_to_estimate_fees']) ? $data['price_to_estimate_fees'] : null;
+        $this->container['seller_input_identifier'] = isset($data['seller_input_identifier']) ? $data['seller_input_identifier'] : null;
+        $this->container['optional_fulfillment_program'] = isset($data['optional_fulfillment_program']) ? $data['optional_fulfillment_program'] : null;
     }
 
     /**
@@ -454,7 +454,7 @@ class FeesEstimateIdentifier implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

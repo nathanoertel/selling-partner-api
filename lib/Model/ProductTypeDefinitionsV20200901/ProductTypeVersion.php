@@ -187,9 +187,9 @@ class ProductTypeVersion implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['version'] = $data['version'] ?? null;
-        $this->container['latest'] = $data['latest'] ?? null;
-        $this->container['release_candidate'] = $data['release_candidate'] ?? null;
+        $this->container['version'] = isset($data['version']) ? $data['version'] : null;
+        $this->container['latest'] = isset($data['latest']) ? $data['latest'] : null;
+        $this->container['release_candidate'] = isset($data['release_candidate']) ? $data['release_candidate'] : null;
     }
 
     /**
@@ -315,7 +315,7 @@ class ProductTypeVersion implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

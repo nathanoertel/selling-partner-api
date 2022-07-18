@@ -192,10 +192,10 @@ class PurchaseLabelsResult implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_id'] = $data['shipment_id'] ?? null;
-        $this->container['client_reference_id'] = $data['client_reference_id'] ?? null;
-        $this->container['accepted_rate'] = $data['accepted_rate'] ?? null;
-        $this->container['label_results'] = $data['label_results'] ?? null;
+        $this->container['shipment_id'] = isset($data['shipment_id']) ? $data['shipment_id'] : null;
+        $this->container['client_reference_id'] = isset($data['client_reference_id']) ? $data['client_reference_id'] : null;
+        $this->container['accepted_rate'] = isset($data['accepted_rate']) ? $data['accepted_rate'] : null;
+        $this->container['label_results'] = isset($data['label_results']) ? $data['label_results'] : null;
     }
 
     /**
@@ -355,7 +355,7 @@ class PurchaseLabelsResult implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

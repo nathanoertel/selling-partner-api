@@ -249,18 +249,18 @@ class Container implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['container_type'] = $data['container_type'] ?? null;
-        $this->container['container_identifier'] = $data['container_identifier'] ?? null;
-        $this->container['tracking_number'] = $data['tracking_number'] ?? null;
-        $this->container['manifest_id'] = $data['manifest_id'] ?? null;
-        $this->container['manifest_date'] = $data['manifest_date'] ?? null;
-        $this->container['ship_method'] = $data['ship_method'] ?? null;
-        $this->container['scac_code'] = $data['scac_code'] ?? null;
-        $this->container['carrier'] = $data['carrier'] ?? null;
-        $this->container['container_sequence_number'] = $data['container_sequence_number'] ?? null;
-        $this->container['dimensions'] = $data['dimensions'] ?? null;
-        $this->container['weight'] = $data['weight'] ?? null;
-        $this->container['packed_items'] = $data['packed_items'] ?? null;
+        $this->container['container_type'] = isset($data['container_type']) ? $data['container_type'] : null;
+        $this->container['container_identifier'] = isset($data['container_identifier']) ? $data['container_identifier'] : null;
+        $this->container['tracking_number'] = isset($data['tracking_number']) ? $data['tracking_number'] : null;
+        $this->container['manifest_id'] = isset($data['manifest_id']) ? $data['manifest_id'] : null;
+        $this->container['manifest_date'] = isset($data['manifest_date']) ? $data['manifest_date'] : null;
+        $this->container['ship_method'] = isset($data['ship_method']) ? $data['ship_method'] : null;
+        $this->container['scac_code'] = isset($data['scac_code']) ? $data['scac_code'] : null;
+        $this->container['carrier'] = isset($data['carrier']) ? $data['carrier'] : null;
+        $this->container['container_sequence_number'] = isset($data['container_sequence_number']) ? $data['container_sequence_number'] : null;
+        $this->container['dimensions'] = isset($data['dimensions']) ? $data['dimensions'] : null;
+        $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
+        $this->container['packed_items'] = isset($data['packed_items']) ? $data['packed_items'] : null;
     }
 
     /**
@@ -615,7 +615,7 @@ class Container implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -186,9 +186,9 @@ class Expiry implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['manufacturer_date'] = $data['manufacturer_date'] ?? null;
-        $this->container['expiry_date'] = $data['expiry_date'] ?? null;
-        $this->container['expiry_after_duration'] = $data['expiry_after_duration'] ?? null;
+        $this->container['manufacturer_date'] = isset($data['manufacturer_date']) ? $data['manufacturer_date'] : null;
+        $this->container['expiry_date'] = isset($data['expiry_date']) ? $data['expiry_date'] : null;
+        $this->container['expiry_after_duration'] = isset($data['expiry_after_duration']) ? $data['expiry_after_duration'] : null;
     }
 
     /**
@@ -308,7 +308,7 @@ class Expiry implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -197,11 +197,11 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['safet_claim_id'] = $data['safet_claim_id'] ?? null;
-        $this->container['reimbursed_amount'] = $data['reimbursed_amount'] ?? null;
-        $this->container['reason_code'] = $data['reason_code'] ?? null;
-        $this->container['safet_reimbursement_item_list'] = $data['safet_reimbursement_item_list'] ?? null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['safet_claim_id'] = isset($data['safet_claim_id']) ? $data['safet_claim_id'] : null;
+        $this->container['reimbursed_amount'] = isset($data['reimbursed_amount']) ? $data['reimbursed_amount'] : null;
+        $this->container['reason_code'] = isset($data['reason_code']) ? $data['reason_code'] : null;
+        $this->container['safet_reimbursement_item_list'] = isset($data['safet_reimbursement_item_list']) ? $data['safet_reimbursement_item_list'] : null;
     }
 
     /**
@@ -367,7 +367,7 @@ class SAFETReimbursementEvent implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

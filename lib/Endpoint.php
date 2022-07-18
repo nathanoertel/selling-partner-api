@@ -50,7 +50,7 @@ class Endpoint
      *
      * @link https://docs.developer.amazonservices.com/en_US/dev_guide/DG_Endpoints.html
      */
-    public static function getByMarketplaceId(string $marketplace_id, bool $sandbox = false) {
+    public static function getByMarketplaceId(string $marketplace_id, $sandbox = false) {
         $map = [
             // North America.
             // Brazil.

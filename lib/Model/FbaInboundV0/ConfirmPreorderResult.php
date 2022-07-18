@@ -181,8 +181,8 @@ class ConfirmPreorderResult implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['confirmed_need_by_date'] = $data['confirmed_need_by_date'] ?? null;
-        $this->container['confirmed_fulfillable_date'] = $data['confirmed_fulfillable_date'] ?? null;
+        $this->container['confirmed_need_by_date'] = isset($data['confirmed_need_by_date']) ? $data['confirmed_need_by_date'] : null;
+        $this->container['confirmed_fulfillable_date'] = isset($data['confirmed_fulfillable_date']) ? $data['confirmed_fulfillable_date'] : null;
     }
 
     /**
@@ -279,7 +279,7 @@ class ConfirmPreorderResult implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

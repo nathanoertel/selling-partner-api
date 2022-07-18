@@ -45,7 +45,7 @@ class FileType
     const APPLICATION_PDF = 'application/pdf';
     const APPLICATION_ZPL = 'application/zpl';
     const IMAGE_PNG = 'image/png';
-    const EMPTY = '';
+    const TYPE_EMPTY = '';
     
     /**
      * Gets allowable values of the enum
@@ -57,7 +57,7 @@ class FileType
             self::APPLICATION_PDF,
             self::APPLICATION_ZPL,
             self::IMAGE_PNG,
-            self::EMPTY,
+            self::TYPE_EMPTY,
         ];
     }
 }

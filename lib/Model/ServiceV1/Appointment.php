@@ -222,12 +222,12 @@ class Appointment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['appointment_id'] = $data['appointment_id'] ?? null;
-        $this->container['appointment_status'] = $data['appointment_status'] ?? null;
-        $this->container['appointment_time'] = $data['appointment_time'] ?? null;
-        $this->container['assigned_technicians'] = $data['assigned_technicians'] ?? null;
-        $this->container['rescheduled_appointment_id'] = $data['rescheduled_appointment_id'] ?? null;
-        $this->container['poa'] = $data['poa'] ?? null;
+        $this->container['appointment_id'] = isset($data['appointment_id']) ? $data['appointment_id'] : null;
+        $this->container['appointment_status'] = isset($data['appointment_status']) ? $data['appointment_status'] : null;
+        $this->container['appointment_time'] = isset($data['appointment_time']) ? $data['appointment_time'] : null;
+        $this->container['assigned_technicians'] = isset($data['assigned_technicians']) ? $data['assigned_technicians'] : null;
+        $this->container['rescheduled_appointment_id'] = isset($data['rescheduled_appointment_id']) ? $data['rescheduled_appointment_id'] : null;
+        $this->container['poa'] = isset($data['poa']) ? $data['poa'] : null;
     }
 
     /**
@@ -474,7 +474,7 @@ class Appointment implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

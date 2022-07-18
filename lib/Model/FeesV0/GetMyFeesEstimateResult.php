@@ -177,7 +177,7 @@ class GetMyFeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['fees_estimate_result'] = $data['fees_estimate_result'] ?? null;
+        $this->container['fees_estimate_result'] = isset($data['fees_estimate_result']) ? $data['fees_estimate_result'] : null;
     }
 
     /**
@@ -251,7 +251,7 @@ class GetMyFeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

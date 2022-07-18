@@ -192,10 +192,10 @@ class ItemDisplayGroupSalesRank implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['website_display_group'] = $data['website_display_group'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['link'] = $data['link'] ?? null;
-        $this->container['rank'] = $data['rank'] ?? null;
+        $this->container['website_display_group'] = isset($data['website_display_group']) ? $data['website_display_group'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['link'] = isset($data['link']) ? $data['link'] : null;
+        $this->container['rank'] = isset($data['rank']) ? $data['rank'] : null;
     }
 
     /**
@@ -347,7 +347,7 @@ class ItemDisplayGroupSalesRank implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

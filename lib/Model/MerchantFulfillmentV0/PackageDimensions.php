@@ -197,11 +197,11 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['length'] = $data['length'] ?? null;
-        $this->container['width'] = $data['width'] ?? null;
-        $this->container['height'] = $data['height'] ?? null;
-        $this->container['unit'] = $data['unit'] ?? null;
-        $this->container['predefined_package_dimensions'] = $data['predefined_package_dimensions'] ?? null;
+        $this->container['length'] = isset($data['length']) ? $data['length'] : null;
+        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
+        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
+        $this->container['unit'] = isset($data['unit']) ? $data['unit'] : null;
+        $this->container['predefined_package_dimensions'] = isset($data['predefined_package_dimensions']) ? $data['predefined_package_dimensions'] : null;
     }
 
     /**
@@ -367,7 +367,7 @@ class PackageDimensions implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

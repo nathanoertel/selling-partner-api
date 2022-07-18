@@ -286,20 +286,20 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['purchase_order_date'] = $data['purchase_order_date'] ?? null;
-        $this->container['purchase_order_changed_date'] = $data['purchase_order_changed_date'] ?? null;
-        $this->container['purchase_order_state_changed_date'] = $data['purchase_order_state_changed_date'] ?? null;
-        $this->container['purchase_order_type'] = $data['purchase_order_type'] ?? null;
-        $this->container['import_details'] = $data['import_details'] ?? null;
-        $this->container['deal_code'] = $data['deal_code'] ?? null;
-        $this->container['payment_method'] = $data['payment_method'] ?? null;
-        $this->container['buying_party'] = $data['buying_party'] ?? null;
-        $this->container['selling_party'] = $data['selling_party'] ?? null;
-        $this->container['ship_to_party'] = $data['ship_to_party'] ?? null;
-        $this->container['bill_to_party'] = $data['bill_to_party'] ?? null;
-        $this->container['ship_window'] = $data['ship_window'] ?? null;
-        $this->container['delivery_window'] = $data['delivery_window'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['purchase_order_date'] = isset($data['purchase_order_date']) ? $data['purchase_order_date'] : null;
+        $this->container['purchase_order_changed_date'] = isset($data['purchase_order_changed_date']) ? $data['purchase_order_changed_date'] : null;
+        $this->container['purchase_order_state_changed_date'] = isset($data['purchase_order_state_changed_date']) ? $data['purchase_order_state_changed_date'] : null;
+        $this->container['purchase_order_type'] = isset($data['purchase_order_type']) ? $data['purchase_order_type'] : null;
+        $this->container['import_details'] = isset($data['import_details']) ? $data['import_details'] : null;
+        $this->container['deal_code'] = isset($data['deal_code']) ? $data['deal_code'] : null;
+        $this->container['payment_method'] = isset($data['payment_method']) ? $data['payment_method'] : null;
+        $this->container['buying_party'] = isset($data['buying_party']) ? $data['buying_party'] : null;
+        $this->container['selling_party'] = isset($data['selling_party']) ? $data['selling_party'] : null;
+        $this->container['ship_to_party'] = isset($data['ship_to_party']) ? $data['ship_to_party'] : null;
+        $this->container['bill_to_party'] = isset($data['bill_to_party']) ? $data['bill_to_party'] : null;
+        $this->container['ship_window'] = isset($data['ship_window']) ? $data['ship_window'] : null;
+        $this->container['delivery_window'] = isset($data['delivery_window']) ? $data['delivery_window'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -719,7 +719,7 @@ class OrderDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

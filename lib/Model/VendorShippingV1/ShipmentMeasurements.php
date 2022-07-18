@@ -192,10 +192,10 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['gross_shipment_weight'] = $data['gross_shipment_weight'] ?? null;
-        $this->container['shipment_volume'] = $data['shipment_volume'] ?? null;
-        $this->container['carton_count'] = $data['carton_count'] ?? null;
-        $this->container['pallet_count'] = $data['pallet_count'] ?? null;
+        $this->container['gross_shipment_weight'] = isset($data['gross_shipment_weight']) ? $data['gross_shipment_weight'] : null;
+        $this->container['shipment_volume'] = isset($data['shipment_volume']) ? $data['shipment_volume'] : null;
+        $this->container['carton_count'] = isset($data['carton_count']) ? $data['carton_count'] : null;
+        $this->container['pallet_count'] = isset($data['pallet_count']) ? $data['pallet_count'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class ShipmentMeasurements implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

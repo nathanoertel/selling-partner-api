@@ -181,8 +181,8 @@ class CartonReferenceDetails implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['carton_count'] = $data['carton_count'] ?? null;
-        $this->container['carton_reference_numbers'] = $data['carton_reference_numbers'] ?? null;
+        $this->container['carton_count'] = isset($data['carton_count']) ? $data['carton_count'] : null;
+        $this->container['carton_reference_numbers'] = isset($data['carton_reference_numbers']) ? $data['carton_reference_numbers'] : null;
     }
 
     /**
@@ -282,7 +282,7 @@ class CartonReferenceDetails implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

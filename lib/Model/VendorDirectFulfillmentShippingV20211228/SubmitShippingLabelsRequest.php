@@ -176,7 +176,7 @@ class SubmitShippingLabelsRequest implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipping_label_requests'] = $data['shipping_label_requests'] ?? null;
+        $this->container['shipping_label_requests'] = isset($data['shipping_label_requests']) ? $data['shipping_label_requests'] : null;
     }
 
     /**
@@ -250,7 +250,7 @@ class SubmitShippingLabelsRequest implements ModelInterface, ArrayAccess, \JsonS
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

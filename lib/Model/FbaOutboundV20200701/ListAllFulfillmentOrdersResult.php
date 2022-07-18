@@ -181,8 +181,8 @@ class ListAllFulfillmentOrdersResult implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['next_token'] = $data['next_token'] ?? null;
-        $this->container['fulfillment_orders'] = $data['fulfillment_orders'] ?? null;
+        $this->container['next_token'] = isset($data['next_token']) ? $data['next_token'] : null;
+        $this->container['fulfillment_orders'] = isset($data['fulfillment_orders']) ? $data['fulfillment_orders'] : null;
     }
 
     /**
@@ -279,7 +279,7 @@ class ListAllFulfillmentOrdersResult implements ModelInterface, ArrayAccess, \Js
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

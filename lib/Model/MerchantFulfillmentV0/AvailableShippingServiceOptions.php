@@ -182,8 +182,8 @@ class AvailableShippingServiceOptions implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['available_carrier_will_pick_up_options'] = $data['available_carrier_will_pick_up_options'] ?? null;
-        $this->container['available_delivery_experience_options'] = $data['available_delivery_experience_options'] ?? null;
+        $this->container['available_carrier_will_pick_up_options'] = isset($data['available_carrier_will_pick_up_options']) ? $data['available_carrier_will_pick_up_options'] : null;
+        $this->container['available_delivery_experience_options'] = isset($data['available_delivery_experience_options']) ? $data['available_delivery_experience_options'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class AvailableShippingServiceOptions implements ModelInterface, ArrayAccess, \J
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

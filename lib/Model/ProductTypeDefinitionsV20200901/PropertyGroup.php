@@ -187,9 +187,9 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['property_names'] = $data['property_names'] ?? null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['property_names'] = isset($data['property_names']) ? $data['property_names'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class PropertyGroup implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

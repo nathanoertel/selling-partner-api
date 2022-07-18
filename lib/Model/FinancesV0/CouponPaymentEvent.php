@@ -212,14 +212,14 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['coupon_id'] = $data['coupon_id'] ?? null;
-        $this->container['seller_coupon_description'] = $data['seller_coupon_description'] ?? null;
-        $this->container['clip_or_redemption_count'] = $data['clip_or_redemption_count'] ?? null;
-        $this->container['payment_event_id'] = $data['payment_event_id'] ?? null;
-        $this->container['fee_component'] = $data['fee_component'] ?? null;
-        $this->container['charge_component'] = $data['charge_component'] ?? null;
-        $this->container['total_amount'] = $data['total_amount'] ?? null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['coupon_id'] = isset($data['coupon_id']) ? $data['coupon_id'] : null;
+        $this->container['seller_coupon_description'] = isset($data['seller_coupon_description']) ? $data['seller_coupon_description'] : null;
+        $this->container['clip_or_redemption_count'] = isset($data['clip_or_redemption_count']) ? $data['clip_or_redemption_count'] : null;
+        $this->container['payment_event_id'] = isset($data['payment_event_id']) ? $data['payment_event_id'] : null;
+        $this->container['fee_component'] = isset($data['fee_component']) ? $data['fee_component'] : null;
+        $this->container['charge_component'] = isset($data['charge_component']) ? $data['charge_component'] : null;
+        $this->container['total_amount'] = isset($data['total_amount']) ? $data['total_amount'] : null;
     }
 
     /**
@@ -454,7 +454,7 @@ class CouponPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

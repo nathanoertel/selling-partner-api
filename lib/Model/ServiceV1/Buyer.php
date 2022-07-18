@@ -192,10 +192,10 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['buyer_id'] = $data['buyer_id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['phone'] = $data['phone'] ?? null;
-        $this->container['is_prime_member'] = $data['is_prime_member'] ?? null;
+        $this->container['buyer_id'] = isset($data['buyer_id']) ? $data['buyer_id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
+        $this->container['is_prime_member'] = isset($data['is_prime_member']) ? $data['is_prime_member'] : null;
     }
 
     /**
@@ -347,7 +347,7 @@ class Buyer implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

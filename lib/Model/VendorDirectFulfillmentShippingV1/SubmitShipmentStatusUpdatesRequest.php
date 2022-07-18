@@ -176,7 +176,7 @@ class SubmitShipmentStatusUpdatesRequest implements ModelInterface, ArrayAccess,
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_status_updates'] = $data['shipment_status_updates'] ?? null;
+        $this->container['shipment_status_updates'] = isset($data['shipment_status_updates']) ? $data['shipment_status_updates'] : null;
     }
 
     /**
@@ -259,7 +259,7 @@ class SubmitShipmentStatusUpdatesRequest implements ModelInterface, ArrayAccess,
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

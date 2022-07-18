@@ -187,9 +187,9 @@ class StandardImageTextBlock implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['headline'] = $data['headline'] ?? null;
-        $this->container['body'] = $data['body'] ?? null;
+        $this->container['image'] = isset($data['image']) ? $data['image'] : null;
+        $this->container['headline'] = isset($data['headline']) ? $data['headline'] : null;
+        $this->container['body'] = isset($data['body']) ? $data['body'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class StandardImageTextBlock implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

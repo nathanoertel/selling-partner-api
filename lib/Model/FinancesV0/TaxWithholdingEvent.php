@@ -192,10 +192,10 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['base_amount'] = $data['base_amount'] ?? null;
-        $this->container['withheld_amount'] = $data['withheld_amount'] ?? null;
-        $this->container['tax_withholding_period'] = $data['tax_withholding_period'] ?? null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['base_amount'] = isset($data['base_amount']) ? $data['base_amount'] : null;
+        $this->container['withheld_amount'] = isset($data['withheld_amount']) ? $data['withheld_amount'] : null;
+        $this->container['tax_withholding_period'] = isset($data['tax_withholding_period']) ? $data['tax_withholding_period'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class TaxWithholdingEvent implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

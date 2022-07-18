@@ -187,9 +187,9 @@ class InboundShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['inbound_shipment_header'] = $data['inbound_shipment_header'] ?? null;
-        $this->container['inbound_shipment_items'] = $data['inbound_shipment_items'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
+        $this->container['inbound_shipment_header'] = isset($data['inbound_shipment_header']) ? $data['inbound_shipment_header'] : null;
+        $this->container['inbound_shipment_items'] = isset($data['inbound_shipment_items']) ? $data['inbound_shipment_items'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
     }
 
     /**
@@ -318,7 +318,7 @@ class InboundShipmentRequest implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -237,19 +237,19 @@ class ShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['seller_order_id'] = $data['seller_order_id'] ?? null;
-        $this->container['marketplace_name'] = $data['marketplace_name'] ?? null;
-        $this->container['order_charge_list'] = $data['order_charge_list'] ?? null;
-        $this->container['order_charge_adjustment_list'] = $data['order_charge_adjustment_list'] ?? null;
-        $this->container['shipment_fee_list'] = $data['shipment_fee_list'] ?? null;
-        $this->container['shipment_fee_adjustment_list'] = $data['shipment_fee_adjustment_list'] ?? null;
-        $this->container['order_fee_list'] = $data['order_fee_list'] ?? null;
-        $this->container['order_fee_adjustment_list'] = $data['order_fee_adjustment_list'] ?? null;
-        $this->container['direct_payment_list'] = $data['direct_payment_list'] ?? null;
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['shipment_item_list'] = $data['shipment_item_list'] ?? null;
-        $this->container['shipment_item_adjustment_list'] = $data['shipment_item_adjustment_list'] ?? null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['seller_order_id'] = isset($data['seller_order_id']) ? $data['seller_order_id'] : null;
+        $this->container['marketplace_name'] = isset($data['marketplace_name']) ? $data['marketplace_name'] : null;
+        $this->container['order_charge_list'] = isset($data['order_charge_list']) ? $data['order_charge_list'] : null;
+        $this->container['order_charge_adjustment_list'] = isset($data['order_charge_adjustment_list']) ? $data['order_charge_adjustment_list'] : null;
+        $this->container['shipment_fee_list'] = isset($data['shipment_fee_list']) ? $data['shipment_fee_list'] : null;
+        $this->container['shipment_fee_adjustment_list'] = isset($data['shipment_fee_adjustment_list']) ? $data['shipment_fee_adjustment_list'] : null;
+        $this->container['order_fee_list'] = isset($data['order_fee_list']) ? $data['order_fee_list'] : null;
+        $this->container['order_fee_adjustment_list'] = isset($data['order_fee_adjustment_list']) ? $data['order_fee_adjustment_list'] : null;
+        $this->container['direct_payment_list'] = isset($data['direct_payment_list']) ? $data['direct_payment_list'] : null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['shipment_item_list'] = isset($data['shipment_item_list']) ? $data['shipment_item_list'] : null;
+        $this->container['shipment_item_adjustment_list'] = isset($data['shipment_item_adjustment_list']) ? $data['shipment_item_adjustment_list'] : null;
     }
 
     /**
@@ -599,7 +599,7 @@ class ShipmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -187,9 +187,9 @@ class QuantityDiscountPriceType implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['quantity_tier'] = $data['quantity_tier'] ?? null;
-        $this->container['quantity_discount_type'] = $data['quantity_discount_type'] ?? null;
-        $this->container['listing_price'] = $data['listing_price'] ?? null;
+        $this->container['quantity_tier'] = isset($data['quantity_tier']) ? $data['quantity_tier'] : null;
+        $this->container['quantity_discount_type'] = isset($data['quantity_discount_type']) ? $data['quantity_discount_type'] : null;
+        $this->container['listing_price'] = isset($data['listing_price']) ? $data['listing_price'] : null;
     }
 
     /**
@@ -317,7 +317,7 @@ class QuantityDiscountPriceType implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -177,7 +177,7 @@ class AggregationFilter implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['aggregation_settings'] = $data['aggregation_settings'] ?? null;
+        $this->container['aggregation_settings'] = isset($data['aggregation_settings']) ? $data['aggregation_settings'] : null;
     }
 
     /**
@@ -251,7 +251,7 @@ class AggregationFilter implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

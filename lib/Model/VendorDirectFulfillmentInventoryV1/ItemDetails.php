@@ -192,10 +192,10 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['buyer_product_identifier'] = $data['buyer_product_identifier'] ?? null;
-        $this->container['vendor_product_identifier'] = $data['vendor_product_identifier'] ?? null;
-        $this->container['available_quantity'] = $data['available_quantity'] ?? null;
-        $this->container['is_obsolete'] = $data['is_obsolete'] ?? null;
+        $this->container['buyer_product_identifier'] = isset($data['buyer_product_identifier']) ? $data['buyer_product_identifier'] : null;
+        $this->container['vendor_product_identifier'] = isset($data['vendor_product_identifier']) ? $data['vendor_product_identifier'] : null;
+        $this->container['available_quantity'] = isset($data['available_quantity']) ? $data['available_quantity'] : null;
+        $this->container['is_obsolete'] = isset($data['is_obsolete']) ? $data['is_obsolete'] : null;
     }
 
     /**
@@ -341,7 +341,7 @@ class ItemDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

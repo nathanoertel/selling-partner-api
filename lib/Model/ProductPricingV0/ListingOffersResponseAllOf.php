@@ -176,7 +176,7 @@ class ListingOffersResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['request'] = $data['request'] ?? null;
+        $this->container['request'] = isset($data['request']) ? $data['request'] : null;
     }
 
     /**
@@ -249,7 +249,7 @@ class ListingOffersResponseAllOf implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

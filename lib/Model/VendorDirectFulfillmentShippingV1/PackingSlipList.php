@@ -182,8 +182,8 @@ class PackingSlipList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['pagination'] = $data['pagination'] ?? null;
-        $this->container['packing_slips'] = $data['packing_slips'] ?? null;
+        $this->container['pagination'] = isset($data['pagination']) ? $data['pagination'] : null;
+        $this->container['packing_slips'] = isset($data['packing_slips']) ? $data['packing_slips'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class PackingSlipList implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -177,7 +177,7 @@ class CreateFeedDocumentSpecification implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['content_type'] = $data['content_type'] ?? null;
+        $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
     }
 
     /**
@@ -254,7 +254,7 @@ class CreateFeedDocumentSpecification implements ModelInterface, ArrayAccess, \J
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

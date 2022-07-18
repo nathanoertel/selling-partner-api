@@ -187,9 +187,9 @@ class PartneredEstimate implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['amount'] = $data['amount'] ?? null;
-        $this->container['confirm_deadline'] = $data['confirm_deadline'] ?? null;
-        $this->container['void_deadline'] = $data['void_deadline'] ?? null;
+        $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['confirm_deadline'] = isset($data['confirm_deadline']) ? $data['confirm_deadline'] : null;
+        $this->container['void_deadline'] = isset($data['void_deadline']) ? $data['void_deadline'] : null;
     }
 
     /**
@@ -312,7 +312,7 @@ class PartneredEstimate implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

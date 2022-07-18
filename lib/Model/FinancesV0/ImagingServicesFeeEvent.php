@@ -192,10 +192,10 @@ class ImagingServicesFeeEvent implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['imaging_request_billing_item_id'] = $data['imaging_request_billing_item_id'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['fee_list'] = $data['fee_list'] ?? null;
+        $this->container['imaging_request_billing_item_id'] = isset($data['imaging_request_billing_item_id']) ? $data['imaging_request_billing_item_id'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['fee_list'] = isset($data['fee_list']) ? $data['fee_list'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class ImagingServicesFeeEvent implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -216,15 +216,15 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['offer_type'] = $data['offer_type'] ?? null;
-        $this->container['buying_price'] = $data['buying_price'] ?? null;
-        $this->container['regular_price'] = $data['regular_price'] ?? null;
-        $this->container['business_price'] = $data['business_price'] ?? null;
-        $this->container['quantity_discount_prices'] = $data['quantity_discount_prices'] ?? null;
-        $this->container['fulfillment_channel'] = $data['fulfillment_channel'] ?? null;
-        $this->container['item_condition'] = $data['item_condition'] ?? null;
-        $this->container['item_sub_condition'] = $data['item_sub_condition'] ?? null;
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
+        $this->container['offer_type'] = isset($data['offer_type']) ? $data['offer_type'] : null;
+        $this->container['buying_price'] = isset($data['buying_price']) ? $data['buying_price'] : null;
+        $this->container['regular_price'] = isset($data['regular_price']) ? $data['regular_price'] : null;
+        $this->container['business_price'] = isset($data['business_price']) ? $data['business_price'] : null;
+        $this->container['quantity_discount_prices'] = isset($data['quantity_discount_prices']) ? $data['quantity_discount_prices'] : null;
+        $this->container['fulfillment_channel'] = isset($data['fulfillment_channel']) ? $data['fulfillment_channel'] : null;
+        $this->container['item_condition'] = isset($data['item_condition']) ? $data['item_condition'] : null;
+        $this->container['item_sub_condition'] = isset($data['item_sub_condition']) ? $data['item_sub_condition'] : null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
     }
 
     /**
@@ -499,7 +499,7 @@ class OfferType implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

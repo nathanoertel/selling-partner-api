@@ -480,7 +480,7 @@ class VendorTransactionStatusV1Api
 
             } else {
                 // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\Query::build($formParams);
+                $httpBody = \SellingPartnerApi\Util\GuzzleHttp\Psr7\Query::build($formParams);
             }
         }
 
@@ -496,7 +496,7 @@ class VendorTransactionStatusV1Api
             $headers
         );
 
-        $query = \GuzzleHttp\Psr7\Query::build($queryParams);
+        $query = \SellingPartnerApi\Util\GuzzleHttp\Psr7\Query::build($queryParams);
         return new Request(
             'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),

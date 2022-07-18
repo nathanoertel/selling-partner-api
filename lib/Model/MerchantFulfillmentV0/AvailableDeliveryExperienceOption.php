@@ -182,8 +182,8 @@ class AvailableDeliveryExperienceOption implements ModelInterface, ArrayAccess, 
      */
     public function __construct(array $data = null)
     {
-        $this->container['delivery_experience_option'] = $data['delivery_experience_option'] ?? null;
-        $this->container['charge'] = $data['charge'] ?? null;
+        $this->container['delivery_experience_option'] = isset($data['delivery_experience_option']) ? $data['delivery_experience_option'] : null;
+        $this->container['charge'] = isset($data['charge']) ? $data['charge'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class AvailableDeliveryExperienceOption implements ModelInterface, ArrayAccess, 
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

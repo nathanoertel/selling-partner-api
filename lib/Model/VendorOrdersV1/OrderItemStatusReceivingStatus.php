@@ -207,9 +207,9 @@ class OrderItemStatusReceivingStatus implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['receive_status'] = $data['receive_status'] ?? null;
-        $this->container['received_quantity'] = $data['received_quantity'] ?? null;
-        $this->container['last_receive_date'] = $data['last_receive_date'] ?? null;
+        $this->container['receive_status'] = isset($data['receive_status']) ? $data['receive_status'] : null;
+        $this->container['received_quantity'] = isset($data['received_quantity']) ? $data['received_quantity'] : null;
+        $this->container['last_receive_date'] = isset($data['last_receive_date']) ? $data['last_receive_date'] : null;
     }
 
     /**
@@ -348,7 +348,7 @@ class OrderItemStatusReceivingStatus implements ModelInterface, ArrayAccess, \Js
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

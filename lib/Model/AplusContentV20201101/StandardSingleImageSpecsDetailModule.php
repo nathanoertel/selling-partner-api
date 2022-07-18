@@ -212,14 +212,14 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->container['headline'] = $data['headline'] ?? null;
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['description_headline'] = $data['description_headline'] ?? null;
-        $this->container['description_block1'] = $data['description_block1'] ?? null;
-        $this->container['description_block2'] = $data['description_block2'] ?? null;
-        $this->container['specification_headline'] = $data['specification_headline'] ?? null;
-        $this->container['specification_list_block'] = $data['specification_list_block'] ?? null;
-        $this->container['specification_text_block'] = $data['specification_text_block'] ?? null;
+        $this->container['headline'] = isset($data['headline']) ? $data['headline'] : null;
+        $this->container['image'] = isset($data['image']) ? $data['image'] : null;
+        $this->container['description_headline'] = isset($data['description_headline']) ? $data['description_headline'] : null;
+        $this->container['description_block1'] = isset($data['description_block1']) ? $data['description_block1'] : null;
+        $this->container['description_block2'] = isset($data['description_block2']) ? $data['description_block2'] : null;
+        $this->container['specification_headline'] = isset($data['specification_headline']) ? $data['specification_headline'] : null;
+        $this->container['specification_list_block'] = isset($data['specification_list_block']) ? $data['specification_list_block'] : null;
+        $this->container['specification_text_block'] = isset($data['specification_text_block']) ? $data['specification_text_block'] : null;
     }
 
     /**
@@ -454,7 +454,7 @@ class StandardSingleImageSpecsDetailModule implements ModelInterface, ArrayAcces
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -181,8 +181,8 @@ class MarketplaceParticipation implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace'] = $data['marketplace'] ?? null;
-        $this->container['participation'] = $data['participation'] ?? null;
+        $this->container['marketplace'] = isset($data['marketplace']) ? $data['marketplace'] : null;
+        $this->container['participation'] = isset($data['participation']) ? $data['participation'] : null;
     }
 
     /**
@@ -285,7 +285,7 @@ class MarketplaceParticipation implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

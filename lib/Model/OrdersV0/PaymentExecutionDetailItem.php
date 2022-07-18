@@ -182,8 +182,8 @@ class PaymentExecutionDetailItem implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['payment'] = $data['payment'] ?? null;
-        $this->container['payment_method'] = $data['payment_method'] ?? null;
+        $this->container['payment'] = isset($data['payment']) ? $data['payment'] : null;
+        $this->container['payment_method'] = isset($data['payment_method']) ? $data['payment_method'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class PaymentExecutionDetailItem implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

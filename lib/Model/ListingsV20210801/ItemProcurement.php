@@ -177,7 +177,7 @@ class ItemProcurement implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['cost_price'] = $data['cost_price'] ?? null;
+        $this->container['cost_price'] = isset($data['cost_price']) ? $data['cost_price'] : null;
     }
 
     /**
@@ -254,7 +254,7 @@ class ItemProcurement implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

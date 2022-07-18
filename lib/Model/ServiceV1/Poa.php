@@ -219,11 +219,11 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['appointment_time'] = $data['appointment_time'] ?? null;
-        $this->container['technicians'] = $data['technicians'] ?? null;
-        $this->container['uploading_technician'] = $data['uploading_technician'] ?? null;
-        $this->container['upload_time'] = $data['upload_time'] ?? null;
-        $this->container['poa_type'] = $data['poa_type'] ?? null;
+        $this->container['appointment_time'] = isset($data['appointment_time']) ? $data['appointment_time'] : null;
+        $this->container['technicians'] = isset($data['technicians']) ? $data['technicians'] : null;
+        $this->container['uploading_technician'] = isset($data['uploading_technician']) ? $data['uploading_technician'] : null;
+        $this->container['upload_time'] = isset($data['upload_time']) ? $data['upload_time'] : null;
+        $this->container['poa_type'] = isset($data['poa_type']) ? $data['poa_type'] : null;
     }
 
     /**
@@ -426,7 +426,7 @@ class Poa implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

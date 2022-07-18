@@ -191,10 +191,10 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['item_sequence_number'] = $data['item_sequence_number'] ?? null;
-        $this->container['buyer_product_identifier'] = $data['buyer_product_identifier'] ?? null;
-        $this->container['vendor_product_identifier'] = $data['vendor_product_identifier'] ?? null;
-        $this->container['acknowledged_quantity'] = $data['acknowledged_quantity'] ?? null;
+        $this->container['item_sequence_number'] = isset($data['item_sequence_number']) ? $data['item_sequence_number'] : null;
+        $this->container['buyer_product_identifier'] = isset($data['buyer_product_identifier']) ? $data['buyer_product_identifier'] : null;
+        $this->container['vendor_product_identifier'] = isset($data['vendor_product_identifier']) ? $data['vendor_product_identifier'] : null;
+        $this->container['acknowledged_quantity'] = isset($data['acknowledged_quantity']) ? $data['acknowledged_quantity'] : null;
     }
 
     /**
@@ -343,7 +343,7 @@ class OrderItemAcknowledgement implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

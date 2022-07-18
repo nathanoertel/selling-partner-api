@@ -54,30 +54,30 @@ class Authentication implements RequestSignerContract
      */
     public function __construct(array $configurationOptions)
     {
-        $this->client = $configurationOptions['authenticationClient'] ?? new Client();
+        $this->client = isset($configurationOptions['authenticationClient']) ? $configurationOptions['authenticationClient'] : new Client();
 
-        $this->lwaAuthUrl = $configurationOptions['lwaAuthUrl'] ?? "https://api.amazon.com/auth/o2/token";
-        $this->lwaRefreshToken = $configurationOptions['lwaRefreshToken'] ?? null;
-        $this->onUpdateCreds = $configurationOptions['onUpdateCredentials'] ?? null;
+        $this->lwaAuthUrl = isset($configurationOptions['lwaAuthUrl']) ? $configurationOptions['lwaAuthUrl'] : "https://api.amazon.com/auth/o2/token";
+        $this->lwaRefreshToken = isset($configurationOptions['lwaRefreshToken']) ? $configurationOptions['lwaRefreshToken'] : null;
+        $this->onUpdateCreds = isset($configurationOptions['onUpdateCredentials']) ? $configurationOptions['onUpdateCredentials'] : null;
         $this->lwaClientId = $configurationOptions['lwaClientId'];
         $this->lwaClientSecret = $configurationOptions['lwaClientSecret'];
         $this->endpoint = $configurationOptions['endpoint'];
 
-        $accessToken = $configurationOptions['accessToken'] ?? null;
-        $accessTokenExpiration = $configurationOptions['accessTokenExpiration'] ?? null;
+        $accessToken = isset($configurationOptions['accessToken']) ? $configurationOptions['accessToken'] : null;
+        $accessTokenExpiration = isset($configurationOptions['accessTokenExpiration']) ? $configurationOptions['accessTokenExpiration'] : null;
 
         $this->awsAccessKeyId = $configurationOptions['awsAccessKeyId'];
         $this->awsSecretAccessKey = $configurationOptions['awsSecretAccessKey'];
 
-        $this->roleArn = $configurationOptions['roleArn'] ?? null;
+        $this->roleArn = isset($configurationOptions['roleArn']) ? $configurationOptions['roleArn'] : null;
 
         if ($accessToken !== null && $accessTokenExpiration !== null) {
             $this->populateCredentials($this->awsAccessKeyId, $this->awsSecretAccessKey, $accessToken, $accessTokenExpiration);
         }
         
-        $this->tokensApi = $configurationOptions['tokensApi'] ?? null;
+        $this->tokensApi = isset($configurationOptions['tokensApi']) ? $configurationOptions['tokensApi'] : null;
 
-        $this->authorizationSigner = $configurationOptions['authorizationSigner'] ?? new AuthorizationSigner($this->endpoint);
+        $this->authorizationSigner = isset($configurationOptions['authorizationSigner']) ? $configurationOptions['authorizationSigner'] : new AuthorizationSigner($this->endpoint);
     }
 
     public function getAuthorizationSigner()
@@ -268,7 +268,7 @@ class Authentication implements RequestSignerContract
                 $credentials['AccessKeyId'],
                 $credentials['SecretAccessKey'],
                 $credentials['SessionToken'],
-                $credentials['Expiration']->getTimestamp(),
+                $credentials['Expiration']->getTimestamp()
             );
         }
 
@@ -494,7 +494,7 @@ class Authentication implements RequestSignerContract
 
     private function newToken()
     {
-        [$accessToken, $expirationTimestamp] = $this->requestLWAToken();
+        list($accessToken, $expirationTimestamp) = $this->requestLWAToken();
         $this->populateCredentials($this->awsAccessKeyId, $this->awsSecretAccessKey, $accessToken, $expirationTimestamp);
         if (!$this->signingScope && $this->onUpdateCreds !== null) {
             call_user_func($this->onUpdateCreds, $this->awsCredentials);

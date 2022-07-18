@@ -207,13 +207,13 @@ class CreditNoteDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['reference_invoice_number'] = $data['reference_invoice_number'] ?? null;
-        $this->container['debit_note_number'] = $data['debit_note_number'] ?? null;
-        $this->container['returns_reference_number'] = $data['returns_reference_number'] ?? null;
-        $this->container['goods_return_date'] = $data['goods_return_date'] ?? null;
-        $this->container['rma_id'] = $data['rma_id'] ?? null;
-        $this->container['coop_reference_number'] = $data['coop_reference_number'] ?? null;
-        $this->container['consignors_reference_number'] = $data['consignors_reference_number'] ?? null;
+        $this->container['reference_invoice_number'] = isset($data['reference_invoice_number']) ? $data['reference_invoice_number'] : null;
+        $this->container['debit_note_number'] = isset($data['debit_note_number']) ? $data['debit_note_number'] : null;
+        $this->container['returns_reference_number'] = isset($data['returns_reference_number']) ? $data['returns_reference_number'] : null;
+        $this->container['goods_return_date'] = isset($data['goods_return_date']) ? $data['goods_return_date'] : null;
+        $this->container['rma_id'] = isset($data['rma_id']) ? $data['rma_id'] : null;
+        $this->container['coop_reference_number'] = isset($data['coop_reference_number']) ? $data['coop_reference_number'] : null;
+        $this->container['consignors_reference_number'] = isset($data['consignors_reference_number']) ? $data['consignors_reference_number'] : null;
     }
 
     /**
@@ -425,7 +425,7 @@ class CreditNoteDetails implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

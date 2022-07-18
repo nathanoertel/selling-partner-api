@@ -192,10 +192,10 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['orders'] = $data['orders'] ?? null;
-        $this->container['next_token'] = $data['next_token'] ?? null;
-        $this->container['last_updated_before'] = $data['last_updated_before'] ?? null;
-        $this->container['created_before'] = $data['created_before'] ?? null;
+        $this->container['orders'] = isset($data['orders']) ? $data['orders'] : null;
+        $this->container['next_token'] = isset($data['next_token']) ? $data['next_token'] : null;
+        $this->container['last_updated_before'] = isset($data['last_updated_before']) ? $data['last_updated_before'] : null;
+        $this->container['created_before'] = isset($data['created_before']) ? $data['created_before'] : null;
     }
 
     /**
@@ -341,7 +341,7 @@ class OrdersList implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

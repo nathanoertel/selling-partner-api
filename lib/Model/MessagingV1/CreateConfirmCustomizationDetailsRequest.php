@@ -182,8 +182,8 @@ class CreateConfirmCustomizationDetailsRequest implements ModelInterface, ArrayA
      */
     public function __construct(array $data = null)
     {
-        $this->container['text'] = $data['text'] ?? null;
-        $this->container['attachments'] = $data['attachments'] ?? null;
+        $this->container['text'] = isset($data['text']) ? $data['text'] : null;
+        $this->container['attachments'] = isset($data['attachments']) ? $data['attachments'] : null;
     }
 
     /**
@@ -295,7 +295,7 @@ class CreateConfirmCustomizationDetailsRequest implements ModelInterface, ArrayA
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

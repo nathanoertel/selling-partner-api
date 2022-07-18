@@ -176,7 +176,7 @@ class CreateInboundShipmentPlanResult implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['inbound_shipment_plans'] = $data['inbound_shipment_plans'] ?? null;
+        $this->container['inbound_shipment_plans'] = isset($data['inbound_shipment_plans']) ? $data['inbound_shipment_plans'] : null;
     }
 
     /**
@@ -250,7 +250,7 @@ class CreateInboundShipmentPlanResult implements ModelInterface, ArrayAccess, \J
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

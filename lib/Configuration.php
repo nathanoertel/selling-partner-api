@@ -112,17 +112,17 @@ class Configuration
         $options = array_merge(
             $configurationOptions,
             [
-                "accessToken" => $configurationOptions["accessToken"] ?? null,
-                "accessTokenExpiration" => $configurationOptions["accessTokenExpiration"] ?? null,
-                "onUpdateCredentials" => $configurationOptions["onUpdateCredentials"] ?? null,
-                "roleArn" => $configurationOptions["roleArn"] ?? null,
+                "accessToken" => isset($configurationOptions["accessToken"]) ? $configurationOptions["accessToken"] : null,
+                "accessTokenExpiration" => isset($configurationOptions["accessTokenExpiration"]) ? $configurationOptions["accessTokenExpiration"] : null,
+                "onUpdateCredentials" => isset($configurationOptions["onUpdateCredentials"]) ? $configurationOptions["onUpdateCredentials"] : null,
+                "roleArn" => isset($configurationOptions["roleArn"]) ? $configurationOptions["roleArn"] : null,
             ]
         );
 
         $this->endpoint = $options["endpoint"];
         $this->auth = new Authentication($options);
 
-        $this->setRequestSigner($options["requestSigner"] ?? $this->auth);
+        $this->setRequestSigner(isset($options["requestSigner"]) ? $options["requestSigner"] : $this->auth);
     }
 
     public function getRequestSigner()
@@ -474,7 +474,7 @@ class Configuration
         $url = $host["url"];
 
         // go through variable and assign a value
-        foreach ($host["variables"] ?? [] as $name => $variable) {
+        foreach (isset($host["variables"]) ? $host["variables"] : [] as $name => $variable) {
             if (array_key_exists($name, $variables)) { // check to see if it's in the variables provided by the user
                 if (in_array($variables[$name], $variable["enum_values"], true)) { // check to see if the value is in the enum
                     $url = str_replace("{".$name."}", $variables[$name], $url);

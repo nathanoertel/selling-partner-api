@@ -182,8 +182,8 @@ class CreateDestinationRequest implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['resource_specification'] = $data['resource_specification'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
+        $this->container['resource_specification'] = isset($data['resource_specification']) ? $data['resource_specification'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class CreateDestinationRequest implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

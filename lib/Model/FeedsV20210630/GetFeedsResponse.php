@@ -185,8 +185,8 @@ class GetFeedsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['feeds'] = $data['feeds'] ?? null;
-        $this->container['next_token'] = $data['next_token'] ?? null;
+        $this->container['feeds'] = isset($data['feeds']) ? $data['feeds'] : null;
+        $this->container['next_token'] = isset($data['next_token']) ? $data['next_token'] : null;
     }
 
     /**
@@ -308,7 +308,7 @@ class GetFeedsResponse implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -177,7 +177,7 @@ class TestCaseData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['scenarios'] = $data['scenarios'] ?? null;
+        $this->container['scenarios'] = isset($data['scenarios']) ? $data['scenarios'] : null;
     }
 
     /**
@@ -251,7 +251,7 @@ class TestCaseData implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

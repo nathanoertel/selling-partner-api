@@ -221,16 +221,16 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['item_sequence_number'] = $data['item_sequence_number'] ?? null;
-        $this->container['buyer_product_identifier'] = $data['buyer_product_identifier'] ?? null;
-        $this->container['vendor_product_identifier'] = $data['vendor_product_identifier'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['ordered_quantity'] = $data['ordered_quantity'] ?? null;
-        $this->container['scheduled_delivery_shipment'] = $data['scheduled_delivery_shipment'] ?? null;
-        $this->container['gift_details'] = $data['gift_details'] ?? null;
-        $this->container['net_price'] = $data['net_price'] ?? null;
-        $this->container['tax_details'] = $data['tax_details'] ?? null;
-        $this->container['total_price'] = $data['total_price'] ?? null;
+        $this->container['item_sequence_number'] = isset($data['item_sequence_number']) ? $data['item_sequence_number'] : null;
+        $this->container['buyer_product_identifier'] = isset($data['buyer_product_identifier']) ? $data['buyer_product_identifier'] : null;
+        $this->container['vendor_product_identifier'] = isset($data['vendor_product_identifier']) ? $data['vendor_product_identifier'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['ordered_quantity'] = isset($data['ordered_quantity']) ? $data['ordered_quantity'] : null;
+        $this->container['scheduled_delivery_shipment'] = isset($data['scheduled_delivery_shipment']) ? $data['scheduled_delivery_shipment'] : null;
+        $this->container['gift_details'] = isset($data['gift_details']) ? $data['gift_details'] : null;
+        $this->container['net_price'] = isset($data['net_price']) ? $data['net_price'] : null;
+        $this->container['tax_details'] = isset($data['tax_details']) ? $data['tax_details'] : null;
+        $this->container['total_price'] = isset($data['total_price']) ? $data['total_price'] : null;
     }
 
     /**
@@ -520,7 +520,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

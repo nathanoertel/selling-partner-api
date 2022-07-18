@@ -190,9 +190,9 @@ class SetAppointmentResponse implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['appointment_id'] = $data['appointment_id'] ?? null;
-        $this->container['warnings'] = $data['warnings'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['appointment_id'] = isset($data['appointment_id']) ? $data['appointment_id'] : null;
+        $this->container['warnings'] = isset($data['warnings']) ? $data['warnings'] : null;
+        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
     }
 
     /**
@@ -349,7 +349,7 @@ class SetAppointmentResponse implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

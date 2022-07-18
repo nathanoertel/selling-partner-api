@@ -182,8 +182,8 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['value'] = $data['value'] ?? null;
-        $this->container['unit'] = $data['unit'] ?? null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['unit'] = isset($data['unit']) ? $data['unit'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class Weight implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

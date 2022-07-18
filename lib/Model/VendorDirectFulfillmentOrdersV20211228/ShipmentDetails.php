@@ -207,13 +207,13 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['is_priority_shipment'] = $data['is_priority_shipment'] ?? null;
-        $this->container['is_scheduled_delivery_shipment'] = $data['is_scheduled_delivery_shipment'] ?? null;
-        $this->container['is_pslip_required'] = $data['is_pslip_required'] ?? null;
-        $this->container['is_gift'] = $data['is_gift'] ?? null;
-        $this->container['ship_method'] = $data['ship_method'] ?? null;
-        $this->container['shipment_dates'] = $data['shipment_dates'] ?? null;
-        $this->container['message_to_customer'] = $data['message_to_customer'] ?? null;
+        $this->container['is_priority_shipment'] = isset($data['is_priority_shipment']) ? $data['is_priority_shipment'] : null;
+        $this->container['is_scheduled_delivery_shipment'] = isset($data['is_scheduled_delivery_shipment']) ? $data['is_scheduled_delivery_shipment'] : null;
+        $this->container['is_pslip_required'] = isset($data['is_pslip_required']) ? $data['is_pslip_required'] : null;
+        $this->container['is_gift'] = isset($data['is_gift']) ? $data['is_gift'] : null;
+        $this->container['ship_method'] = isset($data['ship_method']) ? $data['ship_method'] : null;
+        $this->container['shipment_dates'] = isset($data['shipment_dates']) ? $data['shipment_dates'] : null;
+        $this->container['message_to_customer'] = isset($data['message_to_customer']) ? $data['message_to_customer'] : null;
     }
 
     /**
@@ -440,7 +440,7 @@ class ShipmentDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

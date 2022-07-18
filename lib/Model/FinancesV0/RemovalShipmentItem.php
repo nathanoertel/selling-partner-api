@@ -212,14 +212,14 @@ class RemovalShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['removal_shipment_item_id'] = $data['removal_shipment_item_id'] ?? null;
-        $this->container['tax_collection_model'] = $data['tax_collection_model'] ?? null;
-        $this->container['fulfillment_network_sku'] = $data['fulfillment_network_sku'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['revenue'] = $data['revenue'] ?? null;
-        $this->container['fee_amount'] = $data['fee_amount'] ?? null;
-        $this->container['tax_amount'] = $data['tax_amount'] ?? null;
-        $this->container['tax_withheld'] = $data['tax_withheld'] ?? null;
+        $this->container['removal_shipment_item_id'] = isset($data['removal_shipment_item_id']) ? $data['removal_shipment_item_id'] : null;
+        $this->container['tax_collection_model'] = isset($data['tax_collection_model']) ? $data['tax_collection_model'] : null;
+        $this->container['fulfillment_network_sku'] = isset($data['fulfillment_network_sku']) ? $data['fulfillment_network_sku'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['revenue'] = isset($data['revenue']) ? $data['revenue'] : null;
+        $this->container['fee_amount'] = isset($data['fee_amount']) ? $data['fee_amount'] : null;
+        $this->container['tax_amount'] = isset($data['tax_amount']) ? $data['tax_amount'] : null;
+        $this->container['tax_withheld'] = isset($data['tax_withheld']) ? $data['tax_withheld'] : null;
     }
 
     /**
@@ -454,7 +454,7 @@ class RemovalShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

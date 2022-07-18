@@ -212,14 +212,14 @@ class SellerDealPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['deal_id'] = $data['deal_id'] ?? null;
-        $this->container['deal_description'] = $data['deal_description'] ?? null;
-        $this->container['event_type'] = $data['event_type'] ?? null;
-        $this->container['fee_type'] = $data['fee_type'] ?? null;
-        $this->container['fee_amount'] = $data['fee_amount'] ?? null;
-        $this->container['tax_amount'] = $data['tax_amount'] ?? null;
-        $this->container['total_amount'] = $data['total_amount'] ?? null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['deal_id'] = isset($data['deal_id']) ? $data['deal_id'] : null;
+        $this->container['deal_description'] = isset($data['deal_description']) ? $data['deal_description'] : null;
+        $this->container['event_type'] = isset($data['event_type']) ? $data['event_type'] : null;
+        $this->container['fee_type'] = isset($data['fee_type']) ? $data['fee_type'] : null;
+        $this->container['fee_amount'] = isset($data['fee_amount']) ? $data['fee_amount'] : null;
+        $this->container['tax_amount'] = isset($data['tax_amount']) ? $data['tax_amount'] : null;
+        $this->container['total_amount'] = isset($data['total_amount']) ? $data['total_amount'] : null;
     }
 
     /**
@@ -454,7 +454,7 @@ class SellerDealPaymentEvent implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -227,17 +227,17 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['address_line1'] = $data['address_line1'] ?? null;
-        $this->container['address_line2'] = $data['address_line2'] ?? null;
-        $this->container['address_line3'] = $data['address_line3'] ?? null;
-        $this->container['state_or_region'] = $data['state_or_region'] ?? null;
-        $this->container['city'] = $data['city'] ?? null;
-        $this->container['country_code'] = $data['country_code'] ?? null;
-        $this->container['postal_code'] = $data['postal_code'] ?? null;
-        $this->container['email'] = $data['email'] ?? null;
-        $this->container['copy_emails'] = $data['copy_emails'] ?? null;
-        $this->container['phone_number'] = $data['phone_number'] ?? null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['address_line1'] = isset($data['address_line1']) ? $data['address_line1'] : null;
+        $this->container['address_line2'] = isset($data['address_line2']) ? $data['address_line2'] : null;
+        $this->container['address_line3'] = isset($data['address_line3']) ? $data['address_line3'] : null;
+        $this->container['state_or_region'] = isset($data['state_or_region']) ? $data['state_or_region'] : null;
+        $this->container['city'] = isset($data['city']) ? $data['city'] : null;
+        $this->container['country_code'] = isset($data['country_code']) ? $data['country_code'] : null;
+        $this->container['postal_code'] = isset($data['postal_code']) ? $data['postal_code'] : null;
+        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['copy_emails'] = isset($data['copy_emails']) ? $data['copy_emails'] : null;
+        $this->container['phone_number'] = isset($data['phone_number']) ? $data['phone_number'] : null;
     }
 
     /**
@@ -695,7 +695,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -182,8 +182,8 @@ class RejectionReason implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['rejection_reason_id'] = $data['rejection_reason_id'] ?? null;
-        $this->container['rejection_reason_description'] = $data['rejection_reason_description'] ?? null;
+        $this->container['rejection_reason_id'] = isset($data['rejection_reason_id']) ? $data['rejection_reason_id'] : null;
+        $this->container['rejection_reason_description'] = isset($data['rejection_reason_description']) ? $data['rejection_reason_description'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class RejectionReason implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -196,11 +196,11 @@ class FeesEstimateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['is_amazon_fulfilled'] = $data['is_amazon_fulfilled'] ?? null;
-        $this->container['price_to_estimate_fees'] = $data['price_to_estimate_fees'] ?? null;
-        $this->container['identifier'] = $data['identifier'] ?? null;
-        $this->container['optional_fulfillment_program'] = $data['optional_fulfillment_program'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['is_amazon_fulfilled'] = isset($data['is_amazon_fulfilled']) ? $data['is_amazon_fulfilled'] : null;
+        $this->container['price_to_estimate_fees'] = isset($data['price_to_estimate_fees']) ? $data['price_to_estimate_fees'] : null;
+        $this->container['identifier'] = isset($data['identifier']) ? $data['identifier'] : null;
+        $this->container['optional_fulfillment_program'] = isset($data['optional_fulfillment_program']) ? $data['optional_fulfillment_program'] : null;
     }
 
     /**
@@ -375,7 +375,7 @@ class FeesEstimateRequest implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

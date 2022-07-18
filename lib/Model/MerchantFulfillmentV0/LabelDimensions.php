@@ -187,9 +187,9 @@ class LabelDimensions implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['length'] = $data['length'] ?? null;
-        $this->container['width'] = $data['width'] ?? null;
-        $this->container['unit'] = $data['unit'] ?? null;
+        $this->container['length'] = isset($data['length']) ? $data['length'] : null;
+        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
+        $this->container['unit'] = isset($data['unit']) ? $data['unit'] : null;
     }
 
     /**
@@ -318,7 +318,7 @@ class LabelDimensions implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

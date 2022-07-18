@@ -227,17 +227,17 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['order_item_id'] = $data['order_item_id'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['quantity_ordered'] = $data['quantity_ordered'] ?? null;
-        $this->container['item_price'] = $data['item_price'] ?? null;
-        $this->container['shipping_price'] = $data['shipping_price'] ?? null;
-        $this->container['gift_wrap_price'] = $data['gift_wrap_price'] ?? null;
-        $this->container['shipping_discount'] = $data['shipping_discount'] ?? null;
-        $this->container['promotion_discount'] = $data['promotion_discount'] ?? null;
-        $this->container['serial_numbers'] = $data['serial_numbers'] ?? null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['order_item_id'] = isset($data['order_item_id']) ? $data['order_item_id'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['quantity_ordered'] = isset($data['quantity_ordered']) ? $data['quantity_ordered'] : null;
+        $this->container['item_price'] = isset($data['item_price']) ? $data['item_price'] : null;
+        $this->container['shipping_price'] = isset($data['shipping_price']) ? $data['shipping_price'] : null;
+        $this->container['gift_wrap_price'] = isset($data['gift_wrap_price']) ? $data['gift_wrap_price'] : null;
+        $this->container['shipping_discount'] = isset($data['shipping_discount']) ? $data['shipping_discount'] : null;
+        $this->container['promotion_discount'] = isset($data['promotion_discount']) ? $data['promotion_discount'] : null;
+        $this->container['serial_numbers'] = isset($data['serial_numbers']) ? $data['serial_numbers'] : null;
     }
 
     /**
@@ -541,7 +541,7 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

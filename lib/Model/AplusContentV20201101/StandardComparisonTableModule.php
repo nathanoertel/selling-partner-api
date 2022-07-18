@@ -182,8 +182,8 @@ class StandardComparisonTableModule implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['product_columns'] = $data['product_columns'] ?? null;
-        $this->container['metric_row_labels'] = $data['metric_row_labels'] ?? null;
+        $this->container['product_columns'] = isset($data['product_columns']) ? $data['product_columns'] : null;
+        $this->container['metric_row_labels'] = isset($data['metric_row_labels']) ? $data['metric_row_labels'] : null;
     }
 
     /**
@@ -310,7 +310,7 @@ class StandardComparisonTableModule implements ModelInterface, ArrayAccess, \Jso
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

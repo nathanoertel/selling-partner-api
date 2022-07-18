@@ -207,13 +207,13 @@ class SellerInputDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['is_required'] = $data['is_required'] ?? null;
-        $this->container['data_type'] = $data['data_type'] ?? null;
-        $this->container['constraints'] = $data['constraints'] ?? null;
-        $this->container['input_display_text'] = $data['input_display_text'] ?? null;
-        $this->container['input_target'] = $data['input_target'] ?? null;
-        $this->container['stored_value'] = $data['stored_value'] ?? null;
-        $this->container['restricted_set_values'] = $data['restricted_set_values'] ?? null;
+        $this->container['is_required'] = isset($data['is_required']) ? $data['is_required'] : null;
+        $this->container['data_type'] = isset($data['data_type']) ? $data['data_type'] : null;
+        $this->container['constraints'] = isset($data['constraints']) ? $data['constraints'] : null;
+        $this->container['input_display_text'] = isset($data['input_display_text']) ? $data['input_display_text'] : null;
+        $this->container['input_target'] = isset($data['input_target']) ? $data['input_target'] : null;
+        $this->container['stored_value'] = isset($data['stored_value']) ? $data['stored_value'] : null;
+        $this->container['restricted_set_values'] = isset($data['restricted_set_values']) ? $data['restricted_set_values'] : null;
     }
 
     /**
@@ -440,7 +440,7 @@ class SellerInputDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

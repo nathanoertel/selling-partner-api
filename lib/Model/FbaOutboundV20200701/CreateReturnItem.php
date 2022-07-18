@@ -197,11 +197,11 @@ class CreateReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_return_item_id'] = $data['seller_return_item_id'] ?? null;
-        $this->container['seller_fulfillment_order_item_id'] = $data['seller_fulfillment_order_item_id'] ?? null;
-        $this->container['amazon_shipment_id'] = $data['amazon_shipment_id'] ?? null;
-        $this->container['return_reason_code'] = $data['return_reason_code'] ?? null;
-        $this->container['return_comment'] = $data['return_comment'] ?? null;
+        $this->container['seller_return_item_id'] = isset($data['seller_return_item_id']) ? $data['seller_return_item_id'] : null;
+        $this->container['seller_fulfillment_order_item_id'] = isset($data['seller_fulfillment_order_item_id']) ? $data['seller_fulfillment_order_item_id'] : null;
+        $this->container['amazon_shipment_id'] = isset($data['amazon_shipment_id']) ? $data['amazon_shipment_id'] : null;
+        $this->container['return_reason_code'] = isset($data['return_reason_code']) ? $data['return_reason_code'] : null;
+        $this->container['return_comment'] = isset($data['return_comment']) ? $data['return_comment'] : null;
     }
 
     /**
@@ -395,7 +395,7 @@ class CreateReturnItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

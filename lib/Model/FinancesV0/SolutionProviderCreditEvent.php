@@ -222,16 +222,16 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['provider_transaction_type'] = $data['provider_transaction_type'] ?? null;
-        $this->container['seller_order_id'] = $data['seller_order_id'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['marketplace_country_code'] = $data['marketplace_country_code'] ?? null;
-        $this->container['seller_id'] = $data['seller_id'] ?? null;
-        $this->container['seller_store_name'] = $data['seller_store_name'] ?? null;
-        $this->container['provider_id'] = $data['provider_id'] ?? null;
-        $this->container['provider_store_name'] = $data['provider_store_name'] ?? null;
-        $this->container['transaction_amount'] = $data['transaction_amount'] ?? null;
-        $this->container['transaction_creation_date'] = $data['transaction_creation_date'] ?? null;
+        $this->container['provider_transaction_type'] = isset($data['provider_transaction_type']) ? $data['provider_transaction_type'] : null;
+        $this->container['seller_order_id'] = isset($data['seller_order_id']) ? $data['seller_order_id'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['marketplace_country_code'] = isset($data['marketplace_country_code']) ? $data['marketplace_country_code'] : null;
+        $this->container['seller_id'] = isset($data['seller_id']) ? $data['seller_id'] : null;
+        $this->container['seller_store_name'] = isset($data['seller_store_name']) ? $data['seller_store_name'] : null;
+        $this->container['provider_id'] = isset($data['provider_id']) ? $data['provider_id'] : null;
+        $this->container['provider_store_name'] = isset($data['provider_store_name']) ? $data['provider_store_name'] : null;
+        $this->container['transaction_amount'] = isset($data['transaction_amount']) ? $data['transaction_amount'] : null;
+        $this->container['transaction_creation_date'] = isset($data['transaction_creation_date']) ? $data['transaction_creation_date'] : null;
     }
 
     /**
@@ -512,7 +512,7 @@ class SolutionProviderCreditEvent implements ModelInterface, ArrayAccess, \JsonS
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

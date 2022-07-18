@@ -182,8 +182,8 @@ class CreatorType implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['value'] = $data['value'] ?? null;
-        $this->container['role'] = $data['role'] ?? null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['role'] = isset($data['role']) ? $data['role'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class CreatorType implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

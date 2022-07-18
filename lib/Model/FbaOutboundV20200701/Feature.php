@@ -187,9 +187,9 @@ class Feature implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['feature_name'] = $data['feature_name'] ?? null;
-        $this->container['feature_description'] = $data['feature_description'] ?? null;
-        $this->container['seller_eligible'] = $data['seller_eligible'] ?? null;
+        $this->container['feature_name'] = isset($data['feature_name']) ? $data['feature_name'] : null;
+        $this->container['feature_description'] = isset($data['feature_description']) ? $data['feature_description'] : null;
+        $this->container['seller_eligible'] = isset($data['seller_eligible']) ? $data['seller_eligible'] : null;
     }
 
     /**
@@ -315,7 +315,7 @@ class Feature implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

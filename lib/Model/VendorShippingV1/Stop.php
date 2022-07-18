@@ -212,10 +212,10 @@ class Stop implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['function_code'] = $data['function_code'] ?? null;
-        $this->container['location_identification'] = $data['location_identification'] ?? null;
-        $this->container['arrival_time'] = $data['arrival_time'] ?? null;
-        $this->container['departure_time'] = $data['departure_time'] ?? null;
+        $this->container['function_code'] = isset($data['function_code']) ? $data['function_code'] : null;
+        $this->container['location_identification'] = isset($data['location_identification']) ? $data['location_identification'] : null;
+        $this->container['arrival_time'] = isset($data['arrival_time']) ? $data['arrival_time'] : null;
+        $this->container['departure_time'] = isset($data['departure_time']) ? $data['departure_time'] : null;
     }
 
     /**
@@ -380,7 +380,7 @@ class Stop implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

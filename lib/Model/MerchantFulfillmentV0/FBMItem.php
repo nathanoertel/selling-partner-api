@@ -202,12 +202,12 @@ class FBMItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['order_item_id'] = $data['order_item_id'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['item_weight'] = $data['item_weight'] ?? null;
-        $this->container['item_description'] = $data['item_description'] ?? null;
-        $this->container['transparency_code_list'] = $data['transparency_code_list'] ?? null;
-        $this->container['item_level_seller_inputs_list'] = $data['item_level_seller_inputs_list'] ?? null;
+        $this->container['order_item_id'] = isset($data['order_item_id']) ? $data['order_item_id'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['item_weight'] = isset($data['item_weight']) ? $data['item_weight'] : null;
+        $this->container['item_description'] = isset($data['item_description']) ? $data['item_description'] : null;
+        $this->container['transparency_code_list'] = isset($data['transparency_code_list']) ? $data['transparency_code_list'] : null;
+        $this->container['item_level_seller_inputs_list'] = isset($data['item_level_seller_inputs_list']) ? $data['item_level_seller_inputs_list'] : null;
     }
 
     /**
@@ -402,7 +402,7 @@ class FBMItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

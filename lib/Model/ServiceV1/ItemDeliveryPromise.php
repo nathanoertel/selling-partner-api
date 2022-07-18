@@ -182,8 +182,8 @@ class ItemDeliveryPromise implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['start_time'] = $data['start_time'] ?? null;
-        $this->container['end_time'] = $data['end_time'] ?? null;
+        $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+        $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class ItemDeliveryPromise implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

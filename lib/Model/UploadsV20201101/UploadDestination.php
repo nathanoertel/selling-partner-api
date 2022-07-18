@@ -187,9 +187,9 @@ class UploadDestination implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['upload_destination_id'] = $data['upload_destination_id'] ?? null;
-        $this->container['url'] = $data['url'] ?? null;
-        $this->container['headers'] = $data['headers'] ?? null;
+        $this->container['upload_destination_id'] = isset($data['upload_destination_id']) ? $data['upload_destination_id'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['headers'] = isset($data['headers']) ? $data['headers'] : null;
     }
 
     /**
@@ -309,7 +309,7 @@ class UploadDestination implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

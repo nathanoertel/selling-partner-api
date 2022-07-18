@@ -242,20 +242,20 @@ class FulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['seller_fulfillment_order_item_id'] = $data['seller_fulfillment_order_item_id'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['gift_message'] = $data['gift_message'] ?? null;
-        $this->container['displayable_comment'] = $data['displayable_comment'] ?? null;
-        $this->container['fulfillment_network_sku'] = $data['fulfillment_network_sku'] ?? null;
-        $this->container['order_item_disposition'] = $data['order_item_disposition'] ?? null;
-        $this->container['cancelled_quantity'] = $data['cancelled_quantity'] ?? null;
-        $this->container['unfulfillable_quantity'] = $data['unfulfillable_quantity'] ?? null;
-        $this->container['estimated_ship_date'] = $data['estimated_ship_date'] ?? null;
-        $this->container['estimated_arrival_date'] = $data['estimated_arrival_date'] ?? null;
-        $this->container['per_unit_price'] = $data['per_unit_price'] ?? null;
-        $this->container['per_unit_tax'] = $data['per_unit_tax'] ?? null;
-        $this->container['per_unit_declared_value'] = $data['per_unit_declared_value'] ?? null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['seller_fulfillment_order_item_id'] = isset($data['seller_fulfillment_order_item_id']) ? $data['seller_fulfillment_order_item_id'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['gift_message'] = isset($data['gift_message']) ? $data['gift_message'] : null;
+        $this->container['displayable_comment'] = isset($data['displayable_comment']) ? $data['displayable_comment'] : null;
+        $this->container['fulfillment_network_sku'] = isset($data['fulfillment_network_sku']) ? $data['fulfillment_network_sku'] : null;
+        $this->container['order_item_disposition'] = isset($data['order_item_disposition']) ? $data['order_item_disposition'] : null;
+        $this->container['cancelled_quantity'] = isset($data['cancelled_quantity']) ? $data['cancelled_quantity'] : null;
+        $this->container['unfulfillable_quantity'] = isset($data['unfulfillable_quantity']) ? $data['unfulfillable_quantity'] : null;
+        $this->container['estimated_ship_date'] = isset($data['estimated_ship_date']) ? $data['estimated_ship_date'] : null;
+        $this->container['estimated_arrival_date'] = isset($data['estimated_arrival_date']) ? $data['estimated_arrival_date'] : null;
+        $this->container['per_unit_price'] = isset($data['per_unit_price']) ? $data['per_unit_price'] : null;
+        $this->container['per_unit_tax'] = isset($data['per_unit_tax']) ? $data['per_unit_tax'] : null;
+        $this->container['per_unit_declared_value'] = isset($data['per_unit_declared_value']) ? $data['per_unit_declared_value'] : null;
     }
 
     /**
@@ -643,7 +643,7 @@ class FulfillmentOrderItem implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

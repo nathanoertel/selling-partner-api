@@ -207,9 +207,9 @@ class Reason implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['message'] = $data['message'] ?? null;
-        $this->container['reason_code'] = $data['reason_code'] ?? null;
-        $this->container['links'] = $data['links'] ?? null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+        $this->container['reason_code'] = isset($data['reason_code']) ? $data['reason_code'] : null;
+        $this->container['links'] = isset($data['links']) ? $data['links'] : null;
     }
 
     /**
@@ -351,7 +351,7 @@ class Reason implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

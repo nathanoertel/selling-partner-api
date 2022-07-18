@@ -187,9 +187,9 @@ class SubmitInvoiceRequest implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['invoice_content'] = $data['invoice_content'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['content_md5_value'] = $data['content_md5_value'] ?? null;
+        $this->container['invoice_content'] = isset($data['invoice_content']) ? $data['invoice_content'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['content_md5_value'] = isset($data['content_md5_value']) ? $data['content_md5_value'] : null;
     }
 
     /**
@@ -315,7 +315,7 @@ class SubmitInvoiceRequest implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

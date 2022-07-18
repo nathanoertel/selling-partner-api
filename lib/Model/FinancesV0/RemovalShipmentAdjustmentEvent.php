@@ -202,12 +202,12 @@ class RemovalShipmentAdjustmentEvent implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['adjustment_event_id'] = $data['adjustment_event_id'] ?? null;
-        $this->container['merchant_order_id'] = $data['merchant_order_id'] ?? null;
-        $this->container['order_id'] = $data['order_id'] ?? null;
-        $this->container['transaction_type'] = $data['transaction_type'] ?? null;
-        $this->container['removal_shipment_item_adjustment_list'] = $data['removal_shipment_item_adjustment_list'] ?? null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['adjustment_event_id'] = isset($data['adjustment_event_id']) ? $data['adjustment_event_id'] : null;
+        $this->container['merchant_order_id'] = isset($data['merchant_order_id']) ? $data['merchant_order_id'] : null;
+        $this->container['order_id'] = isset($data['order_id']) ? $data['order_id'] : null;
+        $this->container['transaction_type'] = isset($data['transaction_type']) ? $data['transaction_type'] : null;
+        $this->container['removal_shipment_item_adjustment_list'] = isset($data['removal_shipment_item_adjustment_list']) ? $data['removal_shipment_item_adjustment_list'] : null;
     }
 
     /**
@@ -396,7 +396,7 @@ class RemovalShipmentAdjustmentEvent implements ModelInterface, ArrayAccess, \Js
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -207,13 +207,13 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['fulfillable_quantity'] = $data['fulfillable_quantity'] ?? null;
-        $this->container['inbound_working_quantity'] = $data['inbound_working_quantity'] ?? null;
-        $this->container['inbound_shipped_quantity'] = $data['inbound_shipped_quantity'] ?? null;
-        $this->container['inbound_receiving_quantity'] = $data['inbound_receiving_quantity'] ?? null;
-        $this->container['reserved_quantity'] = $data['reserved_quantity'] ?? null;
-        $this->container['researching_quantity'] = $data['researching_quantity'] ?? null;
-        $this->container['unfulfillable_quantity'] = $data['unfulfillable_quantity'] ?? null;
+        $this->container['fulfillable_quantity'] = isset($data['fulfillable_quantity']) ? $data['fulfillable_quantity'] : null;
+        $this->container['inbound_working_quantity'] = isset($data['inbound_working_quantity']) ? $data['inbound_working_quantity'] : null;
+        $this->container['inbound_shipped_quantity'] = isset($data['inbound_shipped_quantity']) ? $data['inbound_shipped_quantity'] : null;
+        $this->container['inbound_receiving_quantity'] = isset($data['inbound_receiving_quantity']) ? $data['inbound_receiving_quantity'] : null;
+        $this->container['reserved_quantity'] = isset($data['reserved_quantity']) ? $data['reserved_quantity'] : null;
+        $this->container['researching_quantity'] = isset($data['researching_quantity']) ? $data['researching_quantity'] : null;
+        $this->container['unfulfillable_quantity'] = isset($data['unfulfillable_quantity']) ? $data['unfulfillable_quantity'] : null;
     }
 
     /**
@@ -425,7 +425,7 @@ class InventoryDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

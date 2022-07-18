@@ -211,10 +211,10 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['carrier_scac'] = $data['carrier_scac'] ?? null;
-        $this->container['carrier_shipment_reference_number'] = $data['carrier_shipment_reference_number'] ?? null;
-        $this->container['transportation_mode'] = $data['transportation_mode'] ?? null;
-        $this->container['bill_of_lading_number'] = $data['bill_of_lading_number'] ?? null;
+        $this->container['carrier_scac'] = isset($data['carrier_scac']) ? $data['carrier_scac'] : null;
+        $this->container['carrier_shipment_reference_number'] = isset($data['carrier_shipment_reference_number']) ? $data['carrier_shipment_reference_number'] : null;
+        $this->container['transportation_mode'] = isset($data['transportation_mode']) ? $data['transportation_mode'] : null;
+        $this->container['bill_of_lading_number'] = isset($data['bill_of_lading_number']) ? $data['bill_of_lading_number'] : null;
     }
 
     /**
@@ -376,7 +376,7 @@ class TransportationDetails implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

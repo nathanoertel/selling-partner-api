@@ -182,8 +182,8 @@ class Granularity implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['granularity_type'] = $data['granularity_type'] ?? null;
-        $this->container['granularity_id'] = $data['granularity_id'] ?? null;
+        $this->container['granularity_type'] = isset($data['granularity_type']) ? $data['granularity_type'] : null;
+        $this->container['granularity_id'] = isset($data['granularity_id']) ? $data['granularity_id'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class Granularity implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

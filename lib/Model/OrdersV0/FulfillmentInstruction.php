@@ -177,7 +177,7 @@ class FulfillmentInstruction implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['fulfillment_supply_source_id'] = $data['fulfillment_supply_source_id'] ?? null;
+        $this->container['fulfillment_supply_source_id'] = isset($data['fulfillment_supply_source_id']) ? $data['fulfillment_supply_source_id'] : null;
     }
 
     /**
@@ -251,7 +251,7 @@ class FulfillmentInstruction implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

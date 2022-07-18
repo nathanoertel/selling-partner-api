@@ -192,10 +192,10 @@ class Subscription implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['subscription_id'] = $data['subscription_id'] ?? null;
-        $this->container['payload_version'] = $data['payload_version'] ?? null;
-        $this->container['destination_id'] = $data['destination_id'] ?? null;
-        $this->container['processing_directive'] = $data['processing_directive'] ?? null;
+        $this->container['subscription_id'] = isset($data['subscription_id']) ? $data['subscription_id'] : null;
+        $this->container['payload_version'] = isset($data['payload_version']) ? $data['payload_version'] : null;
+        $this->container['destination_id'] = isset($data['destination_id']) ? $data['destination_id'] : null;
+        $this->container['processing_directive'] = isset($data['processing_directive']) ? $data['processing_directive'] : null;
     }
 
     /**
@@ -347,7 +347,7 @@ class Subscription implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

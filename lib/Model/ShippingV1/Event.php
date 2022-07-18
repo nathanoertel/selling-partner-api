@@ -187,9 +187,9 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['event_code'] = $data['event_code'] ?? null;
-        $this->container['event_time'] = $data['event_time'] ?? null;
-        $this->container['location'] = $data['location'] ?? null;
+        $this->container['event_code'] = isset($data['event_code']) ? $data['event_code'] : null;
+        $this->container['event_time'] = isset($data['event_time']) ? $data['event_time'] : null;
+        $this->container['location'] = isset($data['location']) ? $data['location'] : null;
     }
 
     /**
@@ -330,7 +330,7 @@ class Event implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

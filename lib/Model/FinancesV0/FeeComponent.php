@@ -182,8 +182,8 @@ class FeeComponent implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['fee_type'] = $data['fee_type'] ?? null;
-        $this->container['fee_amount'] = $data['fee_amount'] ?? null;
+        $this->container['fee_type'] = isset($data['fee_type']) ? $data['fee_type'] : null;
+        $this->container['fee_amount'] = isset($data['fee_amount']) ? $data['fee_amount'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class FeeComponent implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

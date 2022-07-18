@@ -182,8 +182,8 @@ class Technician implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['technician_id'] = $data['technician_id'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
+        $this->container['technician_id'] = isset($data['technician_id']) ? $data['technician_id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     }
 
     /**
@@ -295,7 +295,7 @@ class Technician implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

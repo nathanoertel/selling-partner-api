@@ -227,9 +227,9 @@ class Restriction implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['condition_type'] = $data['condition_type'] ?? null;
-        $this->container['reasons'] = $data['reasons'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['condition_type'] = isset($data['condition_type']) ? $data['condition_type'] : null;
+        $this->container['reasons'] = isset($data['reasons']) ? $data['reasons'] : null;
     }
 
     /**
@@ -371,7 +371,7 @@ class Restriction implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

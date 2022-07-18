@@ -180,7 +180,7 @@ class GetItemOffersBatchResponse implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['responses'] = $data['responses'] ?? null;
+        $this->container['responses'] = isset($data['responses']) ? $data['responses'] : null;
     }
 
     /**
@@ -290,7 +290,7 @@ class GetItemOffersBatchResponse implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

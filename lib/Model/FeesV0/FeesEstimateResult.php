@@ -192,10 +192,10 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['fees_estimate_identifier'] = $data['fees_estimate_identifier'] ?? null;
-        $this->container['fees_estimate'] = $data['fees_estimate'] ?? null;
-        $this->container['error'] = $data['error'] ?? null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['fees_estimate_identifier'] = isset($data['fees_estimate_identifier']) ? $data['fees_estimate_identifier'] : null;
+        $this->container['fees_estimate'] = isset($data['fees_estimate']) ? $data['fees_estimate'] : null;
+        $this->container['error'] = isset($data['error']) ? $data['error'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class FeesEstimateResult implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

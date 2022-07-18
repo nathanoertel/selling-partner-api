@@ -192,10 +192,10 @@ class TrackingEvent implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['event_date'] = $data['event_date'] ?? null;
-        $this->container['event_address'] = $data['event_address'] ?? null;
-        $this->container['event_code'] = $data['event_code'] ?? null;
-        $this->container['event_description'] = $data['event_description'] ?? null;
+        $this->container['event_date'] = isset($data['event_date']) ? $data['event_date'] : null;
+        $this->container['event_address'] = isset($data['event_address']) ? $data['event_address'] : null;
+        $this->container['event_code'] = isset($data['event_code']) ? $data['event_code'] : null;
+        $this->container['event_description'] = isset($data['event_description']) ? $data['event_description'] : null;
     }
 
     /**
@@ -350,7 +350,7 @@ class TrackingEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

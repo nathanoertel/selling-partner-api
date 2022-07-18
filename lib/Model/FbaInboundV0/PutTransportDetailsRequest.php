@@ -187,9 +187,9 @@ class PutTransportDetailsRequest implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['is_partnered'] = $data['is_partnered'] ?? null;
-        $this->container['shipment_type'] = $data['shipment_type'] ?? null;
-        $this->container['transport_details'] = $data['transport_details'] ?? null;
+        $this->container['is_partnered'] = isset($data['is_partnered']) ? $data['is_partnered'] : null;
+        $this->container['shipment_type'] = isset($data['shipment_type']) ? $data['shipment_type'] : null;
+        $this->container['transport_details'] = isset($data['transport_details']) ? $data['transport_details'] : null;
     }
 
     /**
@@ -318,7 +318,7 @@ class PutTransportDetailsRequest implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

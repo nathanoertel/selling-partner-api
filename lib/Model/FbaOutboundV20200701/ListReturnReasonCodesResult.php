@@ -176,7 +176,7 @@ class ListReturnReasonCodesResult implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['reason_code_details'] = $data['reason_code_details'] ?? null;
+        $this->container['reason_code_details'] = isset($data['reason_code_details']) ? $data['reason_code_details'] : null;
     }
 
     /**
@@ -250,7 +250,7 @@ class ListReturnReasonCodesResult implements ModelInterface, ArrayAccess, \JsonS
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

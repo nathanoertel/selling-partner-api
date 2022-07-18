@@ -214,8 +214,8 @@ class LabelSpecification implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['label_format'] = $data['label_format'] ?? null;
-        $this->container['label_stock_size'] = $data['label_stock_size'] ?? null;
+        $this->container['label_format'] = isset($data['label_format']) ? $data['label_format'] : null;
+        $this->container['label_stock_size'] = isset($data['label_stock_size']) ? $data['label_stock_size'] : null;
     }
 
     /**
@@ -356,7 +356,7 @@ class LabelSpecification implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

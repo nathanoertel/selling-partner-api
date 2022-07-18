@@ -259,19 +259,19 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['brand'] = $data['brand'] ?? null;
-        $this->container['browse_classification'] = $data['browse_classification'] ?? null;
-        $this->container['color'] = $data['color'] ?? null;
-        $this->container['item_classification'] = $data['item_classification'] ?? null;
-        $this->container['item_name'] = $data['item_name'] ?? null;
-        $this->container['manufacturer'] = $data['manufacturer'] ?? null;
-        $this->container['model_number'] = $data['model_number'] ?? null;
-        $this->container['package_quantity'] = $data['package_quantity'] ?? null;
-        $this->container['part_number'] = $data['part_number'] ?? null;
-        $this->container['size'] = $data['size'] ?? null;
-        $this->container['style'] = $data['style'] ?? null;
-        $this->container['website_display_group'] = $data['website_display_group'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['brand'] = isset($data['brand']) ? $data['brand'] : null;
+        $this->container['browse_classification'] = isset($data['browse_classification']) ? $data['browse_classification'] : null;
+        $this->container['color'] = isset($data['color']) ? $data['color'] : null;
+        $this->container['item_classification'] = isset($data['item_classification']) ? $data['item_classification'] : null;
+        $this->container['item_name'] = isset($data['item_name']) ? $data['item_name'] : null;
+        $this->container['manufacturer'] = isset($data['manufacturer']) ? $data['manufacturer'] : null;
+        $this->container['model_number'] = isset($data['model_number']) ? $data['model_number'] : null;
+        $this->container['package_quantity'] = isset($data['package_quantity']) ? $data['package_quantity'] : null;
+        $this->container['part_number'] = isset($data['part_number']) ? $data['part_number'] : null;
+        $this->container['size'] = isset($data['size']) ? $data['size'] : null;
+        $this->container['style'] = isset($data['style']) ? $data['style'] : null;
+        $this->container['website_display_group'] = isset($data['website_display_group']) ? $data['website_display_group'] : null;
     }
 
     /**
@@ -643,7 +643,7 @@ class ItemSummaryByMarketplace implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

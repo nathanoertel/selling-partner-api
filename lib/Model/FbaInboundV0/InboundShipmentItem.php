@@ -212,14 +212,14 @@ class InboundShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_id'] = $data['shipment_id'] ?? null;
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['fulfillment_network_sku'] = $data['fulfillment_network_sku'] ?? null;
-        $this->container['quantity_shipped'] = $data['quantity_shipped'] ?? null;
-        $this->container['quantity_received'] = $data['quantity_received'] ?? null;
-        $this->container['quantity_in_case'] = $data['quantity_in_case'] ?? null;
-        $this->container['release_date'] = $data['release_date'] ?? null;
-        $this->container['prep_details_list'] = $data['prep_details_list'] ?? null;
+        $this->container['shipment_id'] = isset($data['shipment_id']) ? $data['shipment_id'] : null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['fulfillment_network_sku'] = isset($data['fulfillment_network_sku']) ? $data['fulfillment_network_sku'] : null;
+        $this->container['quantity_shipped'] = isset($data['quantity_shipped']) ? $data['quantity_shipped'] : null;
+        $this->container['quantity_received'] = isset($data['quantity_received']) ? $data['quantity_received'] : null;
+        $this->container['quantity_in_case'] = isset($data['quantity_in_case']) ? $data['quantity_in_case'] : null;
+        $this->container['release_date'] = isset($data['release_date']) ? $data['release_date'] : null;
+        $this->container['prep_details_list'] = isset($data['prep_details_list']) ? $data['prep_details_list'] : null;
     }
 
     /**
@@ -460,7 +460,7 @@ class InboundShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

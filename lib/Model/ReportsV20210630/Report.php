@@ -254,17 +254,17 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_ids'] = $data['marketplace_ids'] ?? null;
-        $this->container['report_id'] = $data['report_id'] ?? null;
-        $this->container['report_type'] = $data['report_type'] ?? null;
-        $this->container['data_start_time'] = $data['data_start_time'] ?? null;
-        $this->container['data_end_time'] = $data['data_end_time'] ?? null;
-        $this->container['report_schedule_id'] = $data['report_schedule_id'] ?? null;
-        $this->container['created_time'] = $data['created_time'] ?? null;
-        $this->container['processing_status'] = $data['processing_status'] ?? null;
-        $this->container['processing_start_time'] = $data['processing_start_time'] ?? null;
-        $this->container['processing_end_time'] = $data['processing_end_time'] ?? null;
-        $this->container['report_document_id'] = $data['report_document_id'] ?? null;
+        $this->container['marketplace_ids'] = isset($data['marketplace_ids']) ? $data['marketplace_ids'] : null;
+        $this->container['report_id'] = isset($data['report_id']) ? $data['report_id'] : null;
+        $this->container['report_type'] = isset($data['report_type']) ? $data['report_type'] : null;
+        $this->container['data_start_time'] = isset($data['data_start_time']) ? $data['data_start_time'] : null;
+        $this->container['data_end_time'] = isset($data['data_end_time']) ? $data['data_end_time'] : null;
+        $this->container['report_schedule_id'] = isset($data['report_schedule_id']) ? $data['report_schedule_id'] : null;
+        $this->container['created_time'] = isset($data['created_time']) ? $data['created_time'] : null;
+        $this->container['processing_status'] = isset($data['processing_status']) ? $data['processing_status'] : null;
+        $this->container['processing_start_time'] = isset($data['processing_start_time']) ? $data['processing_start_time'] : null;
+        $this->container['processing_end_time'] = isset($data['processing_end_time']) ? $data['processing_end_time'] : null;
+        $this->container['report_document_id'] = isset($data['report_document_id']) ? $data['report_document_id'] : null;
     }
 
     /**
@@ -621,7 +621,7 @@ class Report implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -182,8 +182,8 @@ class AvailableCarrierWillPickUpOption implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['carrier_will_pick_up_option'] = $data['carrier_will_pick_up_option'] ?? null;
-        $this->container['charge'] = $data['charge'] ?? null;
+        $this->container['carrier_will_pick_up_option'] = isset($data['carrier_will_pick_up_option']) ? $data['carrier_will_pick_up_option'] : null;
+        $this->container['charge'] = isset($data['charge']) ? $data['charge'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class AvailableCarrierWillPickUpOption implements ModelInterface, ArrayAccess, \
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -307,11 +307,11 @@ class ItemEligibilityPreview implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['program'] = $data['program'] ?? null;
-        $this->container['is_eligible_for_program'] = $data['is_eligible_for_program'] ?? null;
-        $this->container['ineligibility_reason_list'] = $data['ineligibility_reason_list'] ?? null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['program'] = isset($data['program']) ? $data['program'] : null;
+        $this->container['is_eligible_for_program'] = isset($data['is_eligible_for_program']) ? $data['is_eligible_for_program'] : null;
+        $this->container['ineligibility_reason_list'] = isset($data['ineligibility_reason_list']) ? $data['ineligibility_reason_list'] : null;
     }
 
     /**
@@ -514,7 +514,7 @@ class ItemEligibilityPreview implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

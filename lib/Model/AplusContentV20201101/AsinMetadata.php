@@ -202,12 +202,12 @@ class AsinMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['badge_set'] = $data['badge_set'] ?? null;
-        $this->container['parent'] = $data['parent'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['image_url'] = $data['image_url'] ?? null;
-        $this->container['content_reference_key_set'] = $data['content_reference_key_set'] ?? null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['badge_set'] = isset($data['badge_set']) ? $data['badge_set'] : null;
+        $this->container['parent'] = isset($data['parent']) ? $data['parent'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['image_url'] = isset($data['image_url']) ? $data['image_url'] : null;
+        $this->container['content_reference_key_set'] = isset($data['content_reference_key_set']) ? $data['content_reference_key_set'] : null;
     }
 
     /**
@@ -421,7 +421,7 @@ class AsinMetadata implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

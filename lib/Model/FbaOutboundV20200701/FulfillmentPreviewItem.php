@@ -215,11 +215,11 @@ class FulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['seller_fulfillment_order_item_id'] = $data['seller_fulfillment_order_item_id'] ?? null;
-        $this->container['estimated_shipping_weight'] = $data['estimated_shipping_weight'] ?? null;
-        $this->container['shipping_weight_calculation_method'] = $data['shipping_weight_calculation_method'] ?? null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['seller_fulfillment_order_item_id'] = isset($data['seller_fulfillment_order_item_id']) ? $data['seller_fulfillment_order_item_id'] : null;
+        $this->container['estimated_shipping_weight'] = isset($data['estimated_shipping_weight']) ? $data['estimated_shipping_weight'] : null;
+        $this->container['shipping_weight_calculation_method'] = isset($data['shipping_weight_calculation_method']) ? $data['shipping_weight_calculation_method'] : null;
     }
 
     /**
@@ -413,7 +413,7 @@ class FulfillmentPreviewItem implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

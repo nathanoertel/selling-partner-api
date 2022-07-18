@@ -181,8 +181,8 @@ class IdentifierType implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_asin'] = $data['marketplace_asin'] ?? null;
-        $this->container['sku_identifier'] = $data['sku_identifier'] ?? null;
+        $this->container['marketplace_asin'] = isset($data['marketplace_asin']) ? $data['marketplace_asin'] : null;
+        $this->container['sku_identifier'] = isset($data['sku_identifier']) ? $data['sku_identifier'] : null;
     }
 
     /**
@@ -279,7 +279,7 @@ class IdentifierType implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -191,10 +191,10 @@ class GetPreorderInfoResult implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_contains_preorderable_items'] = $data['shipment_contains_preorderable_items'] ?? null;
-        $this->container['shipment_confirmed_for_preorder'] = $data['shipment_confirmed_for_preorder'] ?? null;
-        $this->container['need_by_date'] = $data['need_by_date'] ?? null;
-        $this->container['confirmed_fulfillable_date'] = $data['confirmed_fulfillable_date'] ?? null;
+        $this->container['shipment_contains_preorderable_items'] = isset($data['shipment_contains_preorderable_items']) ? $data['shipment_contains_preorderable_items'] : null;
+        $this->container['shipment_confirmed_for_preorder'] = isset($data['shipment_confirmed_for_preorder']) ? $data['shipment_confirmed_for_preorder'] : null;
+        $this->container['need_by_date'] = isset($data['need_by_date']) ? $data['need_by_date'] : null;
+        $this->container['confirmed_fulfillable_date'] = isset($data['confirmed_fulfillable_date']) ? $data['confirmed_fulfillable_date'] : null;
     }
 
     /**
@@ -337,7 +337,7 @@ class GetPreorderInfoResult implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

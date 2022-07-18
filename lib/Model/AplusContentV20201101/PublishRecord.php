@@ -202,12 +202,12 @@ class PublishRecord implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['locale'] = $data['locale'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['content_type'] = $data['content_type'] ?? null;
-        $this->container['content_sub_type'] = $data['content_sub_type'] ?? null;
-        $this->container['content_reference_key'] = $data['content_reference_key'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['locale'] = isset($data['locale']) ? $data['locale'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
+        $this->container['content_sub_type'] = isset($data['content_sub_type']) ? $data['content_sub_type'] : null;
+        $this->container['content_reference_key'] = isset($data['content_reference_key']) ? $data['content_reference_key'] : null;
     }
 
     /**
@@ -438,7 +438,7 @@ class PublishRecord implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

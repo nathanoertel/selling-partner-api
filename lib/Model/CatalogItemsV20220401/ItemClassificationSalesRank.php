@@ -192,10 +192,10 @@ class ItemClassificationSalesRank implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['classification_id'] = $data['classification_id'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['link'] = $data['link'] ?? null;
-        $this->container['rank'] = $data['rank'] ?? null;
+        $this->container['classification_id'] = isset($data['classification_id']) ? $data['classification_id'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['link'] = isset($data['link']) ? $data['link'] : null;
+        $this->container['rank'] = isset($data['rank']) ? $data['rank'] : null;
     }
 
     /**
@@ -347,7 +347,7 @@ class ItemClassificationSalesRank implements ModelInterface, ArrayAccess, \JsonS
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

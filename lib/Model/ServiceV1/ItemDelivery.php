@@ -182,8 +182,8 @@ class ItemDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['estimated_delivery_date'] = $data['estimated_delivery_date'] ?? null;
-        $this->container['item_delivery_promise'] = $data['item_delivery_promise'] ?? null;
+        $this->container['estimated_delivery_date'] = isset($data['estimated_delivery_date']) ? $data['estimated_delivery_date'] : null;
+        $this->container['item_delivery_promise'] = isset($data['item_delivery_promise']) ? $data['item_delivery_promise'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class ItemDelivery implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

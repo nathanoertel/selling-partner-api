@@ -177,7 +177,7 @@ class Points implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['points_number'] = $data['points_number'] ?? null;
+        $this->container['points_number'] = isset($data['points_number']) ? $data['points_number'] : null;
     }
 
     /**
@@ -254,7 +254,7 @@ class Points implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

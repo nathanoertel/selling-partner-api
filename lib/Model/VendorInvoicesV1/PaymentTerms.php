@@ -218,10 +218,10 @@ class PaymentTerms implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['discount_percent'] = $data['discount_percent'] ?? null;
-        $this->container['discount_due_days'] = $data['discount_due_days'] ?? null;
-        $this->container['net_due_days'] = $data['net_due_days'] ?? null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['discount_percent'] = isset($data['discount_percent']) ? $data['discount_percent'] : null;
+        $this->container['discount_due_days'] = isset($data['discount_due_days']) ? $data['discount_due_days'] : null;
+        $this->container['net_due_days'] = isset($data['net_due_days']) ? $data['net_due_days'] : null;
     }
 
     /**
@@ -383,7 +383,7 @@ class PaymentTerms implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

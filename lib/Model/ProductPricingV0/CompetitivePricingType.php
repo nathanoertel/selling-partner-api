@@ -187,9 +187,9 @@ class CompetitivePricingType implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['competitive_prices'] = $data['competitive_prices'] ?? null;
-        $this->container['number_of_offer_listings'] = $data['number_of_offer_listings'] ?? null;
-        $this->container['trade_in_value'] = $data['trade_in_value'] ?? null;
+        $this->container['competitive_prices'] = isset($data['competitive_prices']) ? $data['competitive_prices'] : null;
+        $this->container['number_of_offer_listings'] = isset($data['number_of_offer_listings']) ? $data['number_of_offer_listings'] : null;
+        $this->container['trade_in_value'] = isset($data['trade_in_value']) ? $data['trade_in_value'] : null;
     }
 
     /**
@@ -314,7 +314,7 @@ class CompetitivePricingType implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

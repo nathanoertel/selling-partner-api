@@ -182,8 +182,8 @@ class SellerFeedbackType implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_positive_feedback_rating'] = $data['seller_positive_feedback_rating'] ?? null;
-        $this->container['feedback_count'] = $data['feedback_count'] ?? null;
+        $this->container['seller_positive_feedback_rating'] = isset($data['seller_positive_feedback_rating']) ? $data['seller_positive_feedback_rating'] : null;
+        $this->container['feedback_count'] = isset($data['feedback_count']) ? $data['feedback_count'] : null;
     }
 
     /**
@@ -282,7 +282,7 @@ class SellerFeedbackType implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -192,10 +192,10 @@ class TrackingInformation implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['tracking_id'] = $data['tracking_id'] ?? null;
-        $this->container['summary'] = $data['summary'] ?? null;
-        $this->container['promised_delivery_date'] = $data['promised_delivery_date'] ?? null;
-        $this->container['event_history'] = $data['event_history'] ?? null;
+        $this->container['tracking_id'] = isset($data['tracking_id']) ? $data['tracking_id'] : null;
+        $this->container['summary'] = isset($data['summary']) ? $data['summary'] : null;
+        $this->container['promised_delivery_date'] = isset($data['promised_delivery_date']) ? $data['promised_delivery_date'] : null;
+        $this->container['event_history'] = isset($data['event_history']) ? $data['event_history'] : null;
     }
 
     /**
@@ -365,7 +365,7 @@ class TrackingInformation implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -197,11 +197,11 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['is_cod_required'] = $data['is_cod_required'] ?? null;
-        $this->container['cod_charge'] = $data['cod_charge'] ?? null;
-        $this->container['cod_charge_tax'] = $data['cod_charge_tax'] ?? null;
-        $this->container['shipping_charge'] = $data['shipping_charge'] ?? null;
-        $this->container['shipping_charge_tax'] = $data['shipping_charge_tax'] ?? null;
+        $this->container['is_cod_required'] = isset($data['is_cod_required']) ? $data['is_cod_required'] : null;
+        $this->container['cod_charge'] = isset($data['cod_charge']) ? $data['cod_charge'] : null;
+        $this->container['cod_charge_tax'] = isset($data['cod_charge_tax']) ? $data['cod_charge_tax'] : null;
+        $this->container['shipping_charge'] = isset($data['shipping_charge']) ? $data['shipping_charge'] : null;
+        $this->container['shipping_charge_tax'] = isset($data['shipping_charge_tax']) ? $data['shipping_charge_tax'] : null;
     }
 
     /**
@@ -370,7 +370,7 @@ class CODSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

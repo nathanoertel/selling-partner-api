@@ -187,9 +187,9 @@ class FileContents implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['contents'] = $data['contents'] ?? null;
-        $this->container['file_type'] = $data['file_type'] ?? null;
-        $this->container['checksum'] = $data['checksum'] ?? null;
+        $this->container['contents'] = isset($data['contents']) ? $data['contents'] : null;
+        $this->container['file_type'] = isset($data['file_type']) ? $data['file_type'] : null;
+        $this->container['checksum'] = isset($data['checksum']) ? $data['checksum'] : null;
     }
 
     /**
@@ -318,7 +318,7 @@ class FileContents implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

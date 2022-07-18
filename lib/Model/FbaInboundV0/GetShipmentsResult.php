@@ -181,8 +181,8 @@ class GetShipmentsResult implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_data'] = $data['shipment_data'] ?? null;
-        $this->container['next_token'] = $data['next_token'] ?? null;
+        $this->container['shipment_data'] = isset($data['shipment_data']) ? $data['shipment_data'] : null;
+        $this->container['next_token'] = isset($data['next_token']) ? $data['next_token'] : null;
     }
 
     /**
@@ -279,7 +279,7 @@ class GetShipmentsResult implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

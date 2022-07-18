@@ -177,7 +177,7 @@ class GetFulfillmentPreviewResult implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['fulfillment_previews'] = $data['fulfillment_previews'] ?? null;
+        $this->container['fulfillment_previews'] = isset($data['fulfillment_previews']) ? $data['fulfillment_previews'] : null;
     }
 
     /**
@@ -251,7 +251,7 @@ class GetFulfillmentPreviewResult implements ModelInterface, ArrayAccess, \JsonS
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

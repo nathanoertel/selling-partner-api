@@ -217,15 +217,15 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['data_type'] = $data['data_type'] ?? null;
-        $this->container['value_as_string'] = $data['value_as_string'] ?? null;
-        $this->container['value_as_boolean'] = $data['value_as_boolean'] ?? null;
-        $this->container['value_as_integer'] = $data['value_as_integer'] ?? null;
-        $this->container['value_as_timestamp'] = $data['value_as_timestamp'] ?? null;
-        $this->container['value_as_address'] = $data['value_as_address'] ?? null;
-        $this->container['value_as_weight'] = $data['value_as_weight'] ?? null;
-        $this->container['value_as_dimension'] = $data['value_as_dimension'] ?? null;
-        $this->container['value_as_currency'] = $data['value_as_currency'] ?? null;
+        $this->container['data_type'] = isset($data['data_type']) ? $data['data_type'] : null;
+        $this->container['value_as_string'] = isset($data['value_as_string']) ? $data['value_as_string'] : null;
+        $this->container['value_as_boolean'] = isset($data['value_as_boolean']) ? $data['value_as_boolean'] : null;
+        $this->container['value_as_integer'] = isset($data['value_as_integer']) ? $data['value_as_integer'] : null;
+        $this->container['value_as_timestamp'] = isset($data['value_as_timestamp']) ? $data['value_as_timestamp'] : null;
+        $this->container['value_as_address'] = isset($data['value_as_address']) ? $data['value_as_address'] : null;
+        $this->container['value_as_weight'] = isset($data['value_as_weight']) ? $data['value_as_weight'] : null;
+        $this->container['value_as_dimension'] = isset($data['value_as_dimension']) ? $data['value_as_dimension'] : null;
+        $this->container['value_as_currency'] = isset($data['value_as_currency']) ? $data['value_as_currency'] : null;
     }
 
     /**
@@ -483,7 +483,7 @@ class AdditionalSellerInput implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

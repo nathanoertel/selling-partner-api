@@ -182,8 +182,8 @@ class StandardSingleSideImageModule implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['image_position_type'] = $data['image_position_type'] ?? null;
-        $this->container['block'] = $data['block'] ?? null;
+        $this->container['image_position_type'] = isset($data['image_position_type']) ? $data['image_position_type'] : null;
+        $this->container['block'] = isset($data['block']) ? $data['block'] : null;
     }
 
     /**
@@ -283,7 +283,7 @@ class StandardSingleSideImageModule implements ModelInterface, ArrayAccess, \Jso
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

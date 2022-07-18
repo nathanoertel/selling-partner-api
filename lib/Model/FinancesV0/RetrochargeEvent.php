@@ -207,13 +207,13 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['retrocharge_event_type'] = $data['retrocharge_event_type'] ?? null;
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['base_tax'] = $data['base_tax'] ?? null;
-        $this->container['shipping_tax'] = $data['shipping_tax'] ?? null;
-        $this->container['marketplace_name'] = $data['marketplace_name'] ?? null;
-        $this->container['retrocharge_tax_withheld_list'] = $data['retrocharge_tax_withheld_list'] ?? null;
+        $this->container['retrocharge_event_type'] = isset($data['retrocharge_event_type']) ? $data['retrocharge_event_type'] : null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['base_tax'] = isset($data['base_tax']) ? $data['base_tax'] : null;
+        $this->container['shipping_tax'] = isset($data['shipping_tax']) ? $data['shipping_tax'] : null;
+        $this->container['marketplace_name'] = isset($data['marketplace_name']) ? $data['marketplace_name'] : null;
+        $this->container['retrocharge_tax_withheld_list'] = isset($data['retrocharge_tax_withheld_list']) ? $data['retrocharge_tax_withheld_list'] : null;
     }
 
     /**
@@ -425,7 +425,7 @@ class RetrochargeEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

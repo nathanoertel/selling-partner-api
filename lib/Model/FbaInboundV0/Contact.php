@@ -192,10 +192,10 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['phone'] = $data['phone'] ?? null;
-        $this->container['email'] = $data['email'] ?? null;
-        $this->container['fax'] = $data['fax'] ?? null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['phone'] = isset($data['phone']) ? $data['phone'] : null;
+        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['fax'] = isset($data['fax']) ? $data['fax'] : null;
     }
 
     /**
@@ -379,7 +379,7 @@ class Contact implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

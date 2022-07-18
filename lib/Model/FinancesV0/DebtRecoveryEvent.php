@@ -197,11 +197,11 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['debt_recovery_type'] = $data['debt_recovery_type'] ?? null;
-        $this->container['recovery_amount'] = $data['recovery_amount'] ?? null;
-        $this->container['over_payment_credit'] = $data['over_payment_credit'] ?? null;
-        $this->container['debt_recovery_item_list'] = $data['debt_recovery_item_list'] ?? null;
-        $this->container['charge_instrument_list'] = $data['charge_instrument_list'] ?? null;
+        $this->container['debt_recovery_type'] = isset($data['debt_recovery_type']) ? $data['debt_recovery_type'] : null;
+        $this->container['recovery_amount'] = isset($data['recovery_amount']) ? $data['recovery_amount'] : null;
+        $this->container['over_payment_credit'] = isset($data['over_payment_credit']) ? $data['over_payment_credit'] : null;
+        $this->container['debt_recovery_item_list'] = isset($data['debt_recovery_item_list']) ? $data['debt_recovery_item_list'] : null;
+        $this->container['charge_instrument_list'] = isset($data['charge_instrument_list']) ? $data['charge_instrument_list'] : null;
     }
 
     /**
@@ -367,7 +367,7 @@ class DebtRecoveryEvent implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

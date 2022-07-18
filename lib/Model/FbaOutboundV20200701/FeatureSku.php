@@ -197,11 +197,11 @@ class FeatureSku implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['fn_sku'] = $data['fn_sku'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['sku_count'] = $data['sku_count'] ?? null;
-        $this->container['overlapping_skus'] = $data['overlapping_skus'] ?? null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['fn_sku'] = isset($data['fn_sku']) ? $data['fn_sku'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['sku_count'] = isset($data['sku_count']) ? $data['sku_count'] : null;
+        $this->container['overlapping_skus'] = isset($data['overlapping_skus']) ? $data['overlapping_skus'] : null;
     }
 
     /**
@@ -367,7 +367,7 @@ class FeatureSku implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

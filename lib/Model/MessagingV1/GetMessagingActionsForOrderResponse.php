@@ -190,9 +190,9 @@ class GetMessagingActionsForOrderResponse implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['_links'] = $data['_links'] ?? null;
-        $this->container['_embedded'] = $data['_embedded'] ?? null;
-        $this->container['errors'] = $data['errors'] ?? null;
+        $this->container['_links'] = isset($data['_links']) ? $data['_links'] : null;
+        $this->container['_embedded'] = isset($data['_embedded']) ? $data['_embedded'] : null;
+        $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
     }
 
     /**
@@ -334,7 +334,7 @@ class GetMessagingActionsForOrderResponse implements ModelInterface, ArrayAccess
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

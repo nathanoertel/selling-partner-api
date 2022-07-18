@@ -227,12 +227,12 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['method_of_payment'] = $data['method_of_payment'] ?? null;
-        $this->container['seal_number'] = $data['seal_number'] ?? null;
-        $this->container['route'] = $data['route'] ?? null;
-        $this->container['import_containers'] = $data['import_containers'] ?? null;
-        $this->container['billable_weight'] = $data['billable_weight'] ?? null;
-        $this->container['estimated_ship_by_date'] = $data['estimated_ship_by_date'] ?? null;
+        $this->container['method_of_payment'] = isset($data['method_of_payment']) ? $data['method_of_payment'] : null;
+        $this->container['seal_number'] = isset($data['seal_number']) ? $data['seal_number'] : null;
+        $this->container['route'] = isset($data['route']) ? $data['route'] : null;
+        $this->container['import_containers'] = isset($data['import_containers']) ? $data['import_containers'] : null;
+        $this->container['billable_weight'] = isset($data['billable_weight']) ? $data['billable_weight'] : null;
+        $this->container['estimated_ship_by_date'] = isset($data['estimated_ship_by_date']) ? $data['estimated_ship_by_date'] : null;
     }
 
     /**
@@ -448,7 +448,7 @@ class ImportDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -187,9 +187,9 @@ class TransportResult implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['transport_status'] = $data['transport_status'] ?? null;
-        $this->container['error_code'] = $data['error_code'] ?? null;
-        $this->container['error_description'] = $data['error_description'] ?? null;
+        $this->container['transport_status'] = isset($data['transport_status']) ? $data['transport_status'] : null;
+        $this->container['error_code'] = isset($data['error_code']) ? $data['error_code'] : null;
+        $this->container['error_description'] = isset($data['error_description']) ? $data['error_description'] : null;
     }
 
     /**
@@ -312,7 +312,7 @@ class TransportResult implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

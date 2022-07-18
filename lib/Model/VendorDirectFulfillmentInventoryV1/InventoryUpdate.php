@@ -186,9 +186,9 @@ class InventoryUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['selling_party'] = $data['selling_party'] ?? null;
-        $this->container['is_full_update'] = $data['is_full_update'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['selling_party'] = isset($data['selling_party']) ? $data['selling_party'] : null;
+        $this->container['is_full_update'] = isset($data['is_full_update']) ? $data['is_full_update'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -317,7 +317,7 @@ class InventoryUpdate implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

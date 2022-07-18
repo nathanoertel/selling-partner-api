@@ -227,17 +227,17 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['financial_event_group_id'] = $data['financial_event_group_id'] ?? null;
-        $this->container['processing_status'] = $data['processing_status'] ?? null;
-        $this->container['fund_transfer_status'] = $data['fund_transfer_status'] ?? null;
-        $this->container['original_total'] = $data['original_total'] ?? null;
-        $this->container['converted_total'] = $data['converted_total'] ?? null;
-        $this->container['fund_transfer_date'] = $data['fund_transfer_date'] ?? null;
-        $this->container['trace_id'] = $data['trace_id'] ?? null;
-        $this->container['account_tail'] = $data['account_tail'] ?? null;
-        $this->container['beginning_balance'] = $data['beginning_balance'] ?? null;
-        $this->container['financial_event_group_start'] = $data['financial_event_group_start'] ?? null;
-        $this->container['financial_event_group_end'] = $data['financial_event_group_end'] ?? null;
+        $this->container['financial_event_group_id'] = isset($data['financial_event_group_id']) ? $data['financial_event_group_id'] : null;
+        $this->container['processing_status'] = isset($data['processing_status']) ? $data['processing_status'] : null;
+        $this->container['fund_transfer_status'] = isset($data['fund_transfer_status']) ? $data['fund_transfer_status'] : null;
+        $this->container['original_total'] = isset($data['original_total']) ? $data['original_total'] : null;
+        $this->container['converted_total'] = isset($data['converted_total']) ? $data['converted_total'] : null;
+        $this->container['fund_transfer_date'] = isset($data['fund_transfer_date']) ? $data['fund_transfer_date'] : null;
+        $this->container['trace_id'] = isset($data['trace_id']) ? $data['trace_id'] : null;
+        $this->container['account_tail'] = isset($data['account_tail']) ? $data['account_tail'] : null;
+        $this->container['beginning_balance'] = isset($data['beginning_balance']) ? $data['beginning_balance'] : null;
+        $this->container['financial_event_group_start'] = isset($data['financial_event_group_start']) ? $data['financial_event_group_start'] : null;
+        $this->container['financial_event_group_end'] = isset($data['financial_event_group_end']) ? $data['financial_event_group_end'] : null;
     }
 
     /**
@@ -541,7 +541,7 @@ class FinancialEventGroup implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

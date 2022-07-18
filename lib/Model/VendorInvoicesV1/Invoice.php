@@ -264,21 +264,21 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['invoice_type'] = $data['invoice_type'] ?? null;
-        $this->container['id'] = $data['id'] ?? null;
-        $this->container['reference_number'] = $data['reference_number'] ?? null;
-        $this->container['date'] = $data['date'] ?? null;
-        $this->container['remit_to_party'] = $data['remit_to_party'] ?? null;
-        $this->container['ship_to_party'] = $data['ship_to_party'] ?? null;
-        $this->container['ship_from_party'] = $data['ship_from_party'] ?? null;
-        $this->container['bill_to_party'] = $data['bill_to_party'] ?? null;
-        $this->container['payment_terms'] = $data['payment_terms'] ?? null;
-        $this->container['invoice_total'] = $data['invoice_total'] ?? null;
-        $this->container['tax_details'] = $data['tax_details'] ?? null;
-        $this->container['additional_details'] = $data['additional_details'] ?? null;
-        $this->container['charge_details'] = $data['charge_details'] ?? null;
-        $this->container['allowance_details'] = $data['allowance_details'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['invoice_type'] = isset($data['invoice_type']) ? $data['invoice_type'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['reference_number'] = isset($data['reference_number']) ? $data['reference_number'] : null;
+        $this->container['date'] = isset($data['date']) ? $data['date'] : null;
+        $this->container['remit_to_party'] = isset($data['remit_to_party']) ? $data['remit_to_party'] : null;
+        $this->container['ship_to_party'] = isset($data['ship_to_party']) ? $data['ship_to_party'] : null;
+        $this->container['ship_from_party'] = isset($data['ship_from_party']) ? $data['ship_from_party'] : null;
+        $this->container['bill_to_party'] = isset($data['bill_to_party']) ? $data['bill_to_party'] : null;
+        $this->container['payment_terms'] = isset($data['payment_terms']) ? $data['payment_terms'] : null;
+        $this->container['invoice_total'] = isset($data['invoice_total']) ? $data['invoice_total'] : null;
+        $this->container['tax_details'] = isset($data['tax_details']) ? $data['tax_details'] : null;
+        $this->container['additional_details'] = isset($data['additional_details']) ? $data['additional_details'] : null;
+        $this->container['charge_details'] = isset($data['charge_details']) ? $data['charge_details'] : null;
+        $this->container['allowance_details'] = isset($data['allowance_details']) ? $data['allowance_details'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -708,7 +708,7 @@ class Invoice implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -207,13 +207,13 @@ class InboundShipmentHeader implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_name'] = $data['shipment_name'] ?? null;
-        $this->container['ship_from_address'] = $data['ship_from_address'] ?? null;
-        $this->container['destination_fulfillment_center_id'] = $data['destination_fulfillment_center_id'] ?? null;
-        $this->container['are_cases_required'] = $data['are_cases_required'] ?? null;
-        $this->container['shipment_status'] = $data['shipment_status'] ?? null;
-        $this->container['label_prep_preference'] = $data['label_prep_preference'] ?? null;
-        $this->container['intended_box_contents_source'] = $data['intended_box_contents_source'] ?? null;
+        $this->container['shipment_name'] = isset($data['shipment_name']) ? $data['shipment_name'] : null;
+        $this->container['ship_from_address'] = isset($data['ship_from_address']) ? $data['ship_from_address'] : null;
+        $this->container['destination_fulfillment_center_id'] = isset($data['destination_fulfillment_center_id']) ? $data['destination_fulfillment_center_id'] : null;
+        $this->container['are_cases_required'] = isset($data['are_cases_required']) ? $data['are_cases_required'] : null;
+        $this->container['shipment_status'] = isset($data['shipment_status']) ? $data['shipment_status'] : null;
+        $this->container['label_prep_preference'] = isset($data['label_prep_preference']) ? $data['label_prep_preference'] : null;
+        $this->container['intended_box_contents_source'] = isset($data['intended_box_contents_source']) ? $data['intended_box_contents_source'] : null;
     }
 
     /**
@@ -440,7 +440,7 @@ class InboundShipmentHeader implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

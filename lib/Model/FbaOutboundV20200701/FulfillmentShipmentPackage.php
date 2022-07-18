@@ -192,10 +192,10 @@ class FulfillmentShipmentPackage implements ModelInterface, ArrayAccess, \JsonSe
      */
     public function __construct(array $data = null)
     {
-        $this->container['package_number'] = $data['package_number'] ?? null;
-        $this->container['carrier_code'] = $data['carrier_code'] ?? null;
-        $this->container['tracking_number'] = $data['tracking_number'] ?? null;
-        $this->container['estimated_arrival_date'] = $data['estimated_arrival_date'] ?? null;
+        $this->container['package_number'] = isset($data['package_number']) ? $data['package_number'] : null;
+        $this->container['carrier_code'] = isset($data['carrier_code']) ? $data['carrier_code'] : null;
+        $this->container['tracking_number'] = isset($data['tracking_number']) ? $data['tracking_number'] : null;
+        $this->container['estimated_arrival_date'] = isset($data['estimated_arrival_date']) ? $data['estimated_arrival_date'] : null;
     }
 
     /**
@@ -344,7 +344,7 @@ class FulfillmentShipmentPackage implements ModelInterface, ArrayAccess, \JsonSe
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -177,7 +177,7 @@ class NonPartneredSmallParcelPackageInput implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['tracking_id'] = $data['tracking_id'] ?? null;
+        $this->container['tracking_id'] = isset($data['tracking_id']) ? $data['tracking_id'] : null;
     }
 
     /**
@@ -254,7 +254,7 @@ class NonPartneredSmallParcelPackageInput implements ModelInterface, ArrayAccess
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

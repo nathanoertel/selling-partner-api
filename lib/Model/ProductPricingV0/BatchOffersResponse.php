@@ -186,9 +186,9 @@ class BatchOffersResponse implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['headers'] = $data['headers'] ?? null;
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['body'] = $data['body'] ?? null;
+        $this->container['headers'] = isset($data['headers']) ? $data['headers'] : null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['body'] = isset($data['body']) ? $data['body'] : null;
     }
 
     /**
@@ -310,7 +310,7 @@ class BatchOffersResponse implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

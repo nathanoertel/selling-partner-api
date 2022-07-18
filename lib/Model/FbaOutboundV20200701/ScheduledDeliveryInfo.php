@@ -182,8 +182,8 @@ class ScheduledDeliveryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['delivery_time_zone'] = $data['delivery_time_zone'] ?? null;
-        $this->container['delivery_windows'] = $data['delivery_windows'] ?? null;
+        $this->container['delivery_time_zone'] = isset($data['delivery_time_zone']) ? $data['delivery_time_zone'] : null;
+        $this->container['delivery_windows'] = isset($data['delivery_windows']) ? $data['delivery_windows'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class ScheduledDeliveryInfo implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

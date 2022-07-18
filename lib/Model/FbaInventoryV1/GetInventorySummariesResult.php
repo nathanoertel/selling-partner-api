@@ -182,8 +182,8 @@ class GetInventorySummariesResult implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['granularity'] = $data['granularity'] ?? null;
-        $this->container['inventory_summaries'] = $data['inventory_summaries'] ?? null;
+        $this->container['granularity'] = isset($data['granularity']) ? $data['granularity'] : null;
+        $this->container['inventory_summaries'] = isset($data['inventory_summaries']) ? $data['inventory_summaries'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class GetInventorySummariesResult implements ModelInterface, ArrayAccess, \JsonS
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

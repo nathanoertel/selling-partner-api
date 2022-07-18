@@ -222,16 +222,16 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['rental_event_type'] = $data['rental_event_type'] ?? null;
-        $this->container['extension_length'] = $data['extension_length'] ?? null;
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['rental_charge_list'] = $data['rental_charge_list'] ?? null;
-        $this->container['rental_fee_list'] = $data['rental_fee_list'] ?? null;
-        $this->container['marketplace_name'] = $data['marketplace_name'] ?? null;
-        $this->container['rental_initial_value'] = $data['rental_initial_value'] ?? null;
-        $this->container['rental_reimbursement'] = $data['rental_reimbursement'] ?? null;
-        $this->container['rental_tax_withheld_list'] = $data['rental_tax_withheld_list'] ?? null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['rental_event_type'] = isset($data['rental_event_type']) ? $data['rental_event_type'] : null;
+        $this->container['extension_length'] = isset($data['extension_length']) ? $data['extension_length'] : null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['rental_charge_list'] = isset($data['rental_charge_list']) ? $data['rental_charge_list'] : null;
+        $this->container['rental_fee_list'] = isset($data['rental_fee_list']) ? $data['rental_fee_list'] : null;
+        $this->container['marketplace_name'] = isset($data['marketplace_name']) ? $data['marketplace_name'] : null;
+        $this->container['rental_initial_value'] = isset($data['rental_initial_value']) ? $data['rental_initial_value'] : null;
+        $this->container['rental_reimbursement'] = isset($data['rental_reimbursement']) ? $data['rental_reimbursement'] : null;
+        $this->container['rental_tax_withheld_list'] = isset($data['rental_tax_withheld_list']) ? $data['rental_tax_withheld_list'] : null;
     }
 
     /**
@@ -512,7 +512,7 @@ class RentalTransactionEvent implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

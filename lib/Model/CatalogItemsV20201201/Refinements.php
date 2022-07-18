@@ -182,8 +182,8 @@ class Refinements implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['brands'] = $data['brands'] ?? null;
-        $this->container['classifications'] = $data['classifications'] ?? null;
+        $this->container['brands'] = isset($data['brands']) ? $data['brands'] : null;
+        $this->container['classifications'] = isset($data['classifications']) ? $data['classifications'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class Refinements implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

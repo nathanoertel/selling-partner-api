@@ -222,16 +222,16 @@ class InboundShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['shipment_id'] = $data['shipment_id'] ?? null;
-        $this->container['shipment_name'] = $data['shipment_name'] ?? null;
-        $this->container['ship_from_address'] = $data['ship_from_address'] ?? null;
-        $this->container['destination_fulfillment_center_id'] = $data['destination_fulfillment_center_id'] ?? null;
-        $this->container['shipment_status'] = $data['shipment_status'] ?? null;
-        $this->container['label_prep_type'] = $data['label_prep_type'] ?? null;
-        $this->container['are_cases_required'] = $data['are_cases_required'] ?? null;
-        $this->container['confirmed_need_by_date'] = $data['confirmed_need_by_date'] ?? null;
-        $this->container['box_contents_source'] = $data['box_contents_source'] ?? null;
-        $this->container['estimated_box_contents_fee'] = $data['estimated_box_contents_fee'] ?? null;
+        $this->container['shipment_id'] = isset($data['shipment_id']) ? $data['shipment_id'] : null;
+        $this->container['shipment_name'] = isset($data['shipment_name']) ? $data['shipment_name'] : null;
+        $this->container['ship_from_address'] = isset($data['ship_from_address']) ? $data['ship_from_address'] : null;
+        $this->container['destination_fulfillment_center_id'] = isset($data['destination_fulfillment_center_id']) ? $data['destination_fulfillment_center_id'] : null;
+        $this->container['shipment_status'] = isset($data['shipment_status']) ? $data['shipment_status'] : null;
+        $this->container['label_prep_type'] = isset($data['label_prep_type']) ? $data['label_prep_type'] : null;
+        $this->container['are_cases_required'] = isset($data['are_cases_required']) ? $data['are_cases_required'] : null;
+        $this->container['confirmed_need_by_date'] = isset($data['confirmed_need_by_date']) ? $data['confirmed_need_by_date'] : null;
+        $this->container['box_contents_source'] = isset($data['box_contents_source']) ? $data['box_contents_source'] : null;
+        $this->container['estimated_box_contents_fee'] = isset($data['estimated_box_contents_fee']) ? $data['estimated_box_contents_fee'] : null;
     }
 
     /**
@@ -518,7 +518,7 @@ class InboundShipmentInfo implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

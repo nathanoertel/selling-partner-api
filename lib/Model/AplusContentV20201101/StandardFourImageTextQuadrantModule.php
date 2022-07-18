@@ -192,10 +192,10 @@ class StandardFourImageTextQuadrantModule implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['block1'] = $data['block1'] ?? null;
-        $this->container['block2'] = $data['block2'] ?? null;
-        $this->container['block3'] = $data['block3'] ?? null;
-        $this->container['block4'] = $data['block4'] ?? null;
+        $this->container['block1'] = isset($data['block1']) ? $data['block1'] : null;
+        $this->container['block2'] = isset($data['block2']) ? $data['block2'] : null;
+        $this->container['block3'] = isset($data['block3']) ? $data['block3'] : null;
+        $this->container['block4'] = isset($data['block4']) ? $data['block4'] : null;
     }
 
     /**
@@ -350,7 +350,7 @@ class StandardFourImageTextQuadrantModule implements ModelInterface, ArrayAccess
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

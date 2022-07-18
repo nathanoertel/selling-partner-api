@@ -209,9 +209,9 @@ class RestrictedResource implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['method'] = $data['method'] ?? null;
-        $this->container['path'] = $data['path'] ?? null;
-        $this->container['data_elements'] = $data['data_elements'] ?? null;
+        $this->container['method'] = isset($data['method']) ? $data['method'] : null;
+        $this->container['path'] = isset($data['path']) ? $data['path'] : null;
+        $this->container['data_elements'] = isset($data['data_elements']) ? $data['data_elements'] : null;
     }
 
     /**
@@ -356,7 +356,7 @@ class RestrictedResource implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

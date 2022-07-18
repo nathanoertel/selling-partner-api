@@ -196,11 +196,11 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['fulfillment_order'] = $data['fulfillment_order'] ?? null;
-        $this->container['fulfillment_order_items'] = $data['fulfillment_order_items'] ?? null;
-        $this->container['fulfillment_shipments'] = $data['fulfillment_shipments'] ?? null;
-        $this->container['return_items'] = $data['return_items'] ?? null;
-        $this->container['return_authorizations'] = $data['return_authorizations'] ?? null;
+        $this->container['fulfillment_order'] = isset($data['fulfillment_order']) ? $data['fulfillment_order'] : null;
+        $this->container['fulfillment_order_items'] = isset($data['fulfillment_order_items']) ? $data['fulfillment_order_items'] : null;
+        $this->container['fulfillment_shipments'] = isset($data['fulfillment_shipments']) ? $data['fulfillment_shipments'] : null;
+        $this->container['return_items'] = isset($data['return_items']) ? $data['return_items'] : null;
+        $this->container['return_authorizations'] = isset($data['return_authorizations']) ? $data['return_authorizations'] : null;
     }
 
     /**
@@ -378,7 +378,7 @@ class GetFulfillmentOrderResult implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

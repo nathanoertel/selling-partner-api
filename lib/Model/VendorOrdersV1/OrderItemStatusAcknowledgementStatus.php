@@ -214,10 +214,10 @@ class OrderItemStatusAcknowledgementStatus implements ModelInterface, ArrayAcces
      */
     public function __construct(array $data = null)
     {
-        $this->container['confirmation_status'] = $data['confirmation_status'] ?? null;
-        $this->container['accepted_quantity'] = $data['accepted_quantity'] ?? null;
-        $this->container['rejected_quantity'] = $data['rejected_quantity'] ?? null;
-        $this->container['acknowledgement_status_details'] = $data['acknowledgement_status_details'] ?? null;
+        $this->container['confirmation_status'] = isset($data['confirmation_status']) ? $data['confirmation_status'] : null;
+        $this->container['accepted_quantity'] = isset($data['accepted_quantity']) ? $data['accepted_quantity'] : null;
+        $this->container['rejected_quantity'] = isset($data['rejected_quantity']) ? $data['rejected_quantity'] : null;
+        $this->container['acknowledgement_status_details'] = isset($data['acknowledgement_status_details']) ? $data['acknowledgement_status_details'] : null;
     }
 
     /**
@@ -379,7 +379,7 @@ class OrderItemStatusAcknowledgementStatus implements ModelInterface, ArrayAcces
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

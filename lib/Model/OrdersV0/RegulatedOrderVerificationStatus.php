@@ -202,12 +202,12 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = $data['status'] ?? null;
-        $this->container['requires_merchant_action'] = $data['requires_merchant_action'] ?? null;
-        $this->container['valid_rejection_reasons'] = $data['valid_rejection_reasons'] ?? null;
-        $this->container['rejection_reason'] = $data['rejection_reason'] ?? null;
-        $this->container['review_date'] = $data['review_date'] ?? null;
-        $this->container['external_reviewer_id'] = $data['external_reviewer_id'] ?? null;
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['requires_merchant_action'] = isset($data['requires_merchant_action']) ? $data['requires_merchant_action'] : null;
+        $this->container['valid_rejection_reasons'] = isset($data['valid_rejection_reasons']) ? $data['valid_rejection_reasons'] : null;
+        $this->container['rejection_reason'] = isset($data['rejection_reason']) ? $data['rejection_reason'] : null;
+        $this->container['review_date'] = isset($data['review_date']) ? $data['review_date'] : null;
+        $this->container['external_reviewer_id'] = isset($data['external_reviewer_id']) ? $data['external_reviewer_id'] : null;
     }
 
     /**
@@ -405,7 +405,7 @@ class RegulatedOrderVerificationStatus implements ModelInterface, ArrayAccess, \
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

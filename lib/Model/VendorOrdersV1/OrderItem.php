@@ -206,13 +206,13 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['item_sequence_number'] = $data['item_sequence_number'] ?? null;
-        $this->container['amazon_product_identifier'] = $data['amazon_product_identifier'] ?? null;
-        $this->container['vendor_product_identifier'] = $data['vendor_product_identifier'] ?? null;
-        $this->container['ordered_quantity'] = $data['ordered_quantity'] ?? null;
-        $this->container['is_back_order_allowed'] = $data['is_back_order_allowed'] ?? null;
-        $this->container['net_cost'] = $data['net_cost'] ?? null;
-        $this->container['list_price'] = $data['list_price'] ?? null;
+        $this->container['item_sequence_number'] = isset($data['item_sequence_number']) ? $data['item_sequence_number'] : null;
+        $this->container['amazon_product_identifier'] = isset($data['amazon_product_identifier']) ? $data['amazon_product_identifier'] : null;
+        $this->container['vendor_product_identifier'] = isset($data['vendor_product_identifier']) ? $data['vendor_product_identifier'] : null;
+        $this->container['ordered_quantity'] = isset($data['ordered_quantity']) ? $data['ordered_quantity'] : null;
+        $this->container['is_back_order_allowed'] = isset($data['is_back_order_allowed']) ? $data['is_back_order_allowed'] : null;
+        $this->container['net_cost'] = isset($data['net_cost']) ? $data['net_cost'] : null;
+        $this->container['list_price'] = isset($data['list_price']) ? $data['list_price'] : null;
     }
 
     /**
@@ -433,7 +433,7 @@ class OrderItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

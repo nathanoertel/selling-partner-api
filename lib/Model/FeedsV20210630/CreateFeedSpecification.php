@@ -192,10 +192,10 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['feed_type'] = $data['feed_type'] ?? null;
-        $this->container['marketplace_ids'] = $data['marketplace_ids'] ?? null;
-        $this->container['input_feed_document_id'] = $data['input_feed_document_id'] ?? null;
-        $this->container['feed_options'] = $data['feed_options'] ?? null;
+        $this->container['feed_type'] = isset($data['feed_type']) ? $data['feed_type'] : null;
+        $this->container['marketplace_ids'] = isset($data['marketplace_ids']) ? $data['marketplace_ids'] : null;
+        $this->container['input_feed_document_id'] = isset($data['input_feed_document_id']) ? $data['input_feed_document_id'] : null;
+        $this->container['feed_options'] = isset($data['feed_options']) ? $data['feed_options'] : null;
     }
 
     /**
@@ -362,7 +362,7 @@ class CreateFeedSpecification implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -218,12 +218,12 @@ class Container implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['container_type'] = $data['container_type'] ?? null;
-        $this->container['container_reference_id'] = $data['container_reference_id'] ?? null;
-        $this->container['value'] = $data['value'] ?? null;
-        $this->container['dimensions'] = $data['dimensions'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
-        $this->container['weight'] = $data['weight'] ?? null;
+        $this->container['container_type'] = isset($data['container_type']) ? $data['container_type'] : null;
+        $this->container['container_reference_id'] = isset($data['container_reference_id']) ? $data['container_reference_id'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['dimensions'] = isset($data['dimensions']) ? $data['dimensions'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
+        $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
     }
 
     /**
@@ -454,7 +454,7 @@ class Container implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

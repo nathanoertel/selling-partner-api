@@ -182,8 +182,8 @@ class NonPartneredLtlDataOutput implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['carrier_name'] = $data['carrier_name'] ?? null;
-        $this->container['pro_number'] = $data['pro_number'] ?? null;
+        $this->container['carrier_name'] = isset($data['carrier_name']) ? $data['carrier_name'] : null;
+        $this->container['pro_number'] = isset($data['pro_number']) ? $data['pro_number'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class NonPartneredLtlDataOutput implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

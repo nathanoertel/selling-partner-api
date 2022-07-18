@@ -192,10 +192,10 @@ class ScopeOfWork implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['required_skills'] = $data['required_skills'] ?? null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['required_skills'] = isset($data['required_skills']) ? $data['required_skills'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class ScopeOfWork implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

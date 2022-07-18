@@ -247,21 +247,21 @@ class CreateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['seller_fulfillment_order_id'] = $data['seller_fulfillment_order_id'] ?? null;
-        $this->container['displayable_order_id'] = $data['displayable_order_id'] ?? null;
-        $this->container['displayable_order_date'] = $data['displayable_order_date'] ?? null;
-        $this->container['displayable_order_comment'] = $data['displayable_order_comment'] ?? null;
-        $this->container['shipping_speed_category'] = $data['shipping_speed_category'] ?? null;
-        $this->container['delivery_window'] = $data['delivery_window'] ?? null;
-        $this->container['destination_address'] = $data['destination_address'] ?? null;
-        $this->container['fulfillment_action'] = $data['fulfillment_action'] ?? null;
-        $this->container['fulfillment_policy'] = $data['fulfillment_policy'] ?? null;
-        $this->container['cod_settings'] = $data['cod_settings'] ?? null;
-        $this->container['ship_from_country_code'] = $data['ship_from_country_code'] ?? null;
-        $this->container['notification_emails'] = $data['notification_emails'] ?? null;
-        $this->container['feature_constraints'] = $data['feature_constraints'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['seller_fulfillment_order_id'] = isset($data['seller_fulfillment_order_id']) ? $data['seller_fulfillment_order_id'] : null;
+        $this->container['displayable_order_id'] = isset($data['displayable_order_id']) ? $data['displayable_order_id'] : null;
+        $this->container['displayable_order_date'] = isset($data['displayable_order_date']) ? $data['displayable_order_date'] : null;
+        $this->container['displayable_order_comment'] = isset($data['displayable_order_comment']) ? $data['displayable_order_comment'] : null;
+        $this->container['shipping_speed_category'] = isset($data['shipping_speed_category']) ? $data['shipping_speed_category'] : null;
+        $this->container['delivery_window'] = isset($data['delivery_window']) ? $data['delivery_window'] : null;
+        $this->container['destination_address'] = isset($data['destination_address']) ? $data['destination_address'] : null;
+        $this->container['fulfillment_action'] = isset($data['fulfillment_action']) ? $data['fulfillment_action'] : null;
+        $this->container['fulfillment_policy'] = isset($data['fulfillment_policy']) ? $data['fulfillment_policy'] : null;
+        $this->container['cod_settings'] = isset($data['cod_settings']) ? $data['cod_settings'] : null;
+        $this->container['ship_from_country_code'] = isset($data['ship_from_country_code']) ? $data['ship_from_country_code'] : null;
+        $this->container['notification_emails'] = isset($data['notification_emails']) ? $data['notification_emails'] : null;
+        $this->container['feature_constraints'] = isset($data['feature_constraints']) ? $data['feature_constraints'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -702,7 +702,7 @@ class CreateFulfillmentOrderRequest implements ModelInterface, ArrayAccess, \Jso
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

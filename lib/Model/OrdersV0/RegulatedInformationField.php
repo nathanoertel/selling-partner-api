@@ -210,10 +210,10 @@ class RegulatedInformationField implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['field_id'] = $data['field_id'] ?? null;
-        $this->container['field_label'] = $data['field_label'] ?? null;
-        $this->container['field_type'] = $data['field_type'] ?? null;
-        $this->container['field_value'] = $data['field_value'] ?? null;
+        $this->container['field_id'] = isset($data['field_id']) ? $data['field_id'] : null;
+        $this->container['field_label'] = isset($data['field_label']) ? $data['field_label'] : null;
+        $this->container['field_type'] = isset($data['field_type']) ? $data['field_type'] : null;
+        $this->container['field_value'] = isset($data['field_value']) ? $data['field_value'] : null;
     }
 
     /**
@@ -387,7 +387,7 @@ class RegulatedInformationField implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

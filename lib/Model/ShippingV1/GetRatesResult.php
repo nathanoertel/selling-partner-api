@@ -177,7 +177,7 @@ class GetRatesResult implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['service_rates'] = $data['service_rates'] ?? null;
+        $this->container['service_rates'] = isset($data['service_rates']) ? $data['service_rates'] : null;
     }
 
     /**
@@ -254,7 +254,7 @@ class GetRatesResult implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

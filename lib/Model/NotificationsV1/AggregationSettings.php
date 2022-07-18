@@ -177,7 +177,7 @@ class AggregationSettings implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['aggregation_time_period'] = $data['aggregation_time_period'] ?? null;
+        $this->container['aggregation_time_period'] = isset($data['aggregation_time_period']) ? $data['aggregation_time_period'] : null;
     }
 
     /**
@@ -254,7 +254,7 @@ class AggregationSettings implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

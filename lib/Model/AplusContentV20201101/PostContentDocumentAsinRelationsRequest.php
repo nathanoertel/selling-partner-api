@@ -176,7 +176,7 @@ class PostContentDocumentAsinRelationsRequest implements ModelInterface, ArrayAc
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin_set'] = $data['asin_set'] ?? null;
+        $this->container['asin_set'] = isset($data['asin_set']) ? $data['asin_set'] : null;
     }
 
     /**
@@ -255,7 +255,7 @@ class PostContentDocumentAsinRelationsRequest implements ModelInterface, ArrayAc
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -182,8 +182,8 @@ class GiftDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['gift_message'] = $data['gift_message'] ?? null;
-        $this->container['gift_wrap_id'] = $data['gift_wrap_id'] ?? null;
+        $this->container['gift_message'] = isset($data['gift_message']) ? $data['gift_message'] : null;
+        $this->container['gift_wrap_id'] = isset($data['gift_wrap_id']) ? $data['gift_wrap_id'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class GiftDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

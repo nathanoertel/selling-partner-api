@@ -207,13 +207,13 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['per_unit_amount'] = $data['per_unit_amount'] ?? null;
-        $this->container['total_amount'] = $data['total_amount'] ?? null;
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['fn_sku'] = $data['fn_sku'] ?? null;
-        $this->container['product_description'] = $data['product_description'] ?? null;
-        $this->container['asin'] = $data['asin'] ?? null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['per_unit_amount'] = isset($data['per_unit_amount']) ? $data['per_unit_amount'] : null;
+        $this->container['total_amount'] = isset($data['total_amount']) ? $data['total_amount'] : null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['fn_sku'] = isset($data['fn_sku']) ? $data['fn_sku'] : null;
+        $this->container['product_description'] = isset($data['product_description']) ? $data['product_description'] : null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
     }
 
     /**
@@ -425,7 +425,7 @@ class AdjustmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

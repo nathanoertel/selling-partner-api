@@ -182,8 +182,8 @@ class LabelFormatOption implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['include_packing_slip_with_label'] = $data['include_packing_slip_with_label'] ?? null;
-        $this->container['label_format'] = $data['label_format'] ?? null;
+        $this->container['include_packing_slip_with_label'] = isset($data['include_packing_slip_with_label']) ? $data['include_packing_slip_with_label'] : null;
+        $this->container['label_format'] = isset($data['label_format']) ? $data['label_format'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class LabelFormatOption implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

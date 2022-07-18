@@ -182,8 +182,8 @@ class RetrieveShippingLabelResult implements ModelInterface, ArrayAccess, \JsonS
      */
     public function __construct(array $data = null)
     {
-        $this->container['label_stream'] = $data['label_stream'] ?? null;
-        $this->container['label_specification'] = $data['label_specification'] ?? null;
+        $this->container['label_stream'] = isset($data['label_stream']) ? $data['label_stream'] : null;
+        $this->container['label_specification'] = isset($data['label_specification']) ? $data['label_specification'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class RetrieveShippingLabelResult implements ModelInterface, ArrayAccess, \JsonS
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

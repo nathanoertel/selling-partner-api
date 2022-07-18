@@ -176,7 +176,7 @@ class GetSolicitationActionResponseEmbedded implements ModelInterface, ArrayAcce
      */
     public function __construct(array $data = null)
     {
-        $this->container['schema'] = $data['schema'] ?? null;
+        $this->container['schema'] = isset($data['schema']) ? $data['schema'] : null;
     }
 
     /**
@@ -250,7 +250,7 @@ class GetSolicitationActionResponseEmbedded implements ModelInterface, ArrayAcce
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

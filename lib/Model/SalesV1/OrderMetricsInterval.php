@@ -202,12 +202,12 @@ class OrderMetricsInterval implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['interval'] = $data['interval'] ?? null;
-        $this->container['unit_count'] = $data['unit_count'] ?? null;
-        $this->container['order_item_count'] = $data['order_item_count'] ?? null;
-        $this->container['order_count'] = $data['order_count'] ?? null;
-        $this->container['average_unit_price'] = $data['average_unit_price'] ?? null;
-        $this->container['total_sales'] = $data['total_sales'] ?? null;
+        $this->container['interval'] = isset($data['interval']) ? $data['interval'] : null;
+        $this->container['unit_count'] = isset($data['unit_count']) ? $data['unit_count'] : null;
+        $this->container['order_item_count'] = isset($data['order_item_count']) ? $data['order_item_count'] : null;
+        $this->container['order_count'] = isset($data['order_count']) ? $data['order_count'] : null;
+        $this->container['average_unit_price'] = isset($data['average_unit_price']) ? $data['average_unit_price'] : null;
+        $this->container['total_sales'] = isset($data['total_sales']) ? $data['total_sales'] : null;
     }
 
     /**
@@ -414,7 +414,7 @@ class OrderMetricsInterval implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

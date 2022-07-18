@@ -239,14 +239,14 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['feed_id'] = $data['feed_id'] ?? null;
-        $this->container['feed_type'] = $data['feed_type'] ?? null;
-        $this->container['marketplace_ids'] = $data['marketplace_ids'] ?? null;
-        $this->container['created_time'] = $data['created_time'] ?? null;
-        $this->container['processing_status'] = $data['processing_status'] ?? null;
-        $this->container['processing_start_time'] = $data['processing_start_time'] ?? null;
-        $this->container['processing_end_time'] = $data['processing_end_time'] ?? null;
-        $this->container['result_feed_document_id'] = $data['result_feed_document_id'] ?? null;
+        $this->container['feed_id'] = isset($data['feed_id']) ? $data['feed_id'] : null;
+        $this->container['feed_type'] = isset($data['feed_type']) ? $data['feed_type'] : null;
+        $this->container['marketplace_ids'] = isset($data['marketplace_ids']) ? $data['marketplace_ids'] : null;
+        $this->container['created_time'] = isset($data['created_time']) ? $data['created_time'] : null;
+        $this->container['processing_status'] = isset($data['processing_status']) ? $data['processing_status'] : null;
+        $this->container['processing_start_time'] = isset($data['processing_start_time']) ? $data['processing_start_time'] : null;
+        $this->container['processing_end_time'] = isset($data['processing_end_time']) ? $data['processing_end_time'] : null;
+        $this->container['result_feed_document_id'] = isset($data['result_feed_document_id']) ? $data['result_feed_document_id'] : null;
     }
 
     /**
@@ -534,7 +534,7 @@ class Feed implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

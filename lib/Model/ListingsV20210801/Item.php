@@ -210,13 +210,13 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['sku'] = $data['sku'] ?? null;
-        $this->container['summaries'] = $data['summaries'] ?? null;
-        $this->container['attributes'] = $data['attributes'] ?? null;
-        $this->container['issues'] = $data['issues'] ?? null;
-        $this->container['offers'] = $data['offers'] ?? null;
-        $this->container['fulfillment_availability'] = $data['fulfillment_availability'] ?? null;
-        $this->container['procurement'] = $data['procurement'] ?? null;
+        $this->container['sku'] = isset($data['sku']) ? $data['sku'] : null;
+        $this->container['summaries'] = isset($data['summaries']) ? $data['summaries'] : null;
+        $this->container['attributes'] = isset($data['attributes']) ? $data['attributes'] : null;
+        $this->container['issues'] = isset($data['issues']) ? $data['issues'] : null;
+        $this->container['offers'] = isset($data['offers']) ? $data['offers'] : null;
+        $this->container['fulfillment_availability'] = isset($data['fulfillment_availability']) ? $data['fulfillment_availability'] : null;
+        $this->container['procurement'] = isset($data['procurement']) ? $data['procurement'] : null;
     }
 
     /**
@@ -453,7 +453,7 @@ class Item implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

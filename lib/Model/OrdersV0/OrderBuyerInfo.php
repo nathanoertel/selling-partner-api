@@ -202,12 +202,12 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['buyer_email'] = $data['buyer_email'] ?? null;
-        $this->container['buyer_name'] = $data['buyer_name'] ?? null;
-        $this->container['buyer_county'] = $data['buyer_county'] ?? null;
-        $this->container['buyer_tax_info'] = $data['buyer_tax_info'] ?? null;
-        $this->container['purchase_order_number'] = $data['purchase_order_number'] ?? null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['buyer_email'] = isset($data['buyer_email']) ? $data['buyer_email'] : null;
+        $this->container['buyer_name'] = isset($data['buyer_name']) ? $data['buyer_name'] : null;
+        $this->container['buyer_county'] = isset($data['buyer_county']) ? $data['buyer_county'] : null;
+        $this->container['buyer_tax_info'] = isset($data['buyer_tax_info']) ? $data['buyer_tax_info'] : null;
+        $this->container['purchase_order_number'] = isset($data['purchase_order_number']) ? $data['purchase_order_number'] : null;
     }
 
     /**
@@ -399,7 +399,7 @@ class OrderBuyerInfo implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -246,14 +246,14 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
      */
     public function __construct(array $data = null)
     {
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['brand_code'] = $data['brand_code'] ?? null;
-        $this->container['manufacturer_code'] = $data['manufacturer_code'] ?? null;
-        $this->container['manufacturer_code_parent'] = $data['manufacturer_code_parent'] ?? null;
-        $this->container['product_category'] = $data['product_category'] ?? null;
-        $this->container['product_group'] = $data['product_group'] ?? null;
-        $this->container['product_subcategory'] = $data['product_subcategory'] ?? null;
-        $this->container['replenishment_category'] = $data['replenishment_category'] ?? null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['brand_code'] = isset($data['brand_code']) ? $data['brand_code'] : null;
+        $this->container['manufacturer_code'] = isset($data['manufacturer_code']) ? $data['manufacturer_code'] : null;
+        $this->container['manufacturer_code_parent'] = isset($data['manufacturer_code_parent']) ? $data['manufacturer_code_parent'] : null;
+        $this->container['product_category'] = isset($data['product_category']) ? $data['product_category'] : null;
+        $this->container['product_group'] = isset($data['product_group']) ? $data['product_group'] : null;
+        $this->container['product_subcategory'] = isset($data['product_subcategory']) ? $data['product_subcategory'] : null;
+        $this->container['replenishment_category'] = isset($data['replenishment_category']) ? $data['replenishment_category'] : null;
     }
 
     /**
@@ -510,7 +510,7 @@ class ItemVendorDetailsByMarketplace implements ModelInterface, ArrayAccess, \Js
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -182,8 +182,8 @@ class InvalidItemReason implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['invalid_item_reason_code'] = $data['invalid_item_reason_code'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
+        $this->container['invalid_item_reason_code'] = isset($data['invalid_item_reason_code']) ? $data['invalid_item_reason_code'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class InvalidItemReason implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

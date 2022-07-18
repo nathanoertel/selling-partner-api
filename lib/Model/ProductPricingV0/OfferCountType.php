@@ -187,9 +187,9 @@ class OfferCountType implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['condition'] = $data['condition'] ?? null;
-        $this->container['fulfillment_channel'] = $data['fulfillment_channel'] ?? null;
-        $this->container['offer_count'] = $data['offer_count'] ?? null;
+        $this->container['condition'] = isset($data['condition']) ? $data['condition'] : null;
+        $this->container['fulfillment_channel'] = isset($data['fulfillment_channel']) ? $data['fulfillment_channel'] : null;
+        $this->container['offer_count'] = isset($data['offer_count']) ? $data['offer_count'] : null;
     }
 
     /**
@@ -308,7 +308,7 @@ class OfferCountType implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

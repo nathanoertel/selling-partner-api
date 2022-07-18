@@ -218,10 +218,10 @@ class AllowanceDetails implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['type'] = $data['type'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
-        $this->container['allowance_amount'] = $data['allowance_amount'] ?? null;
-        $this->container['tax_details'] = $data['tax_details'] ?? null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['allowance_amount'] = isset($data['allowance_amount']) ? $data['allowance_amount'] : null;
+        $this->container['tax_details'] = isset($data['tax_details']) ? $data['tax_details'] : null;
     }
 
     /**
@@ -389,7 +389,7 @@ class AllowanceDetails implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

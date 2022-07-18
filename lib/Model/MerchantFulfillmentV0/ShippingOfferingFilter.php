@@ -192,10 +192,10 @@ class ShippingOfferingFilter implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['include_packing_slip_with_label'] = $data['include_packing_slip_with_label'] ?? null;
-        $this->container['include_complex_shipping_options'] = $data['include_complex_shipping_options'] ?? null;
-        $this->container['carrier_will_pick_up'] = $data['carrier_will_pick_up'] ?? null;
-        $this->container['delivery_experience'] = $data['delivery_experience'] ?? null;
+        $this->container['include_packing_slip_with_label'] = isset($data['include_packing_slip_with_label']) ? $data['include_packing_slip_with_label'] : null;
+        $this->container['include_complex_shipping_options'] = isset($data['include_complex_shipping_options']) ? $data['include_complex_shipping_options'] : null;
+        $this->container['carrier_will_pick_up'] = isset($data['carrier_will_pick_up']) ? $data['carrier_will_pick_up'] : null;
+        $this->container['delivery_experience'] = isset($data['delivery_experience']) ? $data['delivery_experience'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class ShippingOfferingFilter implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

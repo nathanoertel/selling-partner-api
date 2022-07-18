@@ -182,8 +182,8 @@ class Participation implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['is_participating'] = $data['is_participating'] ?? null;
-        $this->container['has_suspended_listings'] = $data['has_suspended_listings'] ?? null;
+        $this->container['is_participating'] = isset($data['is_participating']) ? $data['is_participating'] : null;
+        $this->container['has_suspended_listings'] = isset($data['has_suspended_listings']) ? $data['has_suspended_listings'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class Participation implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

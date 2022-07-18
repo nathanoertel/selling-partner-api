@@ -182,8 +182,8 @@ class InvoiceData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['invoice_number'] = $data['invoice_number'] ?? null;
-        $this->container['invoice_date'] = $data['invoice_date'] ?? null;
+        $this->container['invoice_number'] = isset($data['invoice_number']) ? $data['invoice_number'] : null;
+        $this->container['invoice_date'] = isset($data['invoice_date']) ? $data['invoice_date'] : null;
     }
 
     /**
@@ -298,7 +298,7 @@ class InvoiceData implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

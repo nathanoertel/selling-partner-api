@@ -192,10 +192,10 @@ class ReservedQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['total_reserved_quantity'] = $data['total_reserved_quantity'] ?? null;
-        $this->container['pending_customer_order_quantity'] = $data['pending_customer_order_quantity'] ?? null;
-        $this->container['pending_transshipment_quantity'] = $data['pending_transshipment_quantity'] ?? null;
-        $this->container['fc_processing_quantity'] = $data['fc_processing_quantity'] ?? null;
+        $this->container['total_reserved_quantity'] = isset($data['total_reserved_quantity']) ? $data['total_reserved_quantity'] : null;
+        $this->container['pending_customer_order_quantity'] = isset($data['pending_customer_order_quantity']) ? $data['pending_customer_order_quantity'] : null;
+        $this->container['pending_transshipment_quantity'] = isset($data['pending_transshipment_quantity']) ? $data['pending_transshipment_quantity'] : null;
+        $this->container['fc_processing_quantity'] = isset($data['fc_processing_quantity']) ? $data['fc_processing_quantity'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class ReservedQuantity implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

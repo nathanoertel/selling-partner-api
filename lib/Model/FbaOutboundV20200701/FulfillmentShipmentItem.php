@@ -197,11 +197,11 @@ class FulfillmentShipmentItem implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['seller_fulfillment_order_item_id'] = $data['seller_fulfillment_order_item_id'] ?? null;
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['package_number'] = $data['package_number'] ?? null;
-        $this->container['serial_number'] = $data['serial_number'] ?? null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['seller_fulfillment_order_item_id'] = isset($data['seller_fulfillment_order_item_id']) ? $data['seller_fulfillment_order_item_id'] : null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['package_number'] = isset($data['package_number']) ? $data['package_number'] : null;
+        $this->container['serial_number'] = isset($data['serial_number']) ? $data['serial_number'] : null;
     }
 
     /**
@@ -376,7 +376,7 @@ class FulfillmentShipmentItem implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

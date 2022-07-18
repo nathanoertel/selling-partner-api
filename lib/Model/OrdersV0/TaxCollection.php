@@ -218,8 +218,8 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['model'] = $data['model'] ?? null;
-        $this->container['responsible_party'] = $data['responsible_party'] ?? null;
+        $this->container['model'] = isset($data['model']) ? $data['model'] : null;
+        $this->container['responsible_party'] = isset($data['responsible_party']) ? $data['responsible_party'] : null;
     }
 
     /**
@@ -354,7 +354,7 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

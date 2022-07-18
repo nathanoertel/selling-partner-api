@@ -212,14 +212,14 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['fn_sku'] = $data['fn_sku'] ?? null;
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['condition'] = $data['condition'] ?? null;
-        $this->container['inventory_details'] = $data['inventory_details'] ?? null;
-        $this->container['last_updated_time'] = $data['last_updated_time'] ?? null;
-        $this->container['product_name'] = $data['product_name'] ?? null;
-        $this->container['total_quantity'] = $data['total_quantity'] ?? null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['fn_sku'] = isset($data['fn_sku']) ? $data['fn_sku'] : null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['condition'] = isset($data['condition']) ? $data['condition'] : null;
+        $this->container['inventory_details'] = isset($data['inventory_details']) ? $data['inventory_details'] : null;
+        $this->container['last_updated_time'] = isset($data['last_updated_time']) ? $data['last_updated_time'] : null;
+        $this->container['product_name'] = isset($data['product_name']) ? $data['product_name'] : null;
+        $this->container['total_quantity'] = isset($data['total_quantity']) ? $data['total_quantity'] : null;
     }
 
     /**
@@ -454,7 +454,7 @@ class InventorySummary implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

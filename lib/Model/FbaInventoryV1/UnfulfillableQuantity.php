@@ -207,13 +207,13 @@ class UnfulfillableQuantity implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['total_unfulfillable_quantity'] = $data['total_unfulfillable_quantity'] ?? null;
-        $this->container['customer_damaged_quantity'] = $data['customer_damaged_quantity'] ?? null;
-        $this->container['warehouse_damaged_quantity'] = $data['warehouse_damaged_quantity'] ?? null;
-        $this->container['distributor_damaged_quantity'] = $data['distributor_damaged_quantity'] ?? null;
-        $this->container['carrier_damaged_quantity'] = $data['carrier_damaged_quantity'] ?? null;
-        $this->container['defective_quantity'] = $data['defective_quantity'] ?? null;
-        $this->container['expired_quantity'] = $data['expired_quantity'] ?? null;
+        $this->container['total_unfulfillable_quantity'] = isset($data['total_unfulfillable_quantity']) ? $data['total_unfulfillable_quantity'] : null;
+        $this->container['customer_damaged_quantity'] = isset($data['customer_damaged_quantity']) ? $data['customer_damaged_quantity'] : null;
+        $this->container['warehouse_damaged_quantity'] = isset($data['warehouse_damaged_quantity']) ? $data['warehouse_damaged_quantity'] : null;
+        $this->container['distributor_damaged_quantity'] = isset($data['distributor_damaged_quantity']) ? $data['distributor_damaged_quantity'] : null;
+        $this->container['carrier_damaged_quantity'] = isset($data['carrier_damaged_quantity']) ? $data['carrier_damaged_quantity'] : null;
+        $this->container['defective_quantity'] = isset($data['defective_quantity']) ? $data['defective_quantity'] : null;
+        $this->container['expired_quantity'] = isset($data['expired_quantity']) ? $data['expired_quantity'] : null;
     }
 
     /**
@@ -425,7 +425,7 @@ class UnfulfillableQuantity implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

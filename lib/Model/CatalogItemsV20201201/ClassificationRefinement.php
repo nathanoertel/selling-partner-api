@@ -187,9 +187,9 @@ class ClassificationRefinement implements ModelInterface, ArrayAccess, \JsonSeri
      */
     public function __construct(array $data = null)
     {
-        $this->container['number_of_results'] = $data['number_of_results'] ?? null;
-        $this->container['display_name'] = $data['display_name'] ?? null;
-        $this->container['classification_id'] = $data['classification_id'] ?? null;
+        $this->container['number_of_results'] = isset($data['number_of_results']) ? $data['number_of_results'] : null;
+        $this->container['display_name'] = isset($data['display_name']) ? $data['display_name'] : null;
+        $this->container['classification_id'] = isset($data['classification_id']) ? $data['classification_id'] : null;
     }
 
     /**
@@ -318,7 +318,7 @@ class ClassificationRefinement implements ModelInterface, ArrayAccess, \JsonSeri
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -210,10 +210,10 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['child_asins'] = $data['child_asins'] ?? null;
-        $this->container['parent_asins'] = $data['parent_asins'] ?? null;
-        $this->container['variation_theme'] = $data['variation_theme'] ?? null;
-        $this->container['type'] = $data['type'] ?? null;
+        $this->container['child_asins'] = isset($data['child_asins']) ? $data['child_asins'] : null;
+        $this->container['parent_asins'] = isset($data['parent_asins']) ? $data['parent_asins'] : null;
+        $this->container['variation_theme'] = isset($data['variation_theme']) ? $data['variation_theme'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
 
     /**
@@ -378,7 +378,7 @@ class ItemRelationship implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

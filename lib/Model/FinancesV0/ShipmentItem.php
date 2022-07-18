@@ -237,19 +237,19 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['seller_sku'] = $data['seller_sku'] ?? null;
-        $this->container['order_item_id'] = $data['order_item_id'] ?? null;
-        $this->container['order_adjustment_item_id'] = $data['order_adjustment_item_id'] ?? null;
-        $this->container['quantity_shipped'] = $data['quantity_shipped'] ?? null;
-        $this->container['item_charge_list'] = $data['item_charge_list'] ?? null;
-        $this->container['item_charge_adjustment_list'] = $data['item_charge_adjustment_list'] ?? null;
-        $this->container['item_fee_list'] = $data['item_fee_list'] ?? null;
-        $this->container['item_fee_adjustment_list'] = $data['item_fee_adjustment_list'] ?? null;
-        $this->container['item_tax_withheld_list'] = $data['item_tax_withheld_list'] ?? null;
-        $this->container['promotion_list'] = $data['promotion_list'] ?? null;
-        $this->container['promotion_adjustment_list'] = $data['promotion_adjustment_list'] ?? null;
-        $this->container['cost_of_points_granted'] = $data['cost_of_points_granted'] ?? null;
-        $this->container['cost_of_points_returned'] = $data['cost_of_points_returned'] ?? null;
+        $this->container['seller_sku'] = isset($data['seller_sku']) ? $data['seller_sku'] : null;
+        $this->container['order_item_id'] = isset($data['order_item_id']) ? $data['order_item_id'] : null;
+        $this->container['order_adjustment_item_id'] = isset($data['order_adjustment_item_id']) ? $data['order_adjustment_item_id'] : null;
+        $this->container['quantity_shipped'] = isset($data['quantity_shipped']) ? $data['quantity_shipped'] : null;
+        $this->container['item_charge_list'] = isset($data['item_charge_list']) ? $data['item_charge_list'] : null;
+        $this->container['item_charge_adjustment_list'] = isset($data['item_charge_adjustment_list']) ? $data['item_charge_adjustment_list'] : null;
+        $this->container['item_fee_list'] = isset($data['item_fee_list']) ? $data['item_fee_list'] : null;
+        $this->container['item_fee_adjustment_list'] = isset($data['item_fee_adjustment_list']) ? $data['item_fee_adjustment_list'] : null;
+        $this->container['item_tax_withheld_list'] = isset($data['item_tax_withheld_list']) ? $data['item_tax_withheld_list'] : null;
+        $this->container['promotion_list'] = isset($data['promotion_list']) ? $data['promotion_list'] : null;
+        $this->container['promotion_adjustment_list'] = isset($data['promotion_adjustment_list']) ? $data['promotion_adjustment_list'] : null;
+        $this->container['cost_of_points_granted'] = isset($data['cost_of_points_granted']) ? $data['cost_of_points_granted'] : null;
+        $this->container['cost_of_points_returned'] = isset($data['cost_of_points_returned']) ? $data['cost_of_points_returned'] : null;
     }
 
     /**
@@ -599,7 +599,7 @@ class ShipmentItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

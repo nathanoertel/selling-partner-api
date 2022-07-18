@@ -181,8 +181,8 @@ class ShippingLabelList implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['pagination'] = $data['pagination'] ?? null;
-        $this->container['shipping_labels'] = $data['shipping_labels'] ?? null;
+        $this->container['pagination'] = isset($data['pagination']) ? $data['pagination'] : null;
+        $this->container['shipping_labels'] = isset($data['shipping_labels']) ? $data['shipping_labels'] : null;
     }
 
     /**
@@ -279,7 +279,7 @@ class ShippingLabelList implements ModelInterface, ArrayAccess, \JsonSerializabl
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

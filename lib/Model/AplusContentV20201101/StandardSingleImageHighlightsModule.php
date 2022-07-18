@@ -202,12 +202,12 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['image'] = $data['image'] ?? null;
-        $this->container['headline'] = $data['headline'] ?? null;
-        $this->container['text_block1'] = $data['text_block1'] ?? null;
-        $this->container['text_block2'] = $data['text_block2'] ?? null;
-        $this->container['text_block3'] = $data['text_block3'] ?? null;
-        $this->container['bulleted_list_block'] = $data['bulleted_list_block'] ?? null;
+        $this->container['image'] = isset($data['image']) ? $data['image'] : null;
+        $this->container['headline'] = isset($data['headline']) ? $data['headline'] : null;
+        $this->container['text_block1'] = isset($data['text_block1']) ? $data['text_block1'] : null;
+        $this->container['text_block2'] = isset($data['text_block2']) ? $data['text_block2'] : null;
+        $this->container['text_block3'] = isset($data['text_block3']) ? $data['text_block3'] : null;
+        $this->container['bulleted_list_block'] = isset($data['bulleted_list_block']) ? $data['bulleted_list_block'] : null;
     }
 
     /**
@@ -396,7 +396,7 @@ class StandardSingleImageHighlightsModule implements ModelInterface, ArrayAccess
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

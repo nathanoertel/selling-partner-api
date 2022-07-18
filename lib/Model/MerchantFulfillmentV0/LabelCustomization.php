@@ -182,8 +182,8 @@ class LabelCustomization implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['custom_text_for_label'] = $data['custom_text_for_label'] ?? null;
-        $this->container['standard_id_for_label'] = $data['standard_id_for_label'] ?? null;
+        $this->container['custom_text_for_label'] = isset($data['custom_text_for_label']) ? $data['custom_text_for_label'] : null;
+        $this->container['standard_id_for_label'] = isset($data['standard_id_for_label']) ? $data['standard_id_for_label'] : null;
     }
 
     /**
@@ -288,7 +288,7 @@ class LabelCustomization implements ModelInterface, ArrayAccess, \JsonSerializab
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

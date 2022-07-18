@@ -182,8 +182,8 @@ class DirectPayment implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['direct_payment_type'] = $data['direct_payment_type'] ?? null;
-        $this->container['direct_payment_amount'] = $data['direct_payment_amount'] ?? null;
+        $this->container['direct_payment_type'] = isset($data['direct_payment_type']) ? $data['direct_payment_type'] : null;
+        $this->container['direct_payment_amount'] = isset($data['direct_payment_amount']) ? $data['direct_payment_amount'] : null;
     }
 
     /**
@@ -280,7 +280,7 @@ class DirectPayment implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

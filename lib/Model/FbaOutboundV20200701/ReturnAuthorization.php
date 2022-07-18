@@ -197,11 +197,11 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['return_authorization_id'] = $data['return_authorization_id'] ?? null;
-        $this->container['fulfillment_center_id'] = $data['fulfillment_center_id'] ?? null;
-        $this->container['return_to_address'] = $data['return_to_address'] ?? null;
-        $this->container['amazon_rma_id'] = $data['amazon_rma_id'] ?? null;
-        $this->container['rma_page_url'] = $data['rma_page_url'] ?? null;
+        $this->container['return_authorization_id'] = isset($data['return_authorization_id']) ? $data['return_authorization_id'] : null;
+        $this->container['fulfillment_center_id'] = isset($data['fulfillment_center_id']) ? $data['fulfillment_center_id'] : null;
+        $this->container['return_to_address'] = isset($data['return_to_address']) ? $data['return_to_address'] : null;
+        $this->container['amazon_rma_id'] = isset($data['amazon_rma_id']) ? $data['amazon_rma_id'] : null;
+        $this->container['rma_page_url'] = isset($data['rma_page_url']) ? $data['rma_page_url'] : null;
     }
 
     /**
@@ -382,7 +382,7 @@ class ReturnAuthorization implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

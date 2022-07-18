@@ -181,8 +181,8 @@ class InvalidASIN implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['error_reason'] = $data['error_reason'] ?? null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['error_reason'] = isset($data['error_reason']) ? $data['error_reason'] : null;
     }
 
     /**
@@ -279,7 +279,7 @@ class InvalidASIN implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

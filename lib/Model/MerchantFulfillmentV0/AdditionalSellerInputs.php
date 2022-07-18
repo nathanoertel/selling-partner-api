@@ -182,8 +182,8 @@ class AdditionalSellerInputs implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['additional_input_field_name'] = $data['additional_input_field_name'] ?? null;
-        $this->container['additional_seller_input'] = $data['additional_seller_input'] ?? null;
+        $this->container['additional_input_field_name'] = isset($data['additional_input_field_name']) ? $data['additional_input_field_name'] : null;
+        $this->container['additional_seller_input'] = isset($data['additional_seller_input']) ? $data['additional_seller_input'] : null;
     }
 
     /**
@@ -286,7 +286,7 @@ class AdditionalSellerInputs implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

@@ -197,11 +197,11 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['package_identifier'] = $data['package_identifier'] ?? null;
-        $this->container['tracking_number'] = $data['tracking_number'] ?? null;
-        $this->container['ship_method'] = $data['ship_method'] ?? null;
-        $this->container['ship_method_name'] = $data['ship_method_name'] ?? null;
-        $this->container['content'] = $data['content'] ?? null;
+        $this->container['package_identifier'] = isset($data['package_identifier']) ? $data['package_identifier'] : null;
+        $this->container['tracking_number'] = isset($data['tracking_number']) ? $data['tracking_number'] : null;
+        $this->container['ship_method'] = isset($data['ship_method']) ? $data['ship_method'] : null;
+        $this->container['ship_method_name'] = isset($data['ship_method_name']) ? $data['ship_method_name'] : null;
+        $this->container['content'] = isset($data['content']) ? $data['content'] : null;
     }
 
     /**
@@ -370,7 +370,7 @@ class LabelData implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

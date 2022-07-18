@@ -207,13 +207,13 @@ class PurchaseShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['client_reference_id'] = $data['client_reference_id'] ?? null;
-        $this->container['ship_to'] = $data['ship_to'] ?? null;
-        $this->container['ship_from'] = $data['ship_from'] ?? null;
-        $this->container['ship_date'] = $data['ship_date'] ?? null;
-        $this->container['service_type'] = $data['service_type'] ?? null;
-        $this->container['containers'] = $data['containers'] ?? null;
-        $this->container['label_specification'] = $data['label_specification'] ?? null;
+        $this->container['client_reference_id'] = isset($data['client_reference_id']) ? $data['client_reference_id'] : null;
+        $this->container['ship_to'] = isset($data['ship_to']) ? $data['ship_to'] : null;
+        $this->container['ship_from'] = isset($data['ship_from']) ? $data['ship_from'] : null;
+        $this->container['ship_date'] = isset($data['ship_date']) ? $data['ship_date'] : null;
+        $this->container['service_type'] = isset($data['service_type']) ? $data['service_type'] : null;
+        $this->container['containers'] = isset($data['containers']) ? $data['containers'] : null;
+        $this->container['label_specification'] = isset($data['label_specification']) ? $data['label_specification'] : null;
     }
 
     /**
@@ -451,7 +451,7 @@ class PurchaseShipmentRequest implements ModelInterface, ArrayAccess, \JsonSeria
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

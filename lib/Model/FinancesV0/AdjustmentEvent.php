@@ -192,10 +192,10 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['adjustment_type'] = $data['adjustment_type'] ?? null;
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['adjustment_amount'] = $data['adjustment_amount'] ?? null;
-        $this->container['adjustment_item_list'] = $data['adjustment_item_list'] ?? null;
+        $this->container['adjustment_type'] = isset($data['adjustment_type']) ? $data['adjustment_type'] : null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['adjustment_amount'] = isset($data['adjustment_amount']) ? $data['adjustment_amount'] : null;
+        $this->container['adjustment_item_list'] = isset($data['adjustment_item_list']) ? $data['adjustment_item_list'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class AdjustmentEvent implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

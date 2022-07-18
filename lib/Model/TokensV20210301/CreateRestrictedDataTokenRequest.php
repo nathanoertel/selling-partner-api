@@ -182,8 +182,8 @@ class CreateRestrictedDataTokenRequest implements ModelInterface, ArrayAccess, \
      */
     public function __construct(array $data = null)
     {
-        $this->container['target_application'] = $data['target_application'] ?? null;
-        $this->container['restricted_resources'] = $data['restricted_resources'] ?? null;
+        $this->container['target_application'] = isset($data['target_application']) ? $data['target_application'] : null;
+        $this->container['restricted_resources'] = isset($data['restricted_resources']) ? $data['restricted_resources'] : null;
     }
 
     /**
@@ -283,7 +283,7 @@ class CreateRestrictedDataTokenRequest implements ModelInterface, ArrayAccess, \
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

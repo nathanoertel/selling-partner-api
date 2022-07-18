@@ -217,15 +217,15 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(array $data = null)
     {
-        $this->container['amazon_order_id'] = $data['amazon_order_id'] ?? null;
-        $this->container['posted_date'] = $data['posted_date'] ?? null;
-        $this->container['marketplace_id'] = $data['marketplace_id'] ?? null;
-        $this->container['transaction_type'] = $data['transaction_type'] ?? null;
-        $this->container['base_expense'] = $data['base_expense'] ?? null;
-        $this->container['tax_type_cgst'] = $data['tax_type_cgst'] ?? null;
-        $this->container['tax_type_sgst'] = $data['tax_type_sgst'] ?? null;
-        $this->container['tax_type_igst'] = $data['tax_type_igst'] ?? null;
-        $this->container['total_expense'] = $data['total_expense'] ?? null;
+        $this->container['amazon_order_id'] = isset($data['amazon_order_id']) ? $data['amazon_order_id'] : null;
+        $this->container['posted_date'] = isset($data['posted_date']) ? $data['posted_date'] : null;
+        $this->container['marketplace_id'] = isset($data['marketplace_id']) ? $data['marketplace_id'] : null;
+        $this->container['transaction_type'] = isset($data['transaction_type']) ? $data['transaction_type'] : null;
+        $this->container['base_expense'] = isset($data['base_expense']) ? $data['base_expense'] : null;
+        $this->container['tax_type_cgst'] = isset($data['tax_type_cgst']) ? $data['tax_type_cgst'] : null;
+        $this->container['tax_type_sgst'] = isset($data['tax_type_sgst']) ? $data['tax_type_sgst'] : null;
+        $this->container['tax_type_igst'] = isset($data['tax_type_igst']) ? $data['tax_type_igst'] : null;
+        $this->container['total_expense'] = isset($data['total_expense']) ? $data['total_expense'] : null;
     }
 
     /**
@@ -492,7 +492,7 @@ class AffordabilityExpenseEvent implements ModelInterface, ArrayAccess, \JsonSer
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

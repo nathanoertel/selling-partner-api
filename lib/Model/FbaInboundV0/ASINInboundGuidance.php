@@ -187,9 +187,9 @@ class ASINInboundGuidance implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['inbound_guidance'] = $data['inbound_guidance'] ?? null;
-        $this->container['guidance_reason_list'] = $data['guidance_reason_list'] ?? null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['inbound_guidance'] = isset($data['inbound_guidance']) ? $data['inbound_guidance'] : null;
+        $this->container['guidance_reason_list'] = isset($data['guidance_reason_list']) ? $data['guidance_reason_list'] : null;
     }
 
     /**
@@ -315,7 +315,7 @@ class ASINInboundGuidance implements ModelInterface, ArrayAccess, \JsonSerializa
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

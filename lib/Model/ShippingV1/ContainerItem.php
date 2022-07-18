@@ -192,10 +192,10 @@ class ContainerItem implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['quantity'] = $data['quantity'] ?? null;
-        $this->container['unit_price'] = $data['unit_price'] ?? null;
-        $this->container['unit_weight'] = $data['unit_weight'] ?? null;
-        $this->container['title'] = $data['title'] ?? null;
+        $this->container['quantity'] = isset($data['quantity']) ? $data['quantity'] : null;
+        $this->container['unit_price'] = isset($data['unit_price']) ? $data['unit_price'] : null;
+        $this->container['unit_weight'] = isset($data['unit_weight']) ? $data['unit_weight'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
     }
 
     /**
@@ -358,7 +358,7 @@ class ContainerItem implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

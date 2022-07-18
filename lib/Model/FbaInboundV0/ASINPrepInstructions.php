@@ -192,10 +192,10 @@ class ASINPrepInstructions implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(array $data = null)
     {
-        $this->container['asin'] = $data['asin'] ?? null;
-        $this->container['barcode_instruction'] = $data['barcode_instruction'] ?? null;
-        $this->container['prep_guidance'] = $data['prep_guidance'] ?? null;
-        $this->container['prep_instruction_list'] = $data['prep_instruction_list'] ?? null;
+        $this->container['asin'] = isset($data['asin']) ? $data['asin'] : null;
+        $this->container['barcode_instruction'] = isset($data['barcode_instruction']) ? $data['barcode_instruction'] : null;
+        $this->container['prep_guidance'] = isset($data['prep_guidance']) ? $data['prep_guidance'] : null;
+        $this->container['prep_instruction_list'] = isset($data['prep_instruction_list']) ? $data['prep_instruction_list'] : null;
     }
 
     /**
@@ -338,7 +338,7 @@ class ASINPrepInstructions implements ModelInterface, ArrayAccess, \JsonSerializ
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

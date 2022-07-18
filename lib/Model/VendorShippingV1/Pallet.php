@@ -207,13 +207,13 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['pallet_identifiers'] = $data['pallet_identifiers'] ?? null;
-        $this->container['tier'] = $data['tier'] ?? null;
-        $this->container['block'] = $data['block'] ?? null;
-        $this->container['dimensions'] = $data['dimensions'] ?? null;
-        $this->container['weight'] = $data['weight'] ?? null;
-        $this->container['carton_reference_details'] = $data['carton_reference_details'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['pallet_identifiers'] = isset($data['pallet_identifiers']) ? $data['pallet_identifiers'] : null;
+        $this->container['tier'] = isset($data['tier']) ? $data['tier'] : null;
+        $this->container['block'] = isset($data['block']) ? $data['block'] : null;
+        $this->container['dimensions'] = isset($data['dimensions']) ? $data['dimensions'] : null;
+        $this->container['weight'] = isset($data['weight']) ? $data['weight'] : null;
+        $this->container['carton_reference_details'] = isset($data['carton_reference_details']) ? $data['carton_reference_details'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -428,7 +428,7 @@ class Pallet implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

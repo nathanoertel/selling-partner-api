@@ -197,11 +197,11 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
      */
     public function __construct(array $data = null)
     {
-        $this->container['delivery_experience'] = $data['delivery_experience'] ?? null;
-        $this->container['declared_value'] = $data['declared_value'] ?? null;
-        $this->container['carrier_will_pick_up'] = $data['carrier_will_pick_up'] ?? null;
-        $this->container['carrier_will_pick_up_option'] = $data['carrier_will_pick_up_option'] ?? null;
-        $this->container['label_format'] = $data['label_format'] ?? null;
+        $this->container['delivery_experience'] = isset($data['delivery_experience']) ? $data['delivery_experience'] : null;
+        $this->container['declared_value'] = isset($data['declared_value']) ? $data['declared_value'] : null;
+        $this->container['carrier_will_pick_up'] = isset($data['carrier_will_pick_up']) ? $data['carrier_will_pick_up'] : null;
+        $this->container['carrier_will_pick_up_option'] = isset($data['carrier_will_pick_up_option']) ? $data['carrier_will_pick_up_option'] : null;
+        $this->container['label_format'] = isset($data['label_format']) ? $data['label_format'] : null;
     }
 
     /**
@@ -373,7 +373,7 @@ class ShippingServiceOptions implements ModelInterface, ArrayAccess, \JsonSerial
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

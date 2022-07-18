@@ -182,8 +182,8 @@ class TextComponent implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['value'] = $data['value'] ?? null;
-        $this->container['decorator_set'] = $data['decorator_set'] ?? null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
+        $this->container['decorator_set'] = isset($data['decorator_set']) ? $data['decorator_set'] : null;
     }
 
     /**
@@ -293,7 +293,7 @@ class TextComponent implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

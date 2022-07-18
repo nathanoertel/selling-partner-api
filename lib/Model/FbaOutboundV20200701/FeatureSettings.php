@@ -200,8 +200,8 @@ class FeatureSettings implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['feature_name'] = $data['feature_name'] ?? null;
-        $this->container['feature_fulfillment_policy'] = $data['feature_fulfillment_policy'] ?? null;
+        $this->container['feature_name'] = isset($data['feature_name']) ? $data['feature_name'] : null;
+        $this->container['feature_fulfillment_policy'] = isset($data['feature_fulfillment_policy']) ? $data['feature_fulfillment_policy'] : null;
     }
 
     /**
@@ -317,7 +317,7 @@ class FeatureSettings implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

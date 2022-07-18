@@ -258,15 +258,15 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
      */
     public function __construct(array $data = null)
     {
-        $this->container['meta_schema'] = $data['meta_schema'] ?? null;
-        $this->container['schema'] = $data['schema'] ?? null;
-        $this->container['requirements'] = $data['requirements'] ?? null;
-        $this->container['requirements_enforced'] = $data['requirements_enforced'] ?? null;
-        $this->container['property_groups'] = $data['property_groups'] ?? null;
-        $this->container['locale'] = $data['locale'] ?? null;
-        $this->container['marketplace_ids'] = $data['marketplace_ids'] ?? null;
-        $this->container['product_type'] = $data['product_type'] ?? null;
-        $this->container['product_type_version'] = $data['product_type_version'] ?? null;
+        $this->container['meta_schema'] = isset($data['meta_schema']) ? $data['meta_schema'] : null;
+        $this->container['schema'] = isset($data['schema']) ? $data['schema'] : null;
+        $this->container['requirements'] = isset($data['requirements']) ? $data['requirements'] : null;
+        $this->container['requirements_enforced'] = isset($data['requirements_enforced']) ? $data['requirements_enforced'] : null;
+        $this->container['property_groups'] = isset($data['property_groups']) ? $data['property_groups'] : null;
+        $this->container['locale'] = isset($data['locale']) ? $data['locale'] : null;
+        $this->container['marketplace_ids'] = isset($data['marketplace_ids']) ? $data['marketplace_ids'] : null;
+        $this->container['product_type'] = isset($data['product_type']) ? $data['product_type'] : null;
+        $this->container['product_type_version'] = isset($data['product_type_version']) ? $data['product_type_version'] : null;
     }
 
     /**
@@ -608,7 +608,7 @@ class ProductTypeDefinition implements ModelInterface, ArrayAccess, \JsonSeriali
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

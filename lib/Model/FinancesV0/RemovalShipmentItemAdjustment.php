@@ -207,13 +207,13 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->container['removal_shipment_item_id'] = $data['removal_shipment_item_id'] ?? null;
-        $this->container['tax_collection_model'] = $data['tax_collection_model'] ?? null;
-        $this->container['fulfillment_network_sku'] = $data['fulfillment_network_sku'] ?? null;
-        $this->container['adjusted_quantity'] = $data['adjusted_quantity'] ?? null;
-        $this->container['revenue_adjustment'] = $data['revenue_adjustment'] ?? null;
-        $this->container['tax_amount_adjustment'] = $data['tax_amount_adjustment'] ?? null;
-        $this->container['tax_withheld_adjustment'] = $data['tax_withheld_adjustment'] ?? null;
+        $this->container['removal_shipment_item_id'] = isset($data['removal_shipment_item_id']) ? $data['removal_shipment_item_id'] : null;
+        $this->container['tax_collection_model'] = isset($data['tax_collection_model']) ? $data['tax_collection_model'] : null;
+        $this->container['fulfillment_network_sku'] = isset($data['fulfillment_network_sku']) ? $data['fulfillment_network_sku'] : null;
+        $this->container['adjusted_quantity'] = isset($data['adjusted_quantity']) ? $data['adjusted_quantity'] : null;
+        $this->container['revenue_adjustment'] = isset($data['revenue_adjustment']) ? $data['revenue_adjustment'] : null;
+        $this->container['tax_amount_adjustment'] = isset($data['tax_amount_adjustment']) ? $data['tax_amount_adjustment'] : null;
+        $this->container['tax_withheld_adjustment'] = isset($data['tax_withheld_adjustment']) ? $data['tax_withheld_adjustment'] : null;
     }
 
     /**
@@ -425,7 +425,7 @@ class RemovalShipmentItemAdjustment implements ModelInterface, ArrayAccess, \Jso
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

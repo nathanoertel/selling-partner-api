@@ -181,8 +181,8 @@ class SchemaLink implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['link'] = $data['link'] ?? null;
-        $this->container['checksum'] = $data['checksum'] ?? null;
+        $this->container['link'] = isset($data['link']) ? $data['link'] : null;
+        $this->container['checksum'] = isset($data['checksum']) ? $data['checksum'] : null;
     }
 
     /**
@@ -285,7 +285,7 @@ class SchemaLink implements ModelInterface, ArrayAccess, \JsonSerializable
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**

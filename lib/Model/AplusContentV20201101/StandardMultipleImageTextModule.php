@@ -177,7 +177,7 @@ class StandardMultipleImageTextModule implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(array $data = null)
     {
-        $this->container['blocks'] = $data['blocks'] ?? null;
+        $this->container['blocks'] = isset($data['blocks']) ? $data['blocks'] : null;
     }
 
     /**
@@ -251,7 +251,7 @@ class StandardMultipleImageTextModule implements ModelInterface, ArrayAccess, \J
     #[\ReturnTypeWillChange]
     public function offsetGet($offset)
     {
-        return $this->container[$offset] ?? null;
+        return isset($this->container[$offset]) ? $this->container[$offset] : null;
     }
 
     /**
