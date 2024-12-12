@@ -222,6 +222,15 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['responsible_party'] = isset($data['responsible_party']) ? $data['responsible_party'] : null;
     }
 
+    private function isPropertyValid($value, $allowedValues)
+    {
+        return (
+            is_null($value) ||
+            empty($value) ||
+            in_array($value, $allowedValues, true)
+        );
+    }
+
     /**
      * Show all the invalid properties with reasons.
      *
@@ -232,7 +241,7 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
         $invalidProperties = [];
 
         $allowedValues = $this->getModelAllowableValues();
-        if (!is_null($this->container['model']) && !in_array($this->container['model'], $allowedValues, true)) {
+        if (!$this->isPropertyValid($this->container['model'], $allowedValues)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'model', must be one of '%s'",
                 $this->container['model'],
@@ -241,7 +250,7 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $allowedValues = $this->getResponsiblePartyAllowableValues();
-        if (!is_null($this->container['responsible_party']) && !in_array($this->container['responsible_party'], $allowedValues, true)) {
+        if (!$this->isPropertyValid($this->container['responsible_party'], $allowedValues)) {
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'responsible_party', must be one of '%s'",
                 $this->container['responsible_party'],
@@ -284,7 +293,7 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setModel($model)
     {
         $allowedValues = $this->getModelAllowableValues();
-        if (!is_null($model) && !in_array($model, $allowedValues, true)) {
+        if (!$this->isPropertyValid($model, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'model', must be one of '%s'",
@@ -317,7 +326,7 @@ class TaxCollection implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setResponsibleParty($responsible_party)
     {
         $allowedValues = $this->getResponsiblePartyAllowableValues();
-        if (!is_null($responsible_party) && !in_array($responsible_party, $allowedValues, true)) {
+        if (!$this->isPropertyValid($responsible_party, $allowedValues)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value '%s' for 'responsible_party', must be one of '%s'",
